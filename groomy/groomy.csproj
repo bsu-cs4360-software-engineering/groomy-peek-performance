@@ -98,5 +98,9 @@
   <ItemGroup>
     <Content Include="dbo.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Auth\" />
+    <Folder Include="Customers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
