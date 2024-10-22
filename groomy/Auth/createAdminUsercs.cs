@@ -5,7 +5,7 @@ using Google.Cloud.Firestore;
 
 namespace groomy.Auth
 {
-    internal class createAdminUser
+    public class createAdminUser
     {
         private readonly FirestoreDb _firestoreDb;
 

@@ -8,7 +8,7 @@ using Google.Cloud.Firestore;
 
 namespace groomy.Auth
 {
-    internal class loginCheck
+    public class loginCheck
     {
         private FirestoreDb __database;
         private readonly string __email;
