@@ -51,11 +51,12 @@ namespace groomy
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             loginCheck checkLogin = new loginCheck(txtUsername.Text,txtPassword.Text);
-            bool zbele = await checkLogin.checkUser();
-            if (zbele)
+            bool verifyUser = await checkLogin.checkUser();
+            if (verifyUser)
             {
                 pnlLogin.Visible = false;
                 pnlWelcome.Visible = true;
+                rdoCustomer.Visible = true;
             }
             else
             {
@@ -72,6 +73,7 @@ namespace groomy
         {
             pnlLogin.Visible = true;
             pnlWelcome.Visible = false;
+            rdoCustomer.Visible=false;
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
