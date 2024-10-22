@@ -45,7 +45,8 @@ namespace groomy.Auth
                 if (snapshot.Exists)
                 {
                     AdminUser user = snapshot.ConvertTo<AdminUser>();
-                    return __password == user.password;
+                    bool isPasswordValid = BCrypt.Net.BCrypt.Verify(__password, user.password);
+                    return isPasswordValid;
                 }
                 return false;
 
