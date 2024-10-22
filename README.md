@@ -134,5 +134,5 @@ Ensure proper setup of Firebase Firestore:
 - Set up appropriate indexes
 - In the firstore database add a collection Users
 - The documents inside users have the corresponding fields
-- email, fName, lName, password
+- email, fName, lName, password (all are strings)
 - Test connection before development
