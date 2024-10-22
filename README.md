@@ -88,9 +88,8 @@ git clone https://github.com/bsu-cs4360-software-engineering/groomy-peek-perform
 
 2. Add Firebase credentials:
    - Generate Firebase SDK private key
-   - Rename to `firebaseSDK.json`
+   - Rename to `firebaseSDK.json` change that to always copy in the properties in Visual Studio THIS NEEDS TO HAPPEN OTHERWISE PROJECT WON'T WORK
    - Place in `services` folder
-
 3. Install required packages:
 ```xml
 dotnet add package BCrypt.Net-Next --version 4.0.2
@@ -136,3 +135,4 @@ Ensure proper setup of Firebase Firestore:
 - The documents inside users have the corresponding fields
 - email, fName, lName, password (all are strings)
 - Test connection before development
+- Add your own project ID in the firebaseConfig line 26 in the .create function
