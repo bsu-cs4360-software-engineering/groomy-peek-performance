@@ -60,6 +60,11 @@ namespace groomy
             else
             {
                 MessageBox.Show("Email and/or Password are not right");
+                txtUsername.Text = string.Empty;
+                txtPassword.Text = string.Empty;
+
+                // Optionally, set focus back to the username textbox for easier re-entry
+                txtUsername.Focus();
             }    
         }
 

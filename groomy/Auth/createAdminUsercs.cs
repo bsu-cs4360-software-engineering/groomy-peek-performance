@@ -21,6 +21,7 @@ namespace groomy.Auth
         {
             try
             {
+                user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
                 DocumentReference docRef = _firestoreDb.Collection("Users").Document(user.email);
                 await docRef.SetAsync(user);
                 Console.WriteLine($"Admin user {user.fName} {user.lName} added successfully.");
