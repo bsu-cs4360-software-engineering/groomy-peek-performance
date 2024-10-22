@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using groomy.Services;
 namespace groomy
 {
     internal static class Program
@@ -14,6 +14,8 @@ namespace groomy
         [STAThread]
         static void Main()
         {
+            var firebaseCon = new FirebaseConfig();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
