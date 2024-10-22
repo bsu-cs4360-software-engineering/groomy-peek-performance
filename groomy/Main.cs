@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using groomy.Auth;
 
 namespace groomy
 {
@@ -47,16 +48,40 @@ namespace groomy
             createUser.ShowDialog();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            pnlLogin.Visible = false;
-            pnlWelcome.Visible = true;
+            loginCheck checkLogin = new loginCheck(txtUsername.Text,txtPassword.Text);
+            bool zbele = await checkLogin.checkUser();
+            if (zbele)
+            {
+                pnlLogin.Visible = false;
+                pnlWelcome.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Email and/or Password are not right");
+            }    
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             pnlLogin.Visible = true;
             pnlWelcome.Visible = false;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
