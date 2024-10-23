@@ -266,9 +266,7 @@
     <None Include="protos\google\type\postal_address.proto" />
     <None Include="protos\google\type\quaternion.proto" />
     <None Include="protos\google\type\timeofday.proto" />
-    <None Include="Services\firebaseSDK.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Services\firebaseSDK.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
