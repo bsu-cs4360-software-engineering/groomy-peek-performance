@@ -13,7 +13,7 @@ namespace groomy.Auth
         private FirestoreDb __database;
         private readonly string __email;
         private readonly string __password;
-        private FirebaseConfig __firebaseConfig = FirebaseConfig.Instance;
+        private firebaseConfig __firebaseConfig = firebaseConfig.Instance;
         public loginCheck(string email, string password)
         {
             __email = email;

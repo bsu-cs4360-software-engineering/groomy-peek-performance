@@ -6,14 +6,14 @@ using Google.Cloud.Firestore;
 
 namespace groomy.services
 {
-    public class FirebaseConfig
+    public class firebaseConfig
     {
         private readonly string credentialsPath = AppDomain.CurrentDomain.BaseDirectory + @"/Services/firebaseSDK.json";
         private FirestoreDb firestoreDb;
-        private static FirebaseConfig _instance;
+        private static firebaseConfig __instance;
 
         // Private constructor to prevent instantiation
-        private FirebaseConfig()
+        private firebaseConfig()
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
 
@@ -31,15 +31,15 @@ namespace groomy.services
         }
 
         // Public static method to access the instance
-        public static FirebaseConfig Instance
+        public static firebaseConfig Instance
         {
             get
             {
-                if (_instance == null)
+                if (__instance == null)
                 {
-                    _instance = new FirebaseConfig();
+                    __instance = new firebaseConfig();
                 }
-                return _instance;
+                return __instance;
             }
         }
 

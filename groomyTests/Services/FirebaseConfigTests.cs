@@ -19,29 +19,29 @@ namespace groomy.services.Tests
         public void TestInitializeFirebaseSetsDefaultInstance()
         {
             // Arrange
-            var config = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
             // Assert
             Assert.IsNotNull(config);
         }
         [TestMethod()]
         public void getFirestoreDBTest_IsNotNull()
         {
-            FirebaseConfig config = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
             var data = config.getFirestoreDB();
             Assert.IsNotNull(data);
         }
         [TestMethod()]
         public void getFirestoreDBTest_CorrectTypeFirestoreDb_ReturnsTrue()
         {
-            FirebaseConfig config = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
             var data = config.getFirestoreDB();
             Assert.IsInstanceOfType(data, typeof(FirestoreDb));
         }
         [TestMethod()]
         public void getFirestoreDBTest_IsNotDuplicated_ReturnsTrue()
         {
-            FirebaseConfig config = FirebaseConfig.Instance;
-            FirebaseConfig config2 = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
+            firebaseConfig config2 = firebaseConfig.Instance;
 
             var data = config.getFirestoreDB();
             Assert.AreSame(config,config2);

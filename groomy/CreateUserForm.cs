@@ -17,7 +17,7 @@ namespace groomy
 {
     public partial class AccountCreateForm : Form
     {
-        private readonly FirebaseConfig config = FirebaseConfig.Instance;
+        private readonly firebaseConfig config = firebaseConfig.Instance;
         private readonly FirestoreDb db;
 
         public AccountCreateForm()
