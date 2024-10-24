@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using groomy.Services;
+using groomy.services;
 using Google.Cloud.Firestore;
 
 namespace groomy.Auth
 {
-    internal class loginCheck
+    public class loginCheck
     {
         private FirestoreDb __database;
         private readonly string __email;
         private readonly string __password;
-        private FirebaseConfig __firebaseConfig = new FirebaseConfig();
+        private FirebaseConfig __firebaseConfig = FirebaseConfig.Instance;
         public loginCheck(string email, string password)
         {
             __email = email;
@@ -44,7 +44,7 @@ namespace groomy.Auth
                 DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
                 if (snapshot.Exists)
                 {
-                    AdminUser user = snapshot.ConvertTo<AdminUser>();
+                    adminUser user = snapshot.ConvertTo<adminUser>();
                     bool isPasswordValid = BCrypt.Net.BCrypt.Verify(__password, user.password);
                     return isPasswordValid;
                 }

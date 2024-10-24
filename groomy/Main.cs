@@ -22,6 +22,7 @@ namespace groomy
         public Main()
         {
             InitializeComponent();
+            rdoCustomer.BackColor = PrimaryAccent;
         }
         
 

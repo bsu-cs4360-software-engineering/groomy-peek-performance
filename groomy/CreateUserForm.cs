@@ -1,4 +1,6 @@
-﻿using groomy.Auth;
+﻿using Google.Cloud.Firestore.V1;
+using groomy.Auth;
+using groomy.services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +10,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Cloud.Firestore;
+using groomy.auth;
 
 namespace groomy
 {
     public partial class AccountCreateForm : Form
     {
+        private readonly FirebaseConfig config = FirebaseConfig.Instance;
+        private readonly FirestoreDb db;
+
         public AccountCreateForm()
         {
             InitializeComponent();
+            db = config.getFirestoreDB();
+
         }
 
         private void btnShowPassword_Click(object sender, EventArgs e)
@@ -25,18 +34,13 @@ namespace groomy
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            AdminUser user = new AdminUser();
+            adminUser user = new adminUser();
             user.email = txtEmail.Text;
             user.fName = txtFirst.Text;
             user.lName = txtLast.Text;
             user.password = txtPass.Text;
-            createAdminUser creating = new createAdminUser();
-            await creating.AddAdminUserAsync(user);
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
+            createAdminUser creating = new createAdminUser(db);
+            await creating.addadminUserAsync(user);
         }
     }
 }

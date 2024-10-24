@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace groomy.Auth
 {
     [FirestoreData]
-    public class AdminUser
+    public class adminUser
     {
         [FirestoreProperty("email")]
         public string email { get; set; }
