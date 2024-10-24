@@ -16,7 +16,7 @@ namespace groomy.Auth.Tests
         [TestMethod()]
         public async Task loginCheckTest_CorrectCredentials_ReturnsTrue()
         {
-            FirebaseConfig config = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb __database = config.getFirestoreDB();
             var user = new adminUser
             {
@@ -45,7 +45,7 @@ namespace groomy.Auth.Tests
         [TestMethod()]
         public async Task loginCheckTest_IsPasswordHashed_ReturnsTrue()
         {
-            FirebaseConfig config = FirebaseConfig.Instance;
+            firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb __database = config.getFirestoreDB();
             var user = new adminUser
             {

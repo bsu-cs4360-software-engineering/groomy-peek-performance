@@ -19,7 +19,7 @@ namespace groomy.Auth.Tests
         [TestMethod()]
         public async Task addAdminUserAsyncTest_AddingUserToDatabase_ShouldReturnSuccessful()
         {
-            FirebaseConfig fConfig = FirebaseConfig.Instance;
+            firebaseConfig fConfig = firebaseConfig.Instance;
             FirestoreDb data = fConfig.getFirestoreDB();
             createAdminUser admuser = new createAdminUser(data);
             var adminUser = new adminUser
