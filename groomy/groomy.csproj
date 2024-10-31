@@ -170,6 +170,7 @@
     <Compile Include="Auth\AdminUsers.cs" />
     <Compile Include="Auth\checkLogin.cs" />
     <Compile Include="Auth\createAdminUsercs.cs" />
+    <Compile Include="Customers\customer.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,9 +274,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Customers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
