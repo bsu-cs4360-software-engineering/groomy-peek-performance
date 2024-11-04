@@ -72,16 +72,14 @@
             this.rdoCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoCustomer.ForeColor = System.Drawing.Color.White;
-            this.rdoCustomer.Location = new System.Drawing.Point(4, 172);
-            this.rdoCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoCustomer.Location = new System.Drawing.Point(3, 140);
             this.rdoCustomer.Name = "rdoCustomer";
-            this.rdoCustomer.Size = new System.Drawing.Size(295, 58);
+            this.rdoCustomer.Size = new System.Drawing.Size(221, 47);
             this.rdoCustomer.TabIndex = 1;
-            this.rdoCustomer.TabStop = true;
             this.rdoCustomer.Text = "Customer";
             this.rdoCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoCustomer.UseVisualStyleBackColor = false;
-            // 
+            this.rdoCustomer.Visible = false;
             // rdoHome
             // 
             this.rdoHome.Appearance = System.Windows.Forms.Appearance.Button;
