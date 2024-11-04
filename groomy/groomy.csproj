@@ -167,10 +167,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments\appointment.cs" />
+    <Compile Include="Appointments\appointmentInterface.cs" />
+    <Compile Include="Appointments\appontmentCRUD.cs" />
     <Compile Include="Auth\AdminUsers.cs" />
     <Compile Include="Auth\checkLogin.cs" />
     <Compile Include="Auth\createAdminUsercs.cs" />
     <Compile Include="Customers\customer.cs" />
+    <Compile Include="Customers\customerCRUD.cs" />
+    <Compile Include="Customers\customerInterface.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

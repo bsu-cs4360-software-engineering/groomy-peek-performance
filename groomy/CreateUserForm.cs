@@ -42,5 +42,10 @@ namespace groomy
             createAdminUser creating = new createAdminUser(db);
             await creating.addadminUserAsync(user);
         }
+
+        private void AccountCreateForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
