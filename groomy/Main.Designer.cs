@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdoHome = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlWelcome = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.rdoCustomer = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlWelcome.SuspendLayout();
@@ -54,7 +55,7 @@
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
             this.panel1.Controls.Add(this.rdoCustomer);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.rdoHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -79,26 +80,24 @@
             this.rdoCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoCustomer.UseVisualStyleBackColor = false;
             this.rdoCustomer.Visible = false;
+            // rdoHome
             // 
-            // radioButton1
-            // 
-            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(129)))), ((int)(((byte)(175)))));
-            this.radioButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.radioButton1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton1.Checked = true;
-            this.radioButton1.FlatAppearance.BorderSize = 0;
-            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(3, 87);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(221, 47);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Home";
-            this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton1.UseVisualStyleBackColor = false;
+            this.rdoHome.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdoHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(129)))), ((int)(((byte)(175)))));
+            this.rdoHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.rdoHome.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoHome.FlatAppearance.BorderSize = 0;
+            this.rdoHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdoHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoHome.ForeColor = System.Drawing.Color.White;
+            this.rdoHome.Location = new System.Drawing.Point(3, 87);
+            this.rdoHome.Name = "rdoHome";
+            this.rdoHome.Size = new System.Drawing.Size(221, 47);
+            this.rdoHome.TabIndex = 0;
+            this.rdoHome.TabStop = true;
+            this.rdoHome.Text = "Home";
+            this.rdoHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoHome.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -224,6 +223,25 @@
             this.label2.Text = "Password:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // rdoCustomer
+            // 
+            this.rdoCustomer.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdoCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
+            this.rdoCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.rdoCustomer.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoCustomer.FlatAppearance.BorderSize = 0;
+            this.rdoCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdoCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoCustomer.ForeColor = System.Drawing.Color.White;
+            this.rdoCustomer.Location = new System.Drawing.Point(3, 140);
+            this.rdoCustomer.Name = "rdoCustomer";
+            this.rdoCustomer.Size = new System.Drawing.Size(221, 47);
+            this.rdoCustomer.TabIndex = 1;
+            this.rdoCustomer.TabStop = true;
+            this.rdoCustomer.Text = "Customer";
+            this.rdoCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoCustomer.UseVisualStyleBackColor = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,7 +269,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdoHome;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.LinkLabel lnkCreateAccount;

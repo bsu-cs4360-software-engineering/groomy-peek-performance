@@ -1,34 +1,38 @@
 ﻿using System;
 using System.Threading.Tasks;
-using groomy.Services; // Ensure this matches your FirebaseConfig namespace
 using Google.Cloud.Firestore;
+using groomy.Auth;
 
-namespace groomy.Auth
+namespace groomy.auth
 {
-    internal class createAdminUser
+    public class createAdminUser
     {
-        private readonly FirestoreDb _firestoreDb;
+        private readonly FirestoreDb __firestoreDb;
 
-        public createAdminUser()
+        // Constructor to inject FirestoreDb (useful for testing)
+        public createAdminUser(FirestoreDb firestoreDb)
         {
-            // Initialize Firestore database through FirebaseConfig
-            var firebaseConfig = new FirebaseConfig();
-            _firestoreDb = firebaseConfig.getFirestoreDB();
+            this.__firestoreDb = firestoreDb;
         }
 
         // Method to create a new admin user
-        public async Task AddAdminUserAsync(AdminUser user)
+        public async Task addadminUserAsync(adminUser user)
         {
             try
             {
+                // Hash the password
                 user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
-                DocumentReference docRef = _firestoreDb.Collection("Users").Document(user.email);
+
+                // Get the document reference and set the user data
+                DocumentReference docRef = __firestoreDb.Collection("Users").Document(user.email);
                 await docRef.SetAsync(user);
-                Console.WriteLine($"Admin user {user.fName} {user.lName} added successfully.");
+
+                Console.WriteLine($"Admin user {user.fName} {user.password} added successfully.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error adding admin user: {ex.Message}");
+                throw;  // Rethrow the exception to ensure it can be caught in tests
             }
         }
     }

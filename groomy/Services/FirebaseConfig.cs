@@ -3,36 +3,53 @@ using System.IO;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
-using Google.Cloud.Firestore.V1;
 
-namespace groomy.Services
+namespace groomy.services
 {
-    internal class FirebaseConfig
+    public class firebaseConfig
     {
-        private readonly string __credentialsPath = AppDomain.CurrentDomain.BaseDirectory + @"/Services/firebaseSDK.json";
-        private FirestoreDb __firestoreDB;
-        public FirebaseConfig()
-        {
-            // Testing output
-            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
-            Console.WriteLine($"Checking for file at path: {__credentialsPath}");
-            Console.WriteLine($"File exists: {File.Exists(__credentialsPath)}");
+        private readonly string credentialsPath = AppDomain.CurrentDomain.BaseDirectory + @"/Services/firebaseSDK.json";
+        private FirestoreDb firestoreDb;
+        private static firebaseConfig __instance;
 
-            if (string.IsNullOrWhiteSpace(__credentialsPath) || !File.Exists(__credentialsPath))
+        // Private constructor to prevent instantiation
+        private firebaseConfig()
+        {
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
+
+            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
+            Console.WriteLine($"Checking for file at path: {credentialsPath}");
+            Console.WriteLine($"File exists: {File.Exists(credentialsPath)}");
+
+            if (!File.Exists(credentialsPath))
             {
                 throw new ArgumentException("Invalid Firebase credentials path.");
             }
-            InitializeFirebase();
-            __firestoreDB = FirestoreDb.Create("groomy-52011");
 
+            initializeFirebase();
+            firestoreDb = FirestoreDb.Create("groomy-52011");
         }
+
+        // Public static method to access the instance
+        public static firebaseConfig Instance
+        {
+            get
+            {
+                if (__instance == null)
+                {
+                    __instance = new firebaseConfig();
+                }
+                return __instance;
+            }
+        }
+
         public FirestoreDb getFirestoreDB()
         {
-            return __firestoreDB;
+            return firestoreDb;
         }
-        private void InitializeFirebase()
+
+        private void initializeFirebase()
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", __credentialsPath);
             if (FirebaseApp.DefaultInstance == null)
             {
                 FirebaseApp.Create(new AppOptions
