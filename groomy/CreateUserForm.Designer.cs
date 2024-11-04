@@ -73,7 +73,7 @@
             // txtFirst
             // 
             this.txtFirst.Location = new System.Drawing.Point(113, 39);
-            this.txtFirst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirst.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.Size = new System.Drawing.Size(191, 22);
             this.txtFirst.TabIndex = 3;
@@ -81,7 +81,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(115, 7);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(189, 22);
             this.txtEmail.TabIndex = 4;
@@ -89,7 +89,7 @@
             // txtLast
             // 
             this.txtLast.Location = new System.Drawing.Point(115, 71);
-            this.txtLast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLast.Margin = new System.Windows.Forms.Padding(4);
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(189, 22);
             this.txtLast.TabIndex = 5;
@@ -97,7 +97,7 @@
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(115, 105);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(189, 22);
             this.txtPass.TabIndex = 6;
@@ -116,7 +116,7 @@
             // btnShowPassword
             // 
             this.btnShowPassword.Location = new System.Drawing.Point(313, 101);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(100, 28);
             this.btnShowPassword.TabIndex = 8;
@@ -149,9 +149,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AccountCreateForm";
             this.Text = "Create Account";
+            this.Load += new System.EventHandler(this.AccountCreateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

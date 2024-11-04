@@ -89,5 +89,10 @@ namespace groomy
         {
 
         }
+
+        private void rdoHome_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
