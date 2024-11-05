@@ -75,11 +75,16 @@ namespace groomy.Customers
             Console.WriteLine($"Updated customer with ID: {customer.id}");
         }
 
-        public async Task deleteCustomerByID(string customerId)
+        public async Task deleteCustomerById(string customerId)
         {
             DocumentReference docRef = __db.Collection("customers").Document(customerId);
-            await docRef.DeleteAsync();
-            Console.WriteLine($"Deleted customer with ID: {customerId}");
+            var newData = new
+            {
+                deleted = true
+            };
+            await docRef.SetAsync(newData);
+            Console.WriteLine($"Marked customer with ID: {customerId} as deleted.");
+
         }
     }
 }
