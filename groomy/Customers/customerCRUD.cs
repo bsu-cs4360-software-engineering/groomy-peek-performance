@@ -75,7 +75,7 @@ namespace groomy.Customers
             Console.WriteLine($"Updated customer with ID: {customer.id}");
         }
 
-        public async Task deleteCustomerById(string customerId)
+        public async Task deleteCustomerByID(string customerId)
         {
             DocumentReference docRef = __db.Collection("customers").Document(customerId);
             var newData = new
