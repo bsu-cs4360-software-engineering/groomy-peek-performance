@@ -17,7 +17,7 @@ namespace groomy.Customers
         [FirestoreProperty("lName")]
         public string lName { get; set; }
         [FirestoreProperty("id")]
-        public int id { get; set; }
+        public string id { get; set; }
         [FirestoreProperty("deleted")]
         public bool deleted { get; set; }
         [FirestoreProperty("phoneNumber")]

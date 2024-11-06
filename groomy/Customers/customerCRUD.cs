@@ -20,7 +20,7 @@ namespace groomy.Customers
         public async Task<Dictionary<string, customer>> getAllCustomers()
         {
             var customers = new Dictionary<string, customer>();
-            Query query = __db.Collection("customers");
+            Query query = __db.Collection("Customers");
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
             foreach (DocumentSnapshot document in snapshot.Documents)
@@ -37,14 +37,14 @@ namespace groomy.Customers
 
         public async Task addCustomerAsync(customer customer)
         {
-            DocumentReference docRef = __db.Collection("customers").Document();
+            DocumentReference docRef = __db.Collection("Customers").Document();
             await docRef.SetAsync(customer);
             Console.WriteLine($"Added customer with ID: {docRef.Id}");
         }
 
         public async Task<customer> getCustomerById(string customerId)
         {
-            DocumentReference docRef = __db.Collection("customers").Document(customerId);
+            DocumentReference docRef = __db.Collection("Customers").Document(customerId);
             DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
             if (snapshot.Exists)
@@ -57,7 +57,7 @@ namespace groomy.Customers
 
         public async Task<customer> getCustomerByEmail(string customerEmail)
         {
-            Query query = __db.Collection("customers").WhereEqualTo("email", customerEmail);
+            Query query = __db.Collection("Customers").WhereEqualTo("email", customerEmail);
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
             if (snapshot.Documents.Count > 0)
@@ -70,14 +70,14 @@ namespace groomy.Customers
 
         public async Task updateCustomer(customer customer)
         {
-            DocumentReference docRef = __db.Collection("customers").Document(customer.id.ToString());
+            DocumentReference docRef = __db.Collection("Customers").Document(customer.id.ToString());
             await docRef.SetAsync(customer, SetOptions.MergeAll);
             Console.WriteLine($"Updated customer with ID: {customer.id}");
         }
 
         public async Task deleteCustomerByID(string customerId)
         {
-            DocumentReference docRef = __db.Collection("customers").Document(customerId);
+            DocumentReference docRef = __db.Collection("Customers").Document(customerId);
             var newData = new
             {
                 deleted = true
