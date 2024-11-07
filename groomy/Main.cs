@@ -137,5 +137,11 @@ namespace groomy
             CreateCustomerForm custFrm = new CreateCustomerForm();
             custFrm.ShowDialog();
         }
+
+        private void btnAppAdd_Click(object sender, EventArgs e)
+        {
+            CreateAppointmentForm appFrm = new CreateAppointmentForm();
+            appFrm.ShowDialog();
+        }
     }
 }

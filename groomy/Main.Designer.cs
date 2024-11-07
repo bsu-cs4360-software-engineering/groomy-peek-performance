@@ -186,6 +186,7 @@
             this.btnAppAdd.TabIndex = 3;
             this.btnAppAdd.Text = "Add...";
             this.btnAppAdd.UseVisualStyleBackColor = true;
+            this.btnAppAdd.Click += new System.EventHandler(this.btnAppAdd_Click);
             // 
             // pnlCustomer
             // 
