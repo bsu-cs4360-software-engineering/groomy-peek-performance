@@ -12,9 +12,19 @@ namespace groomy
 {
     public partial class ViewCustomerForm : Form
     {
-        public ViewCustomerForm()
+        public ViewCustomerForm(string email, string fName, string lName, string id, string phoneNumber, string address)
         {
             InitializeComponent();
+            txtEmail.Text = email;
+            txtFName.Text = fName;
+            txtLName.Text = lName;
+            txtPhoneNumber.Text = phoneNumber;
+            txtAddr1.Text = address;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
