@@ -12,7 +12,7 @@ namespace groomy.Customers
         Task addCustomerAsync(customer customer);
         Task<customer> getCustomerById(string customerId);
         Task<customer> getCustomerByEmail(string customerEmail);
-        Task<Dictionary<string, customer>> getAllCustomers();
+        Task<List<customer>> getAllCustomers();
         Task updateCustomer(customer customer);
         Task deleteCustomerByEmail(string customerId);
     }

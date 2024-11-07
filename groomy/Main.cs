@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Cloud.Firestore;
 using groomy.Auth;
 using groomy.Customers;
+using groomy.services;
 
 namespace groomy
 {
@@ -94,8 +96,40 @@ namespace groomy
         }
 
         //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
+        public async void loadCustomers()
+        {
+            listView1.Items.Clear();
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+     
+            var customers = await customerGetter.getAllCustomers();
+            List<customer> potato = customers;
+            Console.WriteLine(potato.Count);
+            if (potato == null || potato.Count == 0)
+            {
+                MessageBox.Show("No customers found.");
+                return;
+            }
 
-        private void rdoHome_CheckedChanged(object sender, EventArgs e)
+            foreach (customer cust in potato)
+            {
+                if (cust.deleted != true)
+                {
+                    ListViewItem item = new ListViewItem(cust.fName);
+                    item.SubItems.Add(cust.lName);
+                    item.SubItems.Add(cust.phoneNumber);
+                    item.SubItems.Add(cust.email);
+                    item.SubItems.Add(cust.address);
+                    item.SubItems.Add(cust.id);
+                    listView1.Items.Add(item);
+                }
+            }
+            
+
+        }
+
+        private async void rdoHome_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioBtn = this.panel1.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
             if (radioBtn != null)
@@ -112,10 +146,16 @@ namespace groomy
 
                     case "Customer":
                         // This is the customer button.  When this is clicked, it should run the getAllCustomers function. Jordan doesn't know how to set that up. 
+                        listView1.Items.Clear();
+                        listView1.View = View.Details;
+                        listView1.FullRowSelect = true;
                         pnlCustomer.BringToFront();
                         pnlLogin.Visible = false;
                         pnlCustomer.Visible = true;
                         pnlAppointments.Visible = false;
+                        loadCustomers();
+
+
                         break;
 
                     case "Appointments":
@@ -132,9 +172,10 @@ namespace groomy
             }
         }
 
-        private void btnCustomerAdd_Click(object sender, EventArgs e)
+        private async void btnCustomerAdd_Click(object sender, EventArgs e)
         {
             CreateCustomerForm custFrm = new CreateCustomerForm();
+            
             custFrm.ShowDialog();
         }
 
@@ -142,6 +183,36 @@ namespace groomy
         {
             CreateAppointmentForm appFrm = new CreateAppointmentForm();
             appFrm.ShowDialog();
+        }
+
+        private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("I hate winforms");
+        }
+
+        private async void btnCustomerDelete_Click(object sender, EventArgs e)
+        {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+            string email = listView1.SelectedItems[0].SubItems[3].Text;
+            Console.WriteLine(email);
+            customer cust = await customerGetter.getCustomerByEmail(email);
+            await customerGetter.deleteCustomerByEmail(email);
+            loadCustomers();
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadCustomers();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

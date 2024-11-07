@@ -1,6 +1,6 @@
 ﻿namespace groomy
 {
-    partial class CreateCustomerForm
+    partial class updateUsers
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grpID = new System.Windows.Forms.GroupBox();
-            this.txtLName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFName = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnCreate = new System.Windows.Forms.Button();
             this.grpContact = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,91 +40,56 @@
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.grpID.SuspendLayout();
+            this.grpID = new System.Windows.Forms.GroupBox();
+            this.txtLName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFName = new System.Windows.Forms.TextBox();
+            this.panel2.SuspendLayout();
             this.grpContact.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.grpID.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grpID
+            // panel2
             // 
-            this.grpID.Controls.Add(this.txtLName);
-            this.grpID.Controls.Add(this.label2);
-            this.grpID.Controls.Add(this.label1);
-            this.grpID.Controls.Add(this.txtFName);
-            this.grpID.Location = new System.Drawing.Point(16, 15);
-            this.grpID.Margin = new System.Windows.Forms.Padding(4);
-            this.grpID.Name = "grpID";
-            this.grpID.Padding = new System.Windows.Forms.Padding(4);
-            this.grpID.Size = new System.Drawing.Size(483, 106);
-            this.grpID.TabIndex = 0;
-            this.grpID.TabStop = false;
-            this.grpID.Text = "Identification";
-            // 
-            // txtLName
-            // 
-            this.txtLName.Location = new System.Drawing.Point(101, 55);
-            this.txtLName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(347, 22);
-            this.txtLName.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Last Name: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "First Name: ";
-            // 
-            // txtFName
-            // 
-            this.txtFName.Location = new System.Drawing.Point(101, 23);
-            this.txtFName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(347, 22);
-            this.txtFName.TabIndex = 0;
-            this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
+            this.panel2.Controls.Add(this.btnCreate);
+            this.panel2.Controls.Add(this.grpContact);
+            this.panel2.Controls.Add(this.grpID);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 450);
+            this.panel2.TabIndex = 4;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(425, 10);
+            this.btnCreate.Location = new System.Drawing.Point(627, 356);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(100, 28);
-            this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "Create";
+            this.btnCreate.TabIndex = 4;
+            this.btnCreate.Text = "Update";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // grpContact
             // 
+            this.grpContact.BackColor = System.Drawing.SystemColors.Control;
             this.grpContact.Controls.Add(this.label5);
             this.grpContact.Controls.Add(this.panel1);
             this.grpContact.Controls.Add(this.label4);
             this.grpContact.Controls.Add(this.txtPhoneNumber);
             this.grpContact.Controls.Add(this.txtEmail);
             this.grpContact.Controls.Add(this.label3);
-            this.grpContact.Location = new System.Drawing.Point(17, 128);
+            this.grpContact.Location = new System.Drawing.Point(47, 177);
             this.grpContact.Margin = new System.Windows.Forms.Padding(4);
             this.grpContact.Name = "grpContact";
             this.grpContact.Padding = new System.Windows.Forms.Padding(4);
             this.grpContact.Size = new System.Drawing.Size(481, 207);
-            this.grpContact.TabIndex = 2;
+            this.grpContact.TabIndex = 3;
             this.grpContact.TabStop = false;
             this.grpContact.Text = "Contact";
             // 
@@ -160,7 +121,6 @@
             this.txtAddr3.Name = "txtAddr3";
             this.txtAddr3.Size = new System.Drawing.Size(337, 22);
             this.txtAddr3.TabIndex = 2;
-            this.txtAddr3.Visible = false;
             // 
             // txtAddr2
             // 
@@ -169,7 +129,6 @@
             this.txtAddr2.Name = "txtAddr2";
             this.txtAddr2.Size = new System.Drawing.Size(337, 22);
             this.txtAddr2.TabIndex = 1;
-            this.txtAddr2.Visible = false;
             // 
             // txtAddr1
             // 
@@ -215,71 +174,95 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Email: ";
             // 
-            // panel2
+            // grpID
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(541, 337);
-            this.panel2.TabIndex = 3;
+            this.grpID.BackColor = System.Drawing.SystemColors.Control;
+            this.grpID.Controls.Add(this.txtLName);
+            this.grpID.Controls.Add(this.label2);
+            this.grpID.Controls.Add(this.label1);
+            this.grpID.Controls.Add(this.txtFName);
+            this.grpID.Location = new System.Drawing.Point(45, 22);
+            this.grpID.Margin = new System.Windows.Forms.Padding(4);
+            this.grpID.Name = "grpID";
+            this.grpID.Padding = new System.Windows.Forms.Padding(4);
+            this.grpID.Size = new System.Drawing.Size(483, 106);
+            this.grpID.TabIndex = 1;
+            this.grpID.TabStop = false;
+            this.grpID.Text = "Identification";
             // 
-            // panel3
+            // txtLName
             // 
-            this.panel3.Controls.Add(this.btnCreate);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 337);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(541, 53);
-            this.panel3.TabIndex = 4;
+            this.txtLName.Location = new System.Drawing.Point(101, 55);
+            this.txtLName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLName.Name = "txtLName";
+            this.txtLName.Size = new System.Drawing.Size(347, 22);
+            this.txtLName.TabIndex = 3;
             // 
-            // CreateCustomerForm
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Last Name: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "First Name: ";
+            // 
+            // txtFName
+            // 
+            this.txtFName.Location = new System.Drawing.Point(101, 23);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFName.Name = "txtFName";
+            this.txtFName.Size = new System.Drawing.Size(347, 22);
+            this.txtFName.TabIndex = 0;
+            // 
+            // updateUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 390);
-            this.Controls.Add(this.grpContact);
-            this.Controls.Add(this.grpID);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "CreateCustomerForm";
-            this.Text = "Create Customer";
-            this.grpID.ResumeLayout(false);
-            this.grpID.PerformLayout();
+            this.Name = "updateUsers";
+            this.Text = "updateUsers";
+            this.panel2.ResumeLayout(false);
             this.grpContact.ResumeLayout(false);
             this.grpContact.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.grpID.ResumeLayout(false);
+            this.grpID.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox grpID;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.GroupBox grpContact;
         private System.Windows.Forms.TextBox txtLName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFName;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.GroupBox grpContact;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtAddr1;
         private System.Windows.Forms.TextBox txtAddr3;
         private System.Windows.Forms.TextBox txtAddr2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtAddr1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCreate;
     }
 }

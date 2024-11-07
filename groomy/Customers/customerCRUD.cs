@@ -17,21 +17,23 @@ namespace groomy.Customers
             __db = db;
         }
 
-        public async Task<Dictionary<string, customer>> getAllCustomers()
+        public async Task<List<customer>> getAllCustomers()
         {
-            var customers = new Dictionary<string, customer>();
+            var customers = new List<customer>();
             Query query = __db.Collection("Customers");
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
+            Console.WriteLine($"Total documents: {snapshot.Documents.Count}"); // Print count only once
+
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
+
                 if (document.Exists)
                 {
                     var customerData = document.ConvertTo<customer>();
-                    customers.Add(document.Id, customerData);
+                    customers.Add(customerData);
                 }
             }
-
             return customers;
         }
 
