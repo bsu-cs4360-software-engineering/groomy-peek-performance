@@ -12,9 +12,26 @@ namespace groomy
 {
     public partial class ViewAppointmentsForm : Form
     {
-        public ViewAppointmentsForm()
+        public ViewAppointmentsForm(string title, string desc, string start, string end, string loc, string id, string email)
         {
-            InitializeComponent();
+            InitializeComponent(); // Ensure this is called first
+
+            txtDescription.Text = desc;
+            txtTitle.Text = title;
+            txtLocation.Text = loc;
+            dateTimePicker1.Value = System.DateTime.Parse(start);
+            dateTimePicker2.Value = System.DateTime.Parse(end);
+            comboBox1.Text = email;
+        }
+
+        private void ViewAppointmentsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

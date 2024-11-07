@@ -17,7 +17,7 @@ namespace groomy.Appointments
         [FirestoreProperty]
         public string foreignKey { get; set; } // Default value
         [FirestoreProperty]
-        public int id { get; set; } = 0; // Default value
+        public string id { get; set; } // Default value
         [FirestoreProperty]
         public string location { get; set; } // Default value
         [FirestoreProperty]

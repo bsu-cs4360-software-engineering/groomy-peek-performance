@@ -41,6 +41,7 @@ namespace groomy.Appointments
             appointment.foreignKey = customerId;
 
             DocumentReference docRef = __db.Collection("Appointment").Document();
+            appointment.id = docRef.Id;
             await docRef.SetAsync(appointment);
             Console.WriteLine($"Added appointment with ID: {docRef.Id}");
         }
@@ -65,14 +66,14 @@ namespace groomy.Appointments
             Console.WriteLine($"Updated appointment with ID: {appointment.id}");
         }
 
-        public async Task deleteAppointmentById(int appointmentId)
+        public async Task deleteAppointmentById(string appointmentId)
         {
             DocumentReference docRef = __db.Collection("Appointment").Document(appointmentId.ToString());
             var newData = new
             {
                 deleted = true
             };
-            await docRef.SetAsync(newData);
+            await docRef.SetAsync(newData,SetOptions.MergeAll);
             Console.WriteLine($"Marked appointment with ID: {appointmentId} as deleted.");
         }
     }

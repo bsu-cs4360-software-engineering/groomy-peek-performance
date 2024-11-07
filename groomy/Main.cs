@@ -136,12 +136,12 @@ namespace groomy
 
         {
 
-            listView1.Items.Clear();
+            listView2.Items.Clear();
 
             firebaseConfig config = firebaseConfig.Instance;
 
             FirestoreDb db = config.getFirestoreDB();
-
+            customerCRUD customerCRUD = new customerCRUD(db);
             appointmentCRUD appointmentGetter = new appointmentCRUD(db); // Assuming you have an appointmentCRUD class
 
 
@@ -170,14 +170,15 @@ namespace groomy
                 if (!app.deleted) // Check if the appointment is not deleted
 
                 {
-
+                    customer customerstuff = await customerCRUD.getCustomerById(app.foreignKey);
                     ListViewItem item = new ListViewItem(app.Title); // Assuming Title is the main information to display
                     item.SubItems.Add(app.desc);
-                    item.SubItems.Add(app.start.ToDateTime().ToString("g")); // Displaying start time
-                    item.SubItems.Add(app.endTime.ToDateTime().ToString("g")); // Displaying end time
+                    item.SubItems.Add(app.start.ToDateTime().ToLocalTime().ToString("g")); // Displaying start time
+                    item.SubItems.Add(app.endTime.ToDateTime().ToLocalTime().ToString("g")); // Displaying end time
                     item.SubItems.Add(app.location); // Displaying location
-                    item.SubItems.Add(app.foreignKey); // Assuming this is the customer ID or related entity ID
-                    item.SubItems.Add(app.id.ToString()); // Displaying ID
+                    item.SubItems.Add(customerstuff.fName.ToString() + " " +customerstuff.lName.ToString());
+                    item.SubItems.Add(app.id.ToString());
+                    item.SubItems.Add(customerstuff.email);
                     listView2.Items.Add(item);
 
                 }
@@ -297,6 +298,49 @@ namespace groomy
                 listView1.SelectedItems[0].SubItems[4].Text);
             cutForm.ShowDialog();
 
+        }
+
+        private void btnAppRefresh_Click(object sender, EventArgs e)
+        {
+            
+            loadAppointments();
+        }
+
+        private async void btnAppDelete_Click(object sender, EventArgs e)
+        {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            appointmentCRUD potato = new appointmentCRUD(db);
+            await potato.deleteAppointmentById(listView2.SelectedItems[0].SubItems[6].Text);
+            loadAppointments();
+        }
+
+        private void btnAppUpdate_Click(object sender, EventArgs e)
+        {
+            
+                
+            UpdateAppointmentForm upApp = new UpdateAppointmentForm(
+            listView2.SelectedItems[0].SubItems[0].Text,
+            listView2.SelectedItems[0].SubItems[1].Text,
+            listView2.SelectedItems[0].SubItems[2].Text,
+            listView2.SelectedItems[0].SubItems[3].Text,
+            listView2.SelectedItems[0].SubItems[4].Text,
+            listView2.SelectedItems[0].SubItems[6].Text,
+            listView2.SelectedItems[0].SubItems[7].Text);
+            upApp.ShowDialog();
+        }
+
+        private void btnAppView_Click(object sender, EventArgs e)
+        {
+            ViewAppointmentsForm upApp = new ViewAppointmentsForm(
+            listView2.SelectedItems[0].SubItems[0].Text,
+            listView2.SelectedItems[0].SubItems[1].Text,
+            listView2.SelectedItems[0].SubItems[2].Text,
+            listView2.SelectedItems[0].SubItems[3].Text,
+            listView2.SelectedItems[0].SubItems[4].Text,
+            listView2.SelectedItems[0].SubItems[6].Text,
+            listView2.SelectedItems[0].SubItems[7].Text);
+            upApp.ShowDialog();
         }
     }
 }

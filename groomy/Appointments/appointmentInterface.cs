@@ -10,6 +10,6 @@ namespace groomy.Appointments
         Task<appointment> getAppointmentById(int appointmentId);
         Task<List<appointment>> getAllAppointments();
         Task updateAppointment(appointment appointment);
-        Task deleteAppointmentById(int appointmentId);
+        Task deleteAppointmentById(string appointmentId);
     }
 }

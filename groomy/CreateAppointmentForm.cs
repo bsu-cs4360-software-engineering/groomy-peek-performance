@@ -69,11 +69,12 @@ namespace groomy
                 {
                     deleted = false,
                     foreignKey = theCustomerInQuestion.id, // Use the instance's id
-                    id = 1, // Assign a unique ID for the appointment
-                    location = "123 Main St, Anytown, USA",
+                    id = "", // Assign a unique ID for the appointment
+                    location = textBox2.Text,
                     start = Timestamp.FromDateTime(startDateTimeUtc), // Convert to Timestamp
                     endTime = Timestamp.FromDateTime(endDateTimeUtc), // Convert to Timestamp
-                    Title = "Doctor's Appointment"
+                    Title = textBox1.Text,
+                    desc = txtDescription.Text,
                 };
 
                 await appointmentCRUD.addAppointmentAsync(newAppointment, theCustomerInQuestion.id);
