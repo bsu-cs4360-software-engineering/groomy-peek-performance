@@ -19,12 +19,12 @@ namespace groomy.Appointments
         [FirestoreProperty]
         public int id { get; set; } = 0; // Default value
         [FirestoreProperty]
-        public string location { get; set; } = ""; // Default value
+        public string location { get; set; } // Default value
         [FirestoreProperty]
         public Timestamp start { get; set; }
         [FirestoreProperty]
-        public string Title { get; set; } = "potato"; // Default value
+        public string Title { get; set; } // Default value
         [FirestoreProperty]
-        public string desc { get; set; } = "potato"; // Default value
+        public string desc { get; set; } // Default value
     }
 }

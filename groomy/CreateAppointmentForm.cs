@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using groomy.Appointments;
 using groomy.Customers;
 using groomy.services;
 using System;
@@ -47,9 +48,42 @@ namespace groomy
         {
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private async void btnCreate_Click(object sender, EventArgs e)
         {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+            appointmentCRUD appointmentCRUD = new appointmentCRUD(db);
 
-        }
+            // Assuming comboBox1.SelectedText contains the email you want to use
+            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(comboBox1.Text);
+
+            // Ensure that the customer object is not null before accessing its properties
+            if (theCustomerInQuestion != null)
+            {
+                // Convert DateTimePicker values to UTC
+                DateTime startDateTimeUtc = dateTimePicker1.Value.ToUniversalTime();
+                DateTime endDateTimeUtc = dateTimePicker2.Value.ToUniversalTime();
+
+                appointment newAppointment = new appointment
+                {
+                    deleted = false,
+                    foreignKey = theCustomerInQuestion.id, // Use the instance's id
+                    id = 1, // Assign a unique ID for the appointment
+                    location = "123 Main St, Anytown, USA",
+                    start = Timestamp.FromDateTime(startDateTimeUtc), // Convert to Timestamp
+                    endTime = Timestamp.FromDateTime(endDateTimeUtc), // Convert to Timestamp
+                    Title = "Doctor's Appointment"
+                };
+
+                await appointmentCRUD.addAppointmentAsync(newAppointment, theCustomerInQuestion.id);
+            }
+            else
+            {
+                // Handle the case where no customer was found
+                MessageBox.Show("Customer not found.");
+            }
+        
+    }
     }
 }
