@@ -11,17 +11,17 @@ namespace groomy.Appointments
     public class appointment
     {
         [FirestoreProperty]
-        public bool Deleted { get; set; } = false; // Default value
+        public bool deleted { get; set; } = false; // Default value
         [FirestoreProperty]
-        public Timestamp EndTime { get; set; }
+        public Timestamp endTime { get; set; }
         [FirestoreProperty]
-        public int ForeignKey { get; set; } = 0; // Default value
+        public string foreignKey { get; set; } // Default value
         [FirestoreProperty]
-        public int Id { get; set; } = 0; // Default value
+        public int id { get; set; } = 0; // Default value
         [FirestoreProperty]
-        public string Location { get; set; } = ""; // Default value
+        public string location { get; set; } = ""; // Default value
         [FirestoreProperty]
-        public Timestamp Start { get; set; }
+        public Timestamp start { get; set; }
         [FirestoreProperty]
         public string Title { get; set; } = "potato"; // Default value
     }

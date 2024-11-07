@@ -52,7 +52,7 @@ namespace groomy.Customers
                 return snapshot.ConvertTo<customer>();
             }
 
-            return null; 
+            return null;
         }
 
         public async Task<customer> getCustomerByEmail(string customerEmail)
@@ -66,6 +66,20 @@ namespace groomy.Customers
             }
 
             return null;
+        }
+
+        public async Task<string> getDocumentId(string customerEmail)
+        {
+            Query query = __db.Collection("Customers").WhereEqualTo("email", customerEmail);
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            if (snapshot.Documents.Count > 0)
+            {
+                // Return the document ID of the first matching document
+                return snapshot.Documents.First().Id;
+            }
+
+            return null; // Return null if no customer is found
         }
 
         public async Task updateCustomer(customer customer)
@@ -84,7 +98,6 @@ namespace groomy.Customers
             };
             await docRef.SetAsync(newData);
             Console.WriteLine($"Marked customer with ID: {customerId} as deleted.");
-
         }
     }
 }
