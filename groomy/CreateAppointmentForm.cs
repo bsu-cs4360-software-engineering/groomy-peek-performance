@@ -19,6 +19,8 @@ namespace groomy
         public CreateAppointmentForm()
         {
             InitializeComponent();
+            loadCustomers();
+
         }
         public async void loadCustomers()
         {
@@ -40,12 +42,9 @@ namespace groomy
             {
                 comboBox1.Items.Add(cust.email);
             }
-
-
         }
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadCustomers();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
