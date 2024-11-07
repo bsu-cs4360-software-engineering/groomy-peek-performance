@@ -20,7 +20,7 @@ namespace groomy.Appointments
         public async Task<List<appointment>> getAllAppointments()
         {
             var appointments = new List<appointment>();
-            Query query = __db.Collection("Appointments");
+            Query query = __db.Collection("Appointment");
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
             foreach (DocumentSnapshot document in snapshot.Documents)
@@ -31,9 +31,9 @@ namespace groomy.Appointments
                     appointments.Add(appointmentData);
                 }
             }
-
             return appointments;
         }
+
 
         public async Task addAppointmentAsync(appointment appointment, string customerId)
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
+using groomy.Appointments;
 using groomy.Auth;
 using groomy.Customers;
 using groomy.services;
@@ -19,7 +20,7 @@ namespace groomy
         /* This is the list of colors for the palette. 
          * White is already established within C# so it doesn't need to be declared here*/
         private Color PrimaryAccent = Color.FromArgb(15, 60, 82);
-        private Color Highlight = Color.FromArgb(29,129,175);
+        private Color Highlight = Color.FromArgb(29, 129, 175);
         private Color offWhite = Color.FromArgb(254, 254, 254);
         private Color black = Color.FromArgb(16, 16, 16);
 
@@ -29,9 +30,9 @@ namespace groomy
             InitializeComponent();
             rdoCustomer.BackColor = PrimaryAccent;
         }
-        
 
-        
+
+
 
 
         private void txtUsername_Enter(object sender, EventArgs e)
@@ -41,11 +42,11 @@ namespace groomy
 
         private void txtUsername_Leave(object sender, EventArgs e)
         {
-            if(txtUsername.Text != string.Empty)
+            if (txtUsername.Text != string.Empty)
             {
                 txtUsername.Text = "UserName";
             }
-            
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -56,7 +57,7 @@ namespace groomy
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            loginCheck checkLogin = new loginCheck(txtUsername.Text,txtPassword.Text);
+            loginCheck checkLogin = new loginCheck(txtUsername.Text, txtPassword.Text);
             bool verifyUser = await checkLogin.checkUser();
             if (verifyUser)
             {
@@ -73,14 +74,14 @@ namespace groomy
 
                 // Optionally, set focus back to the username textbox for easier re-entry
                 txtUsername.Focus();
-            }    
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             pnlLogin.Visible = true;
             pnlWelcome.Visible = false;
-            rdoCustomer.Visible=false;
+            rdoCustomer.Visible = false;
         }
 
 
@@ -88,7 +89,7 @@ namespace groomy
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnLogin.PerformClick();
                 e.SuppressKeyPress = true;
@@ -103,7 +104,7 @@ namespace groomy
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
-     
+
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
             Console.WriteLine(potato.Count);
@@ -126,10 +127,62 @@ namespace groomy
                     listView1.Items.Add(item);
                 }
             }
-            
+
 
         }
+        public async void loadAppointments()
 
+        {
+
+            listView1.Items.Clear();
+
+            firebaseConfig config = firebaseConfig.Instance;
+
+            FirestoreDb db = config.getFirestoreDB();
+
+            appointmentCRUD appointmentGetter = new appointmentCRUD(db); // Assuming you have an appointmentCRUD class
+
+
+            var appointments = await appointmentGetter.getAllAppointments(); // Fetch all appointments
+
+            List<appointment> appointmentList = appointments; // Assuming this returns a List<appointment>
+
+            Console.WriteLine(appointmentList.Count);
+
+
+            if (appointmentList == null || appointmentList.Count == 0)
+
+            {
+
+                MessageBox.Show("No appointments found.");
+
+                return;
+
+            }
+
+
+            foreach (appointment app in appointmentList)
+
+            {
+
+                if (!app.deleted) // Check if the appointment is not deleted
+
+                {
+
+                    ListViewItem item = new ListViewItem(app.Title); // Assuming Title is the main information to display
+                    item.SubItems.Add(app.desc);
+                    item.SubItems.Add(app.start.ToDateTime().ToString("g")); // Displaying start time
+                    item.SubItems.Add(app.endTime.ToDateTime().ToString("g")); // Displaying end time
+                    item.SubItems.Add(app.location); // Displaying location
+                    item.SubItems.Add(app.foreignKey); // Assuming this is the customer ID or related entity ID
+                    item.SubItems.Add(app.id.ToString()); // Displaying ID
+                    listView2.Items.Add(item);
+
+                }
+
+            }
+
+        }
         private async void rdoHome_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioBtn = this.panel1.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
@@ -161,10 +214,15 @@ namespace groomy
 
                     case "Appointments":
                         //This is the appointments button.
+                        listView2.FullRowSelect = true;
+                        listView2.View = View.Details;
+                        listView2.Items.Clear();
                         pnlAppointments.BringToFront();
                         pnlAppointments.Visible = true;
                         pnlLogin.Visible = false;
-                        pnlCustomer.Visible = false; 
+                        pnlCustomer.Visible = false;
+                        loadAppointments();
+                        
                         break;
 
                     default:
@@ -220,6 +278,11 @@ namespace groomy
                 listView1.SelectedItems[0].SubItems[2].Text,
                 listView1.SelectedItems[0].SubItems[4].Text);
             cutForm.ShowDialog();
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

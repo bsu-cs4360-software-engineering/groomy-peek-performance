@@ -24,5 +24,7 @@ namespace groomy.Appointments
         public Timestamp start { get; set; }
         [FirestoreProperty]
         public string Title { get; set; } = "potato"; // Default value
+        [FirestoreProperty]
+        public string desc { get; set; } = "potato"; // Default value
     }
 }
