@@ -42,8 +42,11 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpDate
@@ -159,8 +162,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(16, 351);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreate.Location = new System.Drawing.Point(16, 402);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(100, 28);
             this.btnCreate.TabIndex = 11;
@@ -187,11 +189,30 @@
             this.textBox2.Size = new System.Drawing.Size(287, 22);
             this.textBox2.TabIndex = 0;
             // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(9, 20);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(229, 85);
+            this.txtDescription.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtDescription);
+            this.groupBox3.Location = new System.Drawing.Point(16, 285);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(244, 111);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Description";
+            // 
             // CreateAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 405);
+            this.ClientSize = new System.Drawing.Size(276, 430);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.label5);
@@ -207,6 +228,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +251,7 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

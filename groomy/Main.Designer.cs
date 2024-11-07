@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdoAppointments = new System.Windows.Forms.RadioButton();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
@@ -63,11 +68,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Desc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Start = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.End = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Customer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAppRefresh = new System.Windows.Forms.Button();
+            this.btnAppUpdate = new System.Windows.Forms.Button();
+            this.btnCustView = new System.Windows.Forms.Button();
+            this.btnAppView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlAppointments.SuspendLayout();
@@ -170,6 +174,7 @@
             // 
             // pnlAppointments
             // 
+            this.pnlAppointments.Controls.Add(this.btnAppView);
             this.pnlAppointments.Controls.Add(this.btnAppUpdate);
             this.pnlAppointments.Controls.Add(this.btnAppRefresh);
             this.pnlAppointments.Controls.Add(this.btnAppDelete);
@@ -221,8 +226,13 @@
             this.End,
             this.Customer});
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(17, 14);
-            this.listView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
+            this.listView2.Location = new System.Drawing.Point(13, 11);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(444, 485);
             this.listView2.TabIndex = 0;
@@ -242,6 +252,7 @@
             // 
             // pnlCustomer
             // 
+            this.pnlCustomer.Controls.Add(this.btnCustView);
             this.pnlCustomer.Controls.Add(this.btnCustUpdate);
             this.pnlCustomer.Controls.Add(this.btnCustRefresh);
             this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
@@ -309,9 +320,8 @@
             this.id});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(15, 23);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            listViewItem6});
+            this.listView1.Location = new System.Drawing.Point(11, 19);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(420, 477);
             this.listView1.TabIndex = 0;
@@ -486,6 +496,24 @@
             // 
             this.Customer.Text = "Customer";
             // 
+            // btnCustView
+            // 
+            this.btnCustView.Location = new System.Drawing.Point(340, 136);
+            this.btnCustView.Name = "btnCustView";
+            this.btnCustView.Size = new System.Drawing.Size(58, 23);
+            this.btnCustView.TabIndex = 5;
+            this.btnCustView.Text = "View";
+            this.btnCustView.UseVisualStyleBackColor = true;
+            // 
+            // btnAppView
+            // 
+            this.btnAppView.Location = new System.Drawing.Point(352, 131);
+            this.btnAppView.Name = "btnAppView";
+            this.btnAppView.Size = new System.Drawing.Size(58, 23);
+            this.btnAppView.TabIndex = 7;
+            this.btnAppView.Text = "View";
+            this.btnAppView.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -548,11 +576,8 @@
         private System.Windows.Forms.Button btnCustRefresh;
         private System.Windows.Forms.Button btnAppUpdate;
         private System.Windows.Forms.Button btnAppRefresh;
-        private System.Windows.Forms.ColumnHeader Title;
-        private System.Windows.Forms.ColumnHeader Desc;
-        private System.Windows.Forms.ColumnHeader Start;
-        private System.Windows.Forms.ColumnHeader End;
-        private System.Windows.Forms.ColumnHeader Customer;
+        private System.Windows.Forms.Button btnCustView;
+        private System.Windows.Forms.Button btnAppView;
     }
 }
 

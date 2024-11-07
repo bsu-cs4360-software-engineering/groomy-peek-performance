@@ -203,11 +203,29 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\firebaseConfig.cs" />
+    <Compile Include="UpdateAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateAppointmentForm.Designer.cs">
+      <DependentUpon>UpdateAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="updateUsers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="updateUsers.Designer.cs">
       <DependentUpon>updateUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAppointmentsForm.Designer.cs">
+      <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCustomerForm.Designer.cs">
+      <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CreateAppointmentForm.resx">
       <DependentUpon>CreateAppointmentForm.cs</DependentUpon>
@@ -230,8 +248,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateAppointmentForm.resx">
+      <DependentUpon>UpdateAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="updateUsers.resx">
       <DependentUpon>updateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAppointmentsForm.resx">
+      <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCustomerForm.resx">
+      <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
