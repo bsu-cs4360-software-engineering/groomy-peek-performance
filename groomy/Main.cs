@@ -131,5 +131,11 @@ namespace groomy
                 }
             }
         }
+
+        private void btnCustomerAdd_Click(object sender, EventArgs e)
+        {
+            CreateCustomerForm custFrm = new CreateCustomerForm();
+            custFrm.ShowDialog();
+        }
     }
 }

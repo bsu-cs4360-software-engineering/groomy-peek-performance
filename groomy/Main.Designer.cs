@@ -33,6 +33,16 @@
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
             this.rdoHome = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlAppointments = new System.Windows.Forms.Panel();
+            this.btnAppDelete = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.btnAppAdd = new System.Windows.Forms.Button();
+            this.pnlCustomer = new System.Windows.Forms.Panel();
+            this.btnCustomerDelete = new System.Windows.Forms.Button();
+            this.btnCustomerAdd = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.First = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Last = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlWelcome = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,22 +54,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pnlCustomer = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.First = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Last = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pnlAppointments = new System.Windows.Forms.Panel();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.btnCustomerAdd = new System.Windows.Forms.Button();
-            this.btnCustomerDelete = new System.Windows.Forms.Button();
-            this.btnAppDelete = new System.Windows.Forms.Button();
-            this.btnAppAdd = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlAppointments.SuspendLayout();
+            this.pnlCustomer.SuspendLayout();
             this.pnlWelcome.SuspendLayout();
             this.pnlLogin.SuspendLayout();
-            this.pnlCustomer.SuspendLayout();
-            this.pnlAppointments.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -148,6 +148,86 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(846, 441);
             this.panel2.TabIndex = 1;
+            // 
+            // pnlAppointments
+            // 
+            this.pnlAppointments.Controls.Add(this.btnAppDelete);
+            this.pnlAppointments.Controls.Add(this.listView2);
+            this.pnlAppointments.Controls.Add(this.btnAppAdd);
+            this.pnlAppointments.Location = new System.Drawing.Point(412, 12);
+            this.pnlAppointments.Name = "pnlAppointments";
+            this.pnlAppointments.Size = new System.Drawing.Size(422, 425);
+            this.pnlAppointments.TabIndex = 10;
+            this.pnlAppointments.Visible = false;
+            // 
+            // btnAppDelete
+            // 
+            this.btnAppDelete.Location = new System.Drawing.Point(352, 43);
+            this.btnAppDelete.Name = "btnAppDelete";
+            this.btnAppDelete.Size = new System.Drawing.Size(58, 23);
+            this.btnAppDelete.TabIndex = 4;
+            this.btnAppDelete.Text = "Delete...";
+            this.btnAppDelete.UseVisualStyleBackColor = true;
+            // 
+            // listView2
+            // 
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(13, 11);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(334, 395);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnAppAdd
+            // 
+            this.btnAppAdd.Location = new System.Drawing.Point(353, 14);
+            this.btnAppAdd.Name = "btnAppAdd";
+            this.btnAppAdd.Size = new System.Drawing.Size(58, 23);
+            this.btnAppAdd.TabIndex = 3;
+            this.btnAppAdd.Text = "Add...";
+            this.btnAppAdd.UseVisualStyleBackColor = true;
+            // 
+            // pnlCustomer
+            // 
+            this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
+            this.pnlCustomer.Controls.Add(this.btnCustomerAdd);
+            this.pnlCustomer.Controls.Add(this.listView1);
+            this.pnlCustomer.Location = new System.Drawing.Point(3, 3);
+            this.pnlCustomer.Name = "pnlCustomer";
+            this.pnlCustomer.Size = new System.Drawing.Size(403, 426);
+            this.pnlCustomer.TabIndex = 9;
+            this.pnlCustomer.Visible = false;
+            // 
+            // btnCustomerDelete
+            // 
+            this.btnCustomerDelete.Location = new System.Drawing.Point(341, 49);
+            this.btnCustomerDelete.Name = "btnCustomerDelete";
+            this.btnCustomerDelete.Size = new System.Drawing.Size(58, 23);
+            this.btnCustomerDelete.TabIndex = 2;
+            this.btnCustomerDelete.Text = "Delete...";
+            this.btnCustomerDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnCustomerAdd
+            // 
+            this.btnCustomerAdd.Location = new System.Drawing.Point(342, 20);
+            this.btnCustomerAdd.Name = "btnCustomerAdd";
+            this.btnCustomerAdd.Size = new System.Drawing.Size(58, 23);
+            this.btnCustomerAdd.TabIndex = 1;
+            this.btnCustomerAdd.Text = "Add...";
+            this.btnCustomerAdd.UseVisualStyleBackColor = true;
+            this.btnCustomerAdd.Click += new System.EventHandler(this.btnCustomerAdd_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.First,
+            this.Last});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(11, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(324, 388);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // pnlWelcome
             // 
@@ -260,85 +340,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
             // 
-            // pnlCustomer
-            // 
-            this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
-            this.pnlCustomer.Controls.Add(this.btnCustomerAdd);
-            this.pnlCustomer.Controls.Add(this.listView1);
-            this.pnlCustomer.Location = new System.Drawing.Point(3, 3);
-            this.pnlCustomer.Name = "pnlCustomer";
-            this.pnlCustomer.Size = new System.Drawing.Size(403, 426);
-            this.pnlCustomer.TabIndex = 9;
-            this.pnlCustomer.Visible = false;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.First,
-            this.Last});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(11, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(324, 388);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // pnlAppointments
-            // 
-            this.pnlAppointments.Controls.Add(this.btnAppDelete);
-            this.pnlAppointments.Controls.Add(this.listView2);
-            this.pnlAppointments.Controls.Add(this.btnAppAdd);
-            this.pnlAppointments.Location = new System.Drawing.Point(412, 12);
-            this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(422, 425);
-            this.pnlAppointments.TabIndex = 10;
-            this.pnlAppointments.Visible = false;
-            // 
-            // listView2
-            // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(13, 11);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(334, 395);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnCustomerAdd
-            // 
-            this.btnCustomerAdd.Location = new System.Drawing.Point(342, 20);
-            this.btnCustomerAdd.Name = "btnCustomerAdd";
-            this.btnCustomerAdd.Size = new System.Drawing.Size(58, 23);
-            this.btnCustomerAdd.TabIndex = 1;
-            this.btnCustomerAdd.Text = "Add...";
-            this.btnCustomerAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnCustomerDelete
-            // 
-            this.btnCustomerDelete.Location = new System.Drawing.Point(341, 49);
-            this.btnCustomerDelete.Name = "btnCustomerDelete";
-            this.btnCustomerDelete.Size = new System.Drawing.Size(58, 23);
-            this.btnCustomerDelete.TabIndex = 2;
-            this.btnCustomerDelete.Text = "Delete...";
-            this.btnCustomerDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnAppDelete
-            // 
-            this.btnAppDelete.Location = new System.Drawing.Point(352, 43);
-            this.btnAppDelete.Name = "btnAppDelete";
-            this.btnAppDelete.Size = new System.Drawing.Size(58, 23);
-            this.btnAppDelete.TabIndex = 4;
-            this.btnAppDelete.Text = "Delete...";
-            this.btnAppDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnAppAdd
-            // 
-            this.btnAppAdd.Location = new System.Drawing.Point(353, 14);
-            this.btnAppAdd.Name = "btnAppAdd";
-            this.btnAppAdd.Size = new System.Drawing.Size(58, 23);
-            this.btnAppAdd.TabIndex = 3;
-            this.btnAppAdd.Text = "Add...";
-            this.btnAppAdd.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,12 +353,12 @@
             this.Text = "Groomy";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.pnlAppointments.ResumeLayout(false);
+            this.pnlCustomer.ResumeLayout(false);
             this.pnlWelcome.ResumeLayout(false);
             this.pnlWelcome.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
-            this.pnlCustomer.ResumeLayout(false);
-            this.pnlAppointments.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
