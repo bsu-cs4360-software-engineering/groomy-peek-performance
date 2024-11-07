@@ -14,6 +14,6 @@ namespace groomy.Customers
         Task<customer> getCustomerByEmail(string customerEmail);
         Task<Dictionary<string, customer>> getAllCustomers();
         Task updateCustomer(customer customer);
-        Task deleteCustomerByID(string customerId);
+        Task deleteCustomerByEmail(string customerId);
     }
 }
