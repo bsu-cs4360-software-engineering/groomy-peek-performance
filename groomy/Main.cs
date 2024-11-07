@@ -81,6 +81,8 @@ namespace groomy
             pnlLogin.Visible = true;
             pnlWelcome.Visible = false;
             rdoCustomer.Visible=false;
+            rdoAppointments.Visible=false;
+            pnlAppointments.Visible = false;
         }
 
 
