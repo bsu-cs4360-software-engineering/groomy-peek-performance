@@ -36,10 +36,12 @@ namespace groomy.Customers
         }
 
         public async Task addCustomerAsync(customer customer)
+
         {
             DocumentReference docRef = __db.Collection("Customers").Document();
+            customer.id = docRef.Id;
             await docRef.SetAsync(customer);
-            Console.WriteLine($"Added customer with ID: {docRef.Id}");
+            Console.WriteLine($"Added customer with ID: {customer.id}");
         }
 
         public async Task<customer> getCustomerById(string customerId)
@@ -89,15 +91,31 @@ namespace groomy.Customers
             Console.WriteLine($"Updated customer with ID: {customer.id}");
         }
 
-        public async Task deleteCustomerByID(string customerId)
+        public async Task deleteCustomerByEmail(string email)
         {
-            DocumentReference docRef = __db.Collection("Customers").Document(customerId);
-            var newData = new
+            // Query to find the customer document by email
+            var query = __db.Collection("Customers").WhereEqualTo("email", email);
+            var querySnapshot = await query.GetSnapshotAsync();
+
+            if (querySnapshot.Count > 0)
             {
-                deleted = true
-            };
-            await docRef.SetAsync(newData);
-            Console.WriteLine($"Marked customer with ID: {customerId} as deleted.");
+                // Assuming email is unique, we take the first document
+                DocumentSnapshot docSnapshot = querySnapshot.Documents[0];
+                DocumentReference docRef = docSnapshot.Reference;
+
+                var newData = new
+                {
+                    deleted = true
+                };
+
+                // Mark the customer as deleted
+                await docRef.SetAsync(newData, SetOptions.MergeAll);
+                Console.WriteLine($"Marked customer with email: {email} as deleted.");
+            }
+            else
+            {
+                Console.WriteLine($"No customer found with email: {email}.");
+            }
         }
     }
 }

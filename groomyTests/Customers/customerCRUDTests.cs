@@ -20,6 +20,17 @@ namespace groomy.Customers.Tests
         {
             FirestoreDb __db = __config.getFirestoreDB();
             customerCRUD testCustCrud = new customerCRUD(__db);
+            
+            var customersQuestionMark = await testCustCrud.getAllCustomers();
+            Assert.IsNotNull(customersQuestionMark);
+            
+        }
+
+        [TestMethod()]
+        public async Task addCustomerAsyncTest()
+        {
+            FirestoreDb __db = __config.getFirestoreDB();
+            customerCRUD testCustCrud = new customerCRUD(__db);
             customer newCustomer = new customer
             {
                 email = "john.doe@example.com",
@@ -31,94 +42,67 @@ namespace groomy.Customers.Tests
                 address = "123 Main St, Anytown, USA"
             };
             await testCustCrud.addCustomerAsync(newCustomer);
+            var z = testCustCrud.getCustomerByEmail("john.doe@example.com");
+            Console.WriteLine(z);
+            Assert.IsNotNull(z);
+        }
 
-            var customersQuestionMark = await testCustCrud.getAllCustomers();
-            Assert.IsNotNull(customersQuestionMark);
+        [TestMethod()]
+        public async Task deleteCustomerByIDTest()
+        {
+            FirestoreDb __db = __config.getFirestoreDB();
+            customerCRUD testCustCrud = new customerCRUD(__db);
+            await testCustCrud.deleteCustomerByEmail("john.doe@example.com");
             
         }
 
         [TestMethod()]
-        public void getAllCustomersTest()
+        public async Task updateCustomerTest()
         {
-            Assert.Fail();
-        }
+            // Arrange
+            FirestoreDb __db = __config.getFirestoreDB();
+            customerCRUD testCustCrud = new customerCRUD(__db);
 
-        [TestMethod()]
-        public void addCustomerAsyncTest()
-        {
-            Assert.Fail();
-        }
+            // Create and add a new customer
+            customer newCustomer = new customer
+            {
+                email = "jane.doe@example.com",
+                fName = "Jane",
+                lName = "Doe",
+                deleted = false,
+                phoneNumber = "987-654-3210",
+                address = "456 Elm St, Anytown, USA"
+            };
 
-        [TestMethod()]
-        public void getCustomerByIdTest()
-        {
-            Assert.Fail();
-        }
+            await testCustCrud.addCustomerAsync(newCustomer);
 
-        [TestMethod()]
-        public void getCustomerByEmailTest()
-        {
-            Assert.Fail();
-        }
+            // Now retrieve the customer by email to get the document ID
+            // After adding the customer
 
-        [TestMethod()]
-        public void updateCustomerTest()
-        {
-            Assert.Fail();
-        }
+            var addedCustomer = await testCustCrud.getCustomerByEmail("jane.doe@example.com");
 
-        [TestMethod()]
-        public void deleteCustomerByIDTest()
-        {
-            Assert.Fail();
-        }
+            Assert.IsNotNull(addedCustomer, "Customer should be added successfully.");
 
-        [TestMethod()]
-        public void customerCRUDTest1()
-        {
-            Assert.Fail();
-        }
+            Console.WriteLine($"Added Customer ID: {addedCustomer.id}"); // Debugging line
 
-        [TestMethod()]
-        public void getAllCustomersTest1()
-        {
-            Assert.Fail();
-        }
 
-        [TestMethod()]
-        public void addCustomerAsyncTest1()
-        {
-            Assert.Fail();
-        }
+            // Modify the customer object
 
-        [TestMethod()]
-        public void getCustomerByIdTest1()
-        {
-            Assert.Fail();
-        }
+            addedCustomer.phoneNumber = "111-222-3333"; // Update phone number
 
-        [TestMethod()]
-        public void getCustomerByEmailTest1()
-        {
-            Assert.Fail();
-        }
+            addedCustomer.address = "789 Oak St, Anytown, USA"; // Update address
 
-        [TestMethod()]
-        public void getDocumentIdTest()
-        {
-            Assert.Fail();
-        }
 
-        [TestMethod()]
-        public void updateCustomerTest1()
-        {
-            Assert.Fail();
-        }
+            // Act
 
-        [TestMethod()]
-        public void deleteCustomerByIDTest1()
-        {
-            Assert.Fail();
+            await testCustCrud.updateCustomer(addedCustomer);
+
+
+            // Retrieve the updated customer
+
+            var updatedCustomer = await testCustCrud.getCustomerById(addedCustomer.id);
+
+            Console.WriteLine($"Updated Customer ID: {updatedCustomer.id}");
         }
     }
 }
