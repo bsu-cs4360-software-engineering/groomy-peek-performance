@@ -7,7 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Cloud.Firestore;
+using groomy.Appointments;
 using groomy.Auth;
+using groomy.Customers;
+using groomy.services;
 
 namespace groomy
 {
@@ -16,15 +20,17 @@ namespace groomy
         /* This is the list of colors for the palette. 
          * White is already established within C# so it doesn't need to be declared here*/
         private Color PrimaryAccent = Color.FromArgb(15, 60, 82);
-        private Color Highlight = Color.FromArgb(29,129,175);
+        private Color Highlight = Color.FromArgb(29, 129, 175);
         private Color offWhite = Color.FromArgb(254, 254, 254);
         private Color black = Color.FromArgb(16, 16, 16);
+
+        //private customerCRUD custCrud = new customerCRUD();
         public Main()
         {
             InitializeComponent();
             rdoCustomer.BackColor = PrimaryAccent;
         }
-        
+
 
 
 
@@ -36,11 +42,11 @@ namespace groomy
 
         private void txtUsername_Leave(object sender, EventArgs e)
         {
-            if(txtUsername.Text != string.Empty)
+            if (txtUsername.Text != string.Empty)
             {
                 txtUsername.Text = "UserName";
             }
-            
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -51,12 +57,14 @@ namespace groomy
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            loginCheck checkLogin = new loginCheck(txtUsername.Text,txtPassword.Text);
-            bool zbele = await checkLogin.checkUser();
-            if (zbele)
+            loginCheck checkLogin = new loginCheck(txtUsername.Text, txtPassword.Text);
+            bool verifyUser = await checkLogin.checkUser();
+            if (verifyUser)
             {
                 pnlLogin.Visible = false;
                 pnlWelcome.Visible = true;
+                rdoCustomer.Visible = true;
+                rdoAppointments.Visible = true;
             }
             else
             {
@@ -66,28 +74,273 @@ namespace groomy
 
                 // Optionally, set focus back to the username textbox for easier re-entry
                 txtUsername.Focus();
-            }    
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             pnlLogin.Visible = true;
             pnlWelcome.Visible = false;
+            rdoCustomer.Visible=false;
+            rdoAppointments.Visible=false;
+            pnlAppointments.Visible = false;
         }
 
-        private void txtPassword_TextChanged(object sender, EventArgs e)
+
+
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
+
+        //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
+        public async void loadCustomers()
+        {
+            listView1.Items.Clear();
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+
+            var customers = await customerGetter.getAllCustomers();
+            List<customer> potato = customers;
+            Console.WriteLine(potato.Count);
+            if (potato == null || potato.Count == 0)
+            {
+                MessageBox.Show("No customers found.");
+                return;
+            }
+
+            foreach (customer cust in potato)
+            {
+                if (cust.deleted != true)
+                {
+                    ListViewItem item = new ListViewItem(cust.fName);
+                    item.SubItems.Add(cust.lName);
+                    item.SubItems.Add(cust.phoneNumber);
+                    item.SubItems.Add(cust.email);
+                    item.SubItems.Add(cust.address);
+                    item.SubItems.Add(cust.id);
+                    listView1.Items.Add(item);
+                }
+            }
+
+
+        }
+        public async void loadAppointments()
+
+        {
+
+            listView2.Items.Clear();
+
+            firebaseConfig config = firebaseConfig.Instance;
+
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            appointmentCRUD appointmentGetter = new appointmentCRUD(db); // Assuming you have an appointmentCRUD class
+
+
+            var appointments = await appointmentGetter.getAllAppointments(); // Fetch all appointments
+
+            List<appointment> appointmentList = appointments; // Assuming this returns a List<appointment>
+
+            Console.WriteLine(appointmentList.Count);
+
+
+            if (appointmentList == null || appointmentList.Count == 0)
+
+            {
+
+                MessageBox.Show("No appointments found.");
+
+                return;
+
+            }
+
+
+            foreach (appointment app in appointmentList)
+
+            {
+
+                if (!app.deleted) // Check if the appointment is not deleted
+
+                {
+                    customer customerstuff = await customerCRUD.getCustomerById(app.foreignKey);
+                    ListViewItem item = new ListViewItem(app.Title); // Assuming Title is the main information to display
+                    item.SubItems.Add(app.desc);
+                    item.SubItems.Add(app.start.ToDateTime().ToLocalTime().ToString("g")); // Displaying start time
+                    item.SubItems.Add(app.endTime.ToDateTime().ToLocalTime().ToString("g")); // Displaying end time
+                    item.SubItems.Add(app.location); // Displaying location
+                    item.SubItems.Add(customerstuff.fName.ToString() + " " +customerstuff.lName.ToString());
+                    item.SubItems.Add(app.id.ToString());
+                    item.SubItems.Add(customerstuff.email);
+                    listView2.Items.Add(item);
+
+                }
+
+            }
+
+        }
+        private async void rdoHome_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioBtn = this.panel1.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
+            if (radioBtn != null)
+            {
+                switch (radioBtn.Text)
+                {
+                    case "Home":
+                        // This is the home button.  It should automatically be selected. 
+                        pnlLogin.BringToFront();
+                        pnlLogin.Visible = true;
+                        pnlCustomer.Visible = false;
+                        pnlAppointments.Visible = false;
+                        break;
+
+                    case "Customer":
+                        // This is the customer button.  When this is clicked, it should run the getAllCustomers function. Jordan doesn't know how to set that up. 
+                        listView1.Items.Clear();
+                        listView1.View = View.Details;
+                        listView1.FullRowSelect = true;
+                        pnlCustomer.BringToFront();
+                        pnlLogin.Visible = false;
+                        pnlCustomer.Visible = true;
+                        pnlAppointments.Visible = false;
+                        loadCustomers();
+
+
+                        break;
+
+                    case "Appointments":
+                        //This is the appointments button.
+                        listView2.FullRowSelect = true;
+                        listView2.View = View.Details;
+                        listView2.Items.Clear();
+                        pnlAppointments.BringToFront();
+                        pnlAppointments.Visible = true;
+                        pnlLogin.Visible = false;
+                        pnlCustomer.Visible = false;
+                        loadAppointments();
+                        
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private async void btnCustomerAdd_Click(object sender, EventArgs e)
+        {
+            CreateCustomerForm custFrm = new CreateCustomerForm();
+            
+            custFrm.ShowDialog();
+        }
+
+        private void btnAppAdd_Click(object sender, EventArgs e)
+        {
+            CreateAppointmentForm appFrm = new CreateAppointmentForm();
+            appFrm.ShowDialog();
+        }
+
+        private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("I hate winforms");
+        }
+
+        private async void btnCustomerDelete_Click(object sender, EventArgs e)
+        {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+            string email = listView1.SelectedItems[0].SubItems[3].Text;
+            Console.WriteLine(email);
+            customer cust = await customerGetter.getCustomerByEmail(email);
+            await customerGetter.deleteCustomerByEmail(email);
+            loadCustomers();
+
+
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            loadCustomers();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            updateUsers cutForm = new updateUsers(listView1.SelectedItems[0].SubItems[3].Text,
+                listView1.SelectedItems[0].SubItems[0].Text,
+                listView1.SelectedItems[0].SubItems[1].Text,
+                listView1.SelectedItems[0].SubItems[5].Text,
+                listView1.SelectedItems[0].SubItems[2].Text,
+                listView1.SelectedItems[0].SubItems[4].Text);
+            cutForm.ShowDialog();
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCustView_Click(object sender, EventArgs e)
+        {
+            ViewCustomerForm cutForm = new ViewCustomerForm(listView1.SelectedItems[0].SubItems[3].Text,
+                listView1.SelectedItems[0].SubItems[0].Text,
+                listView1.SelectedItems[0].SubItems[1].Text,
+                listView1.SelectedItems[0].SubItems[5].Text,
+                listView1.SelectedItems[0].SubItems[2].Text,
+                listView1.SelectedItems[0].SubItems[4].Text);
+            cutForm.ShowDialog();
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnAppRefresh_Click(object sender, EventArgs e)
         {
+            
+            loadAppointments();
+        }
 
+        private async void btnAppDelete_Click(object sender, EventArgs e)
+        {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            appointmentCRUD potato = new appointmentCRUD(db);
+            await potato.deleteAppointmentById(listView2.SelectedItems[0].SubItems[6].Text);
+            loadAppointments();
+        }
+
+        private void btnAppUpdate_Click(object sender, EventArgs e)
+        {
+            
+                
+            UpdateAppointmentForm upApp = new UpdateAppointmentForm(
+            listView2.SelectedItems[0].SubItems[0].Text,
+            listView2.SelectedItems[0].SubItems[1].Text,
+            listView2.SelectedItems[0].SubItems[2].Text,
+            listView2.SelectedItems[0].SubItems[3].Text,
+            listView2.SelectedItems[0].SubItems[4].Text,
+            listView2.SelectedItems[0].SubItems[6].Text,
+            listView2.SelectedItems[0].SubItems[7].Text);
+            upApp.ShowDialog();
+        }
+
+        private void btnAppView_Click(object sender, EventArgs e)
+        {
+            ViewAppointmentsForm upApp = new ViewAppointmentsForm(
+            listView2.SelectedItems[0].SubItems[0].Text,
+            listView2.SelectedItems[0].SubItems[1].Text,
+            listView2.SelectedItems[0].SubItems[2].Text,
+            listView2.SelectedItems[0].SubItems[3].Text,
+            listView2.SelectedItems[0].SubItems[4].Text,
+            listView2.SelectedItems[0].SubItems[6].Text,
+            listView2.SelectedItems[0].SubItems[7].Text);
+            upApp.ShowDialog();
         }
     }
 }
