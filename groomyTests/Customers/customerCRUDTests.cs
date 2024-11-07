@@ -14,34 +14,33 @@ namespace groomy.Customers.Tests
     [TestClass()]
     public class customerCRUDTests
     {
-        private Mock<FirestoreDb> _mockDb;
-
-        private customerCRUD _customerCRUD;
+        public firebaseConfig __config = firebaseConfig.Instance;
         [TestMethod()]
-        public void customerCRUDTest()
+        public async Task getAllCustomerTest_ReturnsListOfCustomers()
         {
+            FirestoreDb __db = __config.getFirestoreDB();
+            customerCRUD testCustCrud = new customerCRUD(__db);
             customer newCustomer = new customer
             {
                 email = "john.doe@example.com",
                 fName = "John",
                 lName = "Doe",
-                id = 1,
+                id = "1",
                 deleted = false,
                 phoneNumber = "123-456-7890",
                 address = "123 Main St, Anytown, USA"
             };
+            await testCustCrud.addCustomerAsync(newCustomer);
+
+            var customersQuestionMark = await testCustCrud.getAllCustomers();
+            Assert.IsNotNull(customersQuestionMark);
+            
         }
 
         [TestMethod()]
         public void getAllCustomersTest()
         {
-            var z = _customerCRUD.getAllCustomers();
-            if(z != null)
-            {
-                Assert.IsNotNull(z);
-            }
-            else
-            { Assert.Fail(); }
+            Assert.Fail();
         }
 
         [TestMethod()]
@@ -70,6 +69,54 @@ namespace groomy.Customers.Tests
 
         [TestMethod()]
         public void deleteCustomerByIDTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void customerCRUDTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void getAllCustomersTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void addCustomerAsyncTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void getCustomerByIdTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void getCustomerByEmailTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void getDocumentIdTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void updateCustomerTest1()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void deleteCustomerByIDTest1()
         {
             Assert.Fail();
         }
