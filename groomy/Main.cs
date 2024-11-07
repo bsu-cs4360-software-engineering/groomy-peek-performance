@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using groomy.Auth;
+using groomy.Customers;
 
 namespace groomy
 {
@@ -19,6 +20,8 @@ namespace groomy
         private Color Highlight = Color.FromArgb(29,129,175);
         private Color offWhite = Color.FromArgb(254, 254, 254);
         private Color black = Color.FromArgb(16, 16, 16);
+
+        //private customerCRUD custCrud = new customerCRUD();
         public Main()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace groomy
         }
         
 
-
+        
 
 
         private void txtUsername_Enter(object sender, EventArgs e)
@@ -77,24 +80,68 @@ namespace groomy
             rdoCustomer.Visible=false;
         }
 
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
 
+
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
 
         private void rdoHome_CheckedChanged(object sender, EventArgs e)
         {
+            RadioButton radioBtn = this.panel1.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
+            if (radioBtn != null)
+            {
+                switch (radioBtn.Text)
+                {
+                    case "Home":
+                        // This is the home button.  It should automatically be selected. 
+                        pnlLogin.BringToFront();
+                        pnlLogin.Visible = true;
+                        pnlCustomer.Visible = false;
+                        pnlAppointments.Visible = false;
+                        break;
 
+                    case "Customer":
+                        // This is the customer button.  When this is clicked, it should run the getAllCustomers function. Jordan doesn't know how to set that up. 
+                        pnlCustomer.BringToFront();
+                        pnlLogin.Visible = false;
+                        pnlCustomer.Visible = true;
+                        pnlAppointments.Visible = false;
+                        break;
+
+                    case "Appointments":
+                        //This is the appointments button.
+                        pnlAppointments.BringToFront();
+                        pnlAppointments.Visible = true;
+                        pnlLogin.Visible = false;
+                        pnlCustomer.Visible = false; 
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void btnCustomerAdd_Click(object sender, EventArgs e)
+        {
+            CreateCustomerForm custFrm = new CreateCustomerForm();
+            custFrm.ShowDialog();
+        }
+
+        private void btnAppAdd_Click(object sender, EventArgs e)
+        {
+            CreateAppointmentForm appFrm = new CreateAppointmentForm();
+            appFrm.ShowDialog();
         }
     }
 }
