@@ -215,6 +215,18 @@
     <Compile Include="updateUsers.Designer.cs">
       <DependentUpon>updateUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewAppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAppointmentsForm.Designer.cs">
+      <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCustomerForm.Designer.cs">
+      <DependentUpon>ViewCustomerForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateAppointmentForm.resx">
       <DependentUpon>CreateAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="updateUsers.resx">
       <DependentUpon>updateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewAppointmentsForm.resx">
+      <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCustomerForm.resx">
+      <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

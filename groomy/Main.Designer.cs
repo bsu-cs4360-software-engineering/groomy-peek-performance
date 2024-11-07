@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdoAppointments = new System.Windows.Forms.RadioButton();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
@@ -63,6 +68,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAppRefresh = new System.Windows.Forms.Button();
             this.btnAppUpdate = new System.Windows.Forms.Button();
+            this.btnCustView = new System.Windows.Forms.Button();
+            this.btnAppView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlAppointments.SuspendLayout();
@@ -162,6 +169,7 @@
             // 
             // pnlAppointments
             // 
+            this.pnlAppointments.Controls.Add(this.btnAppView);
             this.pnlAppointments.Controls.Add(this.btnAppUpdate);
             this.pnlAppointments.Controls.Add(this.btnAppRefresh);
             this.pnlAppointments.Controls.Add(this.btnAppDelete);
@@ -185,6 +193,12 @@
             // listView2
             // 
             this.listView2.HideSelection = false;
+            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.listView2.Location = new System.Drawing.Point(13, 11);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(334, 395);
@@ -203,6 +217,7 @@
             // 
             // pnlCustomer
             // 
+            this.pnlCustomer.Controls.Add(this.btnCustView);
             this.pnlCustomer.Controls.Add(this.btnCustUpdate);
             this.pnlCustomer.Controls.Add(this.btnCustRefresh);
             this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
@@ -265,7 +280,7 @@
             this.id});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem6});
             this.listView1.Location = new System.Drawing.Point(11, 19);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(316, 388);
@@ -428,6 +443,24 @@
             this.btnAppUpdate.Text = "Update";
             this.btnAppUpdate.UseVisualStyleBackColor = true;
             // 
+            // btnCustView
+            // 
+            this.btnCustView.Location = new System.Drawing.Point(340, 136);
+            this.btnCustView.Name = "btnCustView";
+            this.btnCustView.Size = new System.Drawing.Size(58, 23);
+            this.btnCustView.TabIndex = 5;
+            this.btnCustView.Text = "View";
+            this.btnCustView.UseVisualStyleBackColor = true;
+            // 
+            // btnAppView
+            // 
+            this.btnAppView.Location = new System.Drawing.Point(352, 131);
+            this.btnAppView.Name = "btnAppView";
+            this.btnAppView.Size = new System.Drawing.Size(58, 23);
+            this.btnAppView.TabIndex = 7;
+            this.btnAppView.Text = "View";
+            this.btnAppView.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +522,8 @@
         private System.Windows.Forms.Button btnCustRefresh;
         private System.Windows.Forms.Button btnAppUpdate;
         private System.Windows.Forms.Button btnAppRefresh;
+        private System.Windows.Forms.Button btnCustView;
+        private System.Windows.Forms.Button btnAppView;
     }
 }
 
