@@ -52,7 +52,7 @@
             // dtpDate
             // 
             this.dtpDate.Location = new System.Drawing.Point(64, 23);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(236, 22);
             this.dtpDate.TabIndex = 0;
@@ -71,7 +71,7 @@
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker1.Location = new System.Drawing.Point(64, 73);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(125, 22);
             this.dateTimePicker1.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker2.Location = new System.Drawing.Point(64, 117);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(125, 22);
             this.dateTimePicker2.TabIndex = 5;
@@ -118,7 +118,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(95, 12);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(252, 22);
             this.textBox1.TabIndex = 7;
@@ -132,9 +132,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(21, 89);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(327, 171);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
@@ -144,7 +144,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(95, 44);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(252, 24);
             this.comboBox1.TabIndex = 9;
@@ -168,14 +168,15 @@
             this.btnCreate.TabIndex = 11;
             this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Location = new System.Drawing.Point(21, 268);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(327, 75);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
@@ -184,7 +185,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(13, 25);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(287, 22);
             this.textBox2.TabIndex = 0;
@@ -221,7 +222,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateAppointmentForm";
             this.Text = "Create Appointment";
             this.groupBox1.ResumeLayout(false);

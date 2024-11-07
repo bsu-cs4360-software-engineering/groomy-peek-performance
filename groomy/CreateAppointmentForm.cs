@@ -38,16 +38,7 @@ namespace groomy
 
             foreach (customer cust in potato)
             {
-                if (cust.deleted != true)
-                {
-                    ListViewItem item = new ListViewItem(cust.fName);
-                    item.SubItems.Add(cust.lName);
-                    item.SubItems.Add(cust.phoneNumber);
-                    item.SubItems.Add(cust.email);
-                    item.SubItems.Add(cust.address);
-                    item.SubItems.Add(cust.id);
-                    comboBox1.Items.Add(item);
-                }
+                comboBox1.Items.Add(cust.email);
             }
 
 
@@ -55,6 +46,11 @@ namespace groomy
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadCustomers();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
