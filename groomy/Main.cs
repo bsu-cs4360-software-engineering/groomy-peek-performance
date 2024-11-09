@@ -207,9 +207,9 @@ namespace groomy
                         lstCustomers.View = View.Details;
                         lstCustomers.FullRowSelect = true;
                         pnlCustomer.BringToFront();
-                        pnlLogin.Visible = false;
+                        pnlLogin.Visible = !rdoCustomer.Checked;
+                        pnlAppointments.Visible = pnlLogin.Visible;
                         pnlCustomer.Visible = rdoCustomer.Checked;
-                        pnlAppointments.Visible = rdoAppointments.Checked;
                         break;
 
                     case "Appointments":
@@ -218,10 +218,9 @@ namespace groomy
                         lstAppointments.View = View.Details;
                         lstAppointments.Items.Clear();
                         pnlAppointments.BringToFront();
-                        pnlAppointments.Visible = true;
-                        pnlLogin.Visible = false;
-                        pnlCustomer.Visible = false;
-                        pnlAppointments.Visible = true;
+                        pnlLogin.Visible = !rdoAppointments.Checked;
+                        pnlCustomer.Visible = !rdoAppointments.Checked;
+                        pnlAppointments.Visible = rdoAppointments.Checked;
                         
                         
                         break;

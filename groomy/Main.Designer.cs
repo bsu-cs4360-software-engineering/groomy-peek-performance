@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Title");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Start");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Location");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("End");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.pnlAccent = new System.Windows.Forms.Panel();
             this.rdoAppointments = new System.Windows.Forms.RadioButton();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
@@ -110,7 +110,7 @@
             this.rdoAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoAppointments.ForeColor = System.Drawing.Color.White;
             this.rdoAppointments.Location = new System.Drawing.Point(3, 188);
-            this.rdoAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.rdoAppointments.Name = "rdoAppointments";
             this.rdoAppointments.Size = new System.Drawing.Size(221, 47);
             this.rdoAppointments.TabIndex = 2;
@@ -131,7 +131,7 @@
             this.rdoCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoCustomer.ForeColor = System.Drawing.Color.White;
             this.rdoCustomer.Location = new System.Drawing.Point(3, 139);
-            this.rdoCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCustomer.Name = "rdoCustomer";
             this.rdoCustomer.Size = new System.Drawing.Size(221, 47);
             this.rdoCustomer.TabIndex = 1;
@@ -156,6 +156,7 @@
             this.rdoHome.Name = "rdoHome";
             this.rdoHome.Size = new System.Drawing.Size(221, 47);
             this.rdoHome.TabIndex = 0;
+            this.rdoHome.TabStop = true;
             this.rdoHome.Text = "Home";
             this.rdoHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoHome.UseVisualStyleBackColor = false;
@@ -177,25 +178,26 @@
             // 
             // pnlAppointments
             // 
-            this.pnlAppointments.Controls.Add(this.btnAppView);
-            this.pnlAppointments.Controls.Add(this.btnAppUpdate);
-            this.pnlAppointments.Controls.Add(this.btnAppRefresh);
-            this.pnlAppointments.Controls.Add(this.btnAppDelete);
-            this.pnlAppointments.Controls.Add(this.lstAppointments);
             this.pnlAppointments.Controls.Add(this.btnAppAdd);
-            this.pnlAppointments.Location = new System.Drawing.Point(3, 3);
+            this.pnlAppointments.Controls.Add(this.btnAppDelete);
+            this.pnlAppointments.Controls.Add(this.btnAppRefresh);
+            this.pnlAppointments.Controls.Add(this.btnAppUpdate);
+            this.pnlAppointments.Controls.Add(this.btnAppView);
+            this.pnlAppointments.Controls.Add(this.lstAppointments);
+            this.pnlAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAppointments.Location = new System.Drawing.Point(0, 0);
             this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(831, 434);
+            this.pnlAppointments.Size = new System.Drawing.Size(846, 441);
             this.pnlAppointments.TabIndex = 10;
             this.pnlAppointments.Visible = false;
             this.pnlAppointments.VisibleChanged += new System.EventHandler(this.pnlAppointments_VisibleChanged);
             // 
             // btnAppView
             // 
-            this.btnAppView.Location = new System.Drawing.Point(770, 119);
-            this.btnAppView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAppView.Location = new System.Drawing.Point(778, 127);
+            this.btnAppView.Margin = new System.Windows.Forms.Padding(2);
             this.btnAppView.Name = "btnAppView";
-            this.btnAppView.Size = new System.Drawing.Size(57, 20);
+            this.btnAppView.Size = new System.Drawing.Size(58, 23);
             this.btnAppView.TabIndex = 7;
             this.btnAppView.Text = "View";
             this.btnAppView.UseVisualStyleBackColor = true;
@@ -203,7 +205,7 @@
             // 
             // btnAppUpdate
             // 
-            this.btnAppUpdate.Location = new System.Drawing.Point(769, 91);
+            this.btnAppUpdate.Location = new System.Drawing.Point(777, 99);
             this.btnAppUpdate.Name = "btnAppUpdate";
             this.btnAppUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnAppUpdate.TabIndex = 6;
@@ -213,7 +215,7 @@
             // 
             // btnAppRefresh
             // 
-            this.btnAppRefresh.Location = new System.Drawing.Point(769, 62);
+            this.btnAppRefresh.Location = new System.Drawing.Point(776, 70);
             this.btnAppRefresh.Name = "btnAppRefresh";
             this.btnAppRefresh.Size = new System.Drawing.Size(59, 23);
             this.btnAppRefresh.TabIndex = 5;
@@ -223,7 +225,7 @@
             // 
             // btnAppDelete
             // 
-            this.btnAppDelete.Location = new System.Drawing.Point(769, 32);
+            this.btnAppDelete.Location = new System.Drawing.Point(776, 41);
             this.btnAppDelete.Name = "btnAppDelete";
             this.btnAppDelete.Size = new System.Drawing.Size(58, 23);
             this.btnAppDelete.TabIndex = 4;
@@ -244,15 +246,15 @@
             this.emailApp});
             this.lstAppointments.HideSelection = false;
             this.lstAppointments.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.lstAppointments.Location = new System.Drawing.Point(10, 9);
-            this.lstAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.lstAppointments.Name = "lstAppointments";
-            this.lstAppointments.Size = new System.Drawing.Size(754, 395);
+            this.lstAppointments.Size = new System.Drawing.Size(756, 421);
             this.lstAppointments.TabIndex = 0;
             this.lstAppointments.UseCompatibleStateImageBehavior = false;
             this.lstAppointments.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
@@ -293,7 +295,7 @@
             // 
             // btnAppAdd
             // 
-            this.btnAppAdd.Location = new System.Drawing.Point(770, 3);
+            this.btnAppAdd.Location = new System.Drawing.Point(776, 12);
             this.btnAppAdd.Name = "btnAppAdd";
             this.btnAppAdd.Size = new System.Drawing.Size(58, 23);
             this.btnAppAdd.TabIndex = 3;
@@ -303,25 +305,26 @@
             // 
             // pnlCustomer
             // 
-            this.pnlCustomer.Controls.Add(this.btnCustView);
-            this.pnlCustomer.Controls.Add(this.btnCustUpdate);
-            this.pnlCustomer.Controls.Add(this.btnCustRefresh);
-            this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
             this.pnlCustomer.Controls.Add(this.btnCustomerAdd);
+            this.pnlCustomer.Controls.Add(this.btnCustomerDelete);
+            this.pnlCustomer.Controls.Add(this.btnCustRefresh);
+            this.pnlCustomer.Controls.Add(this.btnCustUpdate);
+            this.pnlCustomer.Controls.Add(this.btnCustView);
             this.pnlCustomer.Controls.Add(this.lstCustomers);
-            this.pnlCustomer.Location = new System.Drawing.Point(3, 3);
+            this.pnlCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCustomer.Location = new System.Drawing.Point(0, 0);
             this.pnlCustomer.Name = "pnlCustomer";
-            this.pnlCustomer.Size = new System.Drawing.Size(840, 426);
+            this.pnlCustomer.Size = new System.Drawing.Size(846, 441);
             this.pnlCustomer.TabIndex = 9;
             this.pnlCustomer.Visible = false;
             this.pnlCustomer.VisibleChanged += new System.EventHandler(this.pnlCustomer_VisibleChanged);
             // 
             // btnCustView
             // 
-            this.btnCustView.Location = new System.Drawing.Point(771, 128);
-            this.btnCustView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCustView.Location = new System.Drawing.Point(777, 127);
+            this.btnCustView.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustView.Name = "btnCustView";
-            this.btnCustView.Size = new System.Drawing.Size(58, 22);
+            this.btnCustView.Size = new System.Drawing.Size(58, 23);
             this.btnCustView.TabIndex = 5;
             this.btnCustView.Text = "View";
             this.btnCustView.UseVisualStyleBackColor = true;
@@ -329,7 +332,7 @@
             // 
             // btnCustUpdate
             // 
-            this.btnCustUpdate.Location = new System.Drawing.Point(771, 99);
+            this.btnCustUpdate.Location = new System.Drawing.Point(776, 99);
             this.btnCustUpdate.Name = "btnCustUpdate";
             this.btnCustUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnCustUpdate.TabIndex = 4;
@@ -339,7 +342,7 @@
             // 
             // btnCustRefresh
             // 
-            this.btnCustRefresh.Location = new System.Drawing.Point(771, 70);
+            this.btnCustRefresh.Location = new System.Drawing.Point(776, 70);
             this.btnCustRefresh.Name = "btnCustRefresh";
             this.btnCustRefresh.Size = new System.Drawing.Size(58, 23);
             this.btnCustRefresh.TabIndex = 3;
@@ -349,7 +352,7 @@
             // 
             // btnCustomerDelete
             // 
-            this.btnCustomerDelete.Location = new System.Drawing.Point(772, 41);
+            this.btnCustomerDelete.Location = new System.Drawing.Point(776, 41);
             this.btnCustomerDelete.Name = "btnCustomerDelete";
             this.btnCustomerDelete.Size = new System.Drawing.Size(58, 23);
             this.btnCustomerDelete.TabIndex = 2;
@@ -359,7 +362,7 @@
             // 
             // btnCustomerAdd
             // 
-            this.btnCustomerAdd.Location = new System.Drawing.Point(773, 12);
+            this.btnCustomerAdd.Location = new System.Drawing.Point(776, 12);
             this.btnCustomerAdd.Name = "btnCustomerAdd";
             this.btnCustomerAdd.Size = new System.Drawing.Size(58, 23);
             this.btnCustomerAdd.TabIndex = 1;
@@ -378,11 +381,11 @@
             this.id});
             this.lstCustomers.HideSelection = false;
             this.lstCustomers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem42});
-            this.lstCustomers.Location = new System.Drawing.Point(8, 15);
-            this.lstCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            listViewItem6});
+            this.lstCustomers.Location = new System.Drawing.Point(10, 9);
+            this.lstCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.lstCustomers.Name = "lstCustomers";
-            this.lstCustomers.Size = new System.Drawing.Size(758, 388);
+            this.lstCustomers.Size = new System.Drawing.Size(756, 421);
             this.lstCustomers.TabIndex = 0;
             this.lstCustomers.UseCompatibleStateImageBehavior = false;
             this.lstCustomers.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
