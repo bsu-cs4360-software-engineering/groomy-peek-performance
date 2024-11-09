@@ -211,8 +211,6 @@ namespace groomy
                         pnlCustomer.Visible = true;
                         pnlAppointments.Visible = false;
                         loadCustomers();
-
-
                         break;
 
                     case "Appointments":
@@ -260,8 +258,13 @@ namespace groomy
             string email = listView1.SelectedItems[0].SubItems[3].Text;
             Console.WriteLine(email);
             customer cust = await customerGetter.getCustomerByEmail(email);
-            await customerGetter.deleteCustomerByEmail(email);
-            loadCustomers();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Are you sure?", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                await customerGetter.deleteCustomerByEmail(email);
+                loadCustomers();
+            }
+            
 
 
 
@@ -274,13 +277,17 @@ namespace groomy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            updateUsers cutForm = new updateUsers(listView1.SelectedItems[0].SubItems[3].Text,
-                listView1.SelectedItems[0].SubItems[0].Text,
-                listView1.SelectedItems[0].SubItems[1].Text,
-                listView1.SelectedItems[0].SubItems[5].Text,
-                listView1.SelectedItems[0].SubItems[2].Text,
-                listView1.SelectedItems[0].SubItems[4].Text);
-            cutForm.ShowDialog();
+            if (listView1.SelectedItems.Count > 0)
+            {
+                updateUsers cutForm = new updateUsers(listView1.SelectedItems[0].SubItems[3].Text,
+                    listView1.SelectedItems[0].SubItems[0].Text,
+                    listView1.SelectedItems[0].SubItems[1].Text,
+                    listView1.SelectedItems[0].SubItems[5].Text,
+                    listView1.SelectedItems[0].SubItems[2].Text,
+                    listView1.SelectedItems[0].SubItems[4].Text);
+                cutForm.ShowDialog();
+            }
+            
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,13 +297,16 @@ namespace groomy
 
         private void btnCustView_Click(object sender, EventArgs e)
         {
-            ViewCustomerForm cutForm = new ViewCustomerForm(listView1.SelectedItems[0].SubItems[3].Text,
-                listView1.SelectedItems[0].SubItems[0].Text,
-                listView1.SelectedItems[0].SubItems[1].Text,
-                listView1.SelectedItems[0].SubItems[5].Text,
-                listView1.SelectedItems[0].SubItems[2].Text,
-                listView1.SelectedItems[0].SubItems[4].Text);
-            cutForm.ShowDialog();
+            if (listView1.SelectedItems.Count > 0)
+            {
+                ViewCustomerForm cutForm = new ViewCustomerForm(listView1.SelectedItems[0].SubItems[3].Text,
+                    listView1.SelectedItems[0].SubItems[0].Text,
+                    listView1.SelectedItems[0].SubItems[1].Text,
+                    listView1.SelectedItems[0].SubItems[5].Text,
+                    listView1.SelectedItems[0].SubItems[2].Text,
+                    listView1.SelectedItems[0].SubItems[4].Text);
+                cutForm.ShowDialog();
+            }
 
         }
 
@@ -311,23 +321,29 @@ namespace groomy
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             appointmentCRUD potato = new appointmentCRUD(db);
-            await potato.deleteAppointmentById(listView2.SelectedItems[0].SubItems[6].Text);
-            loadAppointments();
+            DialogResult deleteResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (listView2.SelectedItems.Count > 0 && deleteResult == DialogResult.Yes)
+            {
+                await potato.deleteAppointmentById(listView2.SelectedItems[0].SubItems[6].Text);
+                loadAppointments();
+            }
         }
 
         private void btnAppUpdate_Click(object sender, EventArgs e)
         {
-            
-                
-            UpdateAppointmentForm upApp = new UpdateAppointmentForm(
-            listView2.SelectedItems[0].SubItems[0].Text,
-            listView2.SelectedItems[0].SubItems[1].Text,
-            listView2.SelectedItems[0].SubItems[2].Text,
-            listView2.SelectedItems[0].SubItems[3].Text,
-            listView2.SelectedItems[0].SubItems[4].Text,
-            listView2.SelectedItems[0].SubItems[6].Text,
-            listView2.SelectedItems[0].SubItems[7].Text);
-            upApp.ShowDialog();
+            if (listView2.SelectedItems.Count > 0)
+            {
+
+                UpdateAppointmentForm upApp = new UpdateAppointmentForm(
+                listView2.SelectedItems[0].SubItems[0].Text,
+                listView2.SelectedItems[0].SubItems[1].Text,
+                listView2.SelectedItems[0].SubItems[2].Text,
+                listView2.SelectedItems[0].SubItems[3].Text,
+                listView2.SelectedItems[0].SubItems[4].Text,
+                listView2.SelectedItems[0].SubItems[6].Text,
+                listView2.SelectedItems[0].SubItems[7].Text);
+                upApp.ShowDialog();
+            }
         }
 
         private void btnAppView_Click(object sender, EventArgs e)

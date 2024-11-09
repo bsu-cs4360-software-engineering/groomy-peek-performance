@@ -78,6 +78,7 @@ namespace groomy
                 };
 
                 await appointmentCRUD.addAppointmentAsync(newAppointment, theCustomerInQuestion.id);
+                MessageBox.Show("New Appointment made!", "Finished!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
