@@ -45,27 +45,28 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFName = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.grpContact.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grpID.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
-            this.panel2.Controls.Add(this.btnCreate);
             this.panel2.Controls.Add(this.grpContact);
             this.panel2.Controls.Add(this.grpID);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(409, 366);
+            this.panel2.Size = new System.Drawing.Size(388, 278);
             this.panel2.TabIndex = 4;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(321, 331);
+            this.btnCreate.Location = new System.Drawing.Point(3, 6);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 0;
@@ -82,7 +83,7 @@
             this.grpContact.Controls.Add(this.txtPhoneNumber);
             this.grpContact.Controls.Add(this.txtEmail);
             this.grpContact.Controls.Add(this.label3);
-            this.grpContact.Location = new System.Drawing.Point(35, 144);
+            this.grpContact.Location = new System.Drawing.Point(13, 104);
             this.grpContact.Name = "grpContact";
             this.grpContact.Size = new System.Drawing.Size(361, 168);
             this.grpContact.TabIndex = 3;
@@ -168,7 +169,7 @@
             this.grpID.Controls.Add(this.label2);
             this.grpID.Controls.Add(this.label1);
             this.grpID.Controls.Add(this.txtFName);
-            this.grpID.Location = new System.Drawing.Point(34, 18);
+            this.grpID.Location = new System.Drawing.Point(12, 12);
             this.grpID.Name = "grpID";
             this.grpID.Size = new System.Drawing.Size(362, 86);
             this.grpID.TabIndex = 1;
@@ -207,15 +208,25 @@
             this.txtFName.Size = new System.Drawing.Size(261, 20);
             this.txtFName.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCreate);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 278);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(388, 38);
+            this.panel3.TabIndex = 4;
+            // 
             // updateUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 366);
+            this.ClientSize = new System.Drawing.Size(388, 316);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "updateUsers";
-            this.Text = "Update User";
+            this.Text = "Update Customer";
             this.panel2.ResumeLayout(false);
             this.grpContact.ResumeLayout(false);
             this.grpContact.PerformLayout();
@@ -223,6 +234,7 @@
             this.panel1.PerformLayout();
             this.grpID.ResumeLayout(false);
             this.grpID.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,5 +258,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Panel panel3;
     }
 }

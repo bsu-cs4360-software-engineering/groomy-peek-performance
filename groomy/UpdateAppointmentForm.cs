@@ -21,7 +21,7 @@ namespace groomy
             txtLoc.Text = loc;
             dtpStart.Value = System.DateTime.Parse(start);
             dtpEnd.Value = System.DateTime.Parse(end);
-            comboBox1.Text = email;
+            cmbCust.Text = email;
             appointmentId = id; // Assign the ID to the class-level variable
         }
 
@@ -33,7 +33,7 @@ namespace groomy
             appointmentCRUD updatePlease = new appointmentCRUD(db);
 
             // Assuming comboBox1.SelectedText contains the email you want to use
-            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(comboBox1.Text);
+            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(cmbCust.Text);
             System.DateTime startDateTimeUtc = dtpStart.Value.ToUniversalTime();
             System.DateTime endDateTimeUtc = dtpEnd.Value.ToUniversalTime();
 

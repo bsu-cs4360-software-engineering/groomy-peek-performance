@@ -38,7 +38,7 @@
             this.txtLoc = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCust = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -135,13 +135,13 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Customer: ";
             // 
-            // comboBox1
+            // cmbCust
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(67, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbCust.FormattingEnabled = true;
+            this.cmbCust.Location = new System.Drawing.Point(67, 38);
+            this.cmbCust.Name = "cmbCust";
+            this.cmbCust.Size = new System.Drawing.Size(190, 21);
+            this.cmbCust.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -201,7 +201,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCust);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
@@ -231,7 +231,7 @@
         private System.Windows.Forms.TextBox txtLoc;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCust;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label4;

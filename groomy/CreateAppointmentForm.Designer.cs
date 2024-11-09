@@ -37,7 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbCust = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -130,14 +130,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Time";
             // 
-            // comboBox1
+            // cmbCust
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(71, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbCust.FormattingEnabled = true;
+            this.cmbCust.Location = new System.Drawing.Point(71, 36);
+            this.cmbCust.Name = "cmbCust";
+            this.cmbCust.Size = new System.Drawing.Size(190, 21);
+            this.cmbCust.TabIndex = 1;
+            this.cmbCust.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -206,7 +206,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbCust);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
@@ -235,7 +235,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbCust;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.GroupBox groupBox2;

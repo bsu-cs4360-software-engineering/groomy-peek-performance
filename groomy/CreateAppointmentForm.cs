@@ -25,7 +25,7 @@ namespace groomy
         }
         public async void loadCustomers()
         {
-            comboBox1.Items.Clear();
+            cmbCust.Items.Clear();
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
@@ -41,7 +41,7 @@ namespace groomy
 
             foreach (customer cust in potato)
             {
-                comboBox1.Items.Add(cust.email);
+                cmbCust.Items.Add(cust.email);
             }
         }
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace groomy
             appointmentCRUD appointmentCRUD = new appointmentCRUD(db);
 
             // Assuming comboBox1.SelectedText contains the email you want to use
-            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(comboBox1.Text);
+            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(cmbCust.Text);
 
             // Ensure that the customer object is not null before accessing its properties
             if (theCustomerInQuestion != null)
