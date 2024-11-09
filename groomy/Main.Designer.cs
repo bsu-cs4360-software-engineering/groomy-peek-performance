@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Title");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Start");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Location");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("End");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("");
             this.pnlAccent = new System.Windows.Forms.Panel();
             this.rdoAppointments = new System.Windows.Forms.RadioButton();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
@@ -156,7 +156,6 @@
             this.rdoHome.Name = "rdoHome";
             this.rdoHome.Size = new System.Drawing.Size(221, 47);
             this.rdoHome.TabIndex = 0;
-            this.rdoHome.TabStop = true;
             this.rdoHome.Text = "Home";
             this.rdoHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoHome.UseVisualStyleBackColor = false;
@@ -245,11 +244,11 @@
             this.emailApp});
             this.lstAppointments.HideSelection = false;
             this.lstAppointments.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28,
-            listViewItem29});
+            listViewItem37,
+            listViewItem38,
+            listViewItem39,
+            listViewItem40,
+            listViewItem41});
             this.lstAppointments.Location = new System.Drawing.Point(10, 9);
             this.lstAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstAppointments.Name = "lstAppointments";
@@ -379,7 +378,7 @@
             this.id});
             this.lstCustomers.HideSelection = false;
             this.lstCustomers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem30});
+            listViewItem42});
             this.lstCustomers.Location = new System.Drawing.Point(8, 15);
             this.lstCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstCustomers.Name = "lstCustomers";
@@ -464,7 +463,7 @@
             this.btnLogin.Location = new System.Drawing.Point(454, 24);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 46);
-            this.btnLogin.TabIndex = 7;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -484,7 +483,7 @@
             this.lnkCreateAccount.Location = new System.Drawing.Point(210, 73);
             this.lnkCreateAccount.Name = "lnkCreateAccount";
             this.lnkCreateAccount.Size = new System.Drawing.Size(62, 13);
-            this.lnkCreateAccount.TabIndex = 6;
+            this.lnkCreateAccount.TabIndex = 4;
             this.lnkCreateAccount.TabStop = true;
             this.lnkCreateAccount.Text = "Create one!";
             this.lnkCreateAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
@@ -512,7 +511,7 @@
             this.txtPassword.Location = new System.Drawing.Point(134, 50);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(314, 20);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 

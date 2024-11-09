@@ -29,6 +29,7 @@ namespace groomy
         {
             InitializeComponent();
             rdoCustomer.BackColor = PrimaryAccent;
+            this.ActiveControl = txtUsername;
         }
 
 
