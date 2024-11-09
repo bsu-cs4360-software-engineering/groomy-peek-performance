@@ -62,18 +62,18 @@ namespace groomy
             if (theCustomerInQuestion != null)
             {
                 // Convert DateTimePicker values to UTC
-                DateTime startDateTimeUtc = dateTimePicker1.Value.ToUniversalTime();
-                DateTime endDateTimeUtc = dateTimePicker2.Value.ToUniversalTime();
+                DateTime startDateTimeUtc = dtpStart.Value.ToUniversalTime();
+                DateTime endDateTimeUtc = dtpEnd.Value.ToUniversalTime();
 
                 appointment newAppointment = new appointment
                 {
                     deleted = false,
                     foreignKey = theCustomerInQuestion.id, // Use the instance's id
                     id = "", // Assign a unique ID for the appointment
-                    location = textBox2.Text,
+                    location = txtLoc.Text,
                     start = Timestamp.FromDateTime(startDateTimeUtc), // Convert to Timestamp
                     endTime = Timestamp.FromDateTime(endDateTimeUtc), // Convert to Timestamp
-                    Title = textBox1.Text,
+                    Title = txtTitle.Text,
                     desc = txtDescription.Text,
                 };
 

@@ -17,10 +17,10 @@ namespace groomy
             InitializeComponent(); // Ensure this is called first
 
             txtDescription.Text = desc;
-            textBox1.Text = title;
-            textBox2.Text = loc;
-            dateTimePicker1.Value = System.DateTime.Parse(start);
-            dateTimePicker2.Value = System.DateTime.Parse(end);
+            txtTitle.Text = title;
+            txtLoc.Text = loc;
+            dtpStart.Value = System.DateTime.Parse(start);
+            dtpEnd.Value = System.DateTime.Parse(end);
             comboBox1.Text = email;
             appointmentId = id; // Assign the ID to the class-level variable
         }
@@ -34,18 +34,18 @@ namespace groomy
 
             // Assuming comboBox1.SelectedText contains the email you want to use
             customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(comboBox1.Text);
-            System.DateTime startDateTimeUtc = dateTimePicker1.Value.ToUniversalTime();
-            System.DateTime endDateTimeUtc = dateTimePicker2.Value.ToUniversalTime();
+            System.DateTime startDateTimeUtc = dtpStart.Value.ToUniversalTime();
+            System.DateTime endDateTimeUtc = dtpEnd.Value.ToUniversalTime();
 
             appointment newAppointment = new appointment
             {
                 deleted = false,
                 foreignKey = theCustomerInQuestion.id, // Use the instance's id
                 id = appointmentId, // Use the class-level variable for the appointment ID
-                location = textBox2.Text,
+                location = txtLoc.Text,
                 start = Timestamp.FromDateTime(startDateTimeUtc), // Convert to Timestamp
                 endTime = Timestamp.FromDateTime(endDateTimeUtc), // Convert to Timestamp
-                Title = textBox1.Text,
+                Title = txtTitle.Text,
                 desc = txtDescription.Text,
             };
 

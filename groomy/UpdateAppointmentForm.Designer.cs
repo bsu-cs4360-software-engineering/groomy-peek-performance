@@ -30,17 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLoc = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -65,21 +65,21 @@
             this.dtpDate.Size = new System.Drawing.Size(178, 20);
             this.dtpDate.TabIndex = 0;
             // 
-            // dateTimePicker1
+            // dtpStart
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(48, 59);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStart.Location = new System.Drawing.Point(48, 59);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(95, 20);
+            this.dtpStart.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dtpEnd
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(48, 95);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEnd.Location = new System.Drawing.Point(48, 95);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(95, 20);
+            this.dtpEnd.TabIndex = 2;
             // 
             // label2
             // 
@@ -101,7 +101,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtLoc);
             this.groupBox2.Location = new System.Drawing.Point(12, 220);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(245, 61);
@@ -109,12 +109,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location";
             // 
-            // textBox2
+            // txtLoc
             // 
-            this.textBox2.Location = new System.Drawing.Point(10, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 20);
-            this.textBox2.TabIndex = 0;
+            this.txtLoc.Location = new System.Drawing.Point(10, 20);
+            this.txtLoc.Name = "txtLoc";
+            this.txtLoc.Size = new System.Drawing.Size(216, 20);
+            this.txtLoc.TabIndex = 0;
             // 
             // btnUpdate
             // 
@@ -147,8 +147,8 @@
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpDate);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dtpStart);
+            this.groupBox1.Controls.Add(this.dtpEnd);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 74);
@@ -158,12 +158,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Time";
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtTitle.Location = new System.Drawing.Point(67, 12);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(190, 20);
+            this.txtTitle.TabIndex = 0;
             // 
             // label4
             // 
@@ -203,7 +203,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
             this.Name = "UpdateAppointmentForm";
             this.Text = "Update Appointment";
@@ -223,17 +223,17 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLoc;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtDescription;
