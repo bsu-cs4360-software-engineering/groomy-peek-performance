@@ -71,7 +71,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(48, 59);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.TabIndex = 1;
             // 
             // label2
             // 
@@ -97,7 +97,7 @@
             this.dateTimePicker2.Location = new System.Drawing.Point(48, 95);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dateTimePicker2.TabIndex = 2;
             // 
             // label4
             // 
@@ -113,7 +113,7 @@
             this.textBox1.Location = new System.Drawing.Point(71, 10);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 7;
+            this.textBox1.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -136,7 +136,7 @@
             this.comboBox1.Location = new System.Drawing.Point(71, 36);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(190, 21);
-            this.comboBox1.TabIndex = 9;
+            this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label5
@@ -151,10 +151,10 @@
             // btnCreate
             // 
             this.btnCreate.Location = new System.Drawing.Point(16, 378);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 11;
+            this.btnCreate.TabIndex = 2;
             this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -179,7 +179,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(6, 16);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(173, 70);
@@ -189,9 +189,9 @@
             // 
             this.groupBox3.Controls.Add(this.txtDescription);
             this.groupBox3.Location = new System.Drawing.Point(11, 284);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(183, 90);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;

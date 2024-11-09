@@ -50,6 +50,8 @@ namespace groomy
             };
 
             await updatePlease.updateAppointment(newAppointment);
+            MessageBox.Show("Appointment Updated!", "Updated", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void UpdateAppointmentForm_Load(object sender, EventArgs e)

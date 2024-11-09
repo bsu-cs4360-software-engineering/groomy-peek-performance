@@ -42,6 +42,7 @@ namespace groomy
             createAdminUser creating = new createAdminUser(db);
             await creating.addadminUserAsync(user);
             MessageBox.Show("New User Created");
+            this.Close();
         }
 
         private void AccountCreateForm_Load(object sender, EventArgs e)
