@@ -213,9 +213,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 366);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "updateUsers";
-            this.Text = "updateUsers";
+            this.Text = "Update User";
             this.panel2.ResumeLayout(false);
             this.grpContact.ResumeLayout(false);
             this.grpContact.PerformLayout();
