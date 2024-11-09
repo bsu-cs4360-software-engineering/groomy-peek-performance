@@ -23,7 +23,7 @@ namespace groomy.Customers
             Query query = __db.Collection("Customers");
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
-            Console.WriteLine($"Total documents: {snapshot.Documents.Count}"); // Print count only once
+            //Console.WriteLine($"Total documents: {snapshot.Documents.Count}"); // Print count only once
 
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
@@ -43,7 +43,7 @@ namespace groomy.Customers
             DocumentReference docRef = __db.Collection("Customers").Document();
             customer.id = docRef.Id;
             await docRef.SetAsync(customer);
-            Console.WriteLine($"Added customer with ID: {customer.id}");
+            //Console.WriteLine($"Added customer with ID: {customer.id}");
         }
 
         public async Task<customer> getCustomerById(string customerId)
@@ -90,7 +90,7 @@ namespace groomy.Customers
         {
             DocumentReference docRef = __db.Collection("Customers").Document(customer.id.ToString());
             await docRef.SetAsync(customer, SetOptions.MergeAll);
-            Console.WriteLine($"Updated customer with ID: {customer.id}");
+            //Console.WriteLine($"Updated customer with ID: {customer.id}");
         }
 
         public async Task deleteCustomerByEmail(string email)
@@ -112,11 +112,11 @@ namespace groomy.Customers
 
                 // Mark the customer as deleted
                 await docRef.SetAsync(newData, SetOptions.MergeAll);
-                Console.WriteLine($"Marked customer with email: {email} as deleted.");
+                //Console.WriteLine($"Marked customer with email: {email} as deleted.");
             }
             else
             {
-                Console.WriteLine($"No customer found with email: {email}.");
+                //Console.WriteLine($"No customer found with email: {email}.");
             }
         }
     }

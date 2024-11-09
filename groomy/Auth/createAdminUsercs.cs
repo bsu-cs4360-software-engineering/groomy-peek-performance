@@ -27,11 +27,11 @@ namespace groomy.auth
                 DocumentReference docRef = __firestoreDb.Collection("Users").Document(user.email);
                 await docRef.SetAsync(user);
 
-                Console.WriteLine($"Admin user {user.fName} {user.password} added successfully.");
+                //Console.WriteLine($"Admin user {user.fName} {user.password} added successfully.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error adding admin user: {ex.Message}");
+                //Console.WriteLine($"Error adding admin user: {ex.Message}");
                 throw;  // Rethrow the exception to ensure it can be caught in tests
             }
         }

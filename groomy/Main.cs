@@ -109,7 +109,7 @@ namespace groomy
 
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
-            Console.WriteLine(potato.Count);
+            //Console.WriteLine(potato.Count);
             if (potato == null || potato.Count == 0)
             {
                 MessageBox.Show("No customers found.");
@@ -149,7 +149,7 @@ namespace groomy
 
             List<appointment> appointmentList = appointments; // Assuming this returns a List<appointment>
 
-            Console.WriteLine(appointmentList.Count);
+            //Console.WriteLine(appointmentList.Count);
 
 
             if (appointmentList == null || appointmentList.Count == 0)
@@ -247,7 +247,7 @@ namespace groomy
 
         private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("I hate winforms");
+            //Console.WriteLine("I hate winforms");
         }
 
         private async void btnCustomerDelete_Click(object sender, EventArgs e)
@@ -256,7 +256,7 @@ namespace groomy
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
             string email = listView1.SelectedItems[0].SubItems[3].Text;
-            Console.WriteLine(email);
+            //Console.WriteLine(email);
             customer cust = await customerGetter.getCustomerByEmail(email);
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Are you sure?", MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.Yes)

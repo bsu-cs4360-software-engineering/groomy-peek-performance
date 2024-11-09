@@ -43,7 +43,7 @@ namespace groomy.Appointments
             DocumentReference docRef = __db.Collection("Appointment").Document();
             appointment.id = docRef.Id;
             await docRef.SetAsync(appointment);
-            Console.WriteLine($"Added appointment with ID: {docRef.Id}");
+            //Console.WriteLine($"Added appointment with ID: {docRef.Id}");
         }
 
         public async Task<appointment> getAppointmentById(int appointmentId)
@@ -63,7 +63,7 @@ namespace groomy.Appointments
         {
             DocumentReference docRef = __db.Collection("Appointment").Document(appointment.id.ToString());
             await docRef.SetAsync(appointment, SetOptions.MergeAll);
-            Console.WriteLine($"Updated appointment with ID: {appointment.id}");
+            //Console.WriteLine($"Updated appointment with ID: {appointment.id}");
         }
 
         public async Task deleteAppointmentById(string appointmentId)
@@ -74,7 +74,7 @@ namespace groomy.Appointments
                 deleted = true
             };
             await docRef.SetAsync(newData,SetOptions.MergeAll);
-            Console.WriteLine($"Marked appointment with ID: {appointmentId} as deleted.");
+            //Console.WriteLine($"Marked appointment with ID: {appointmentId} as deleted.");
         }
     }
 }
