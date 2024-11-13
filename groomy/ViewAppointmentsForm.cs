@@ -21,7 +21,7 @@ namespace groomy
             txtLocation.Text = loc;
             dateTimePicker1.Value = System.DateTime.Parse(start);
             dateTimePicker2.Value = System.DateTime.Parse(end);
-            comboBox1.Text = email;
+            cmbCust.Text = email;
         }
 
         private void ViewAppointmentsForm_Load(object sender, EventArgs e)

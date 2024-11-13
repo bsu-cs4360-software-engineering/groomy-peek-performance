@@ -31,7 +31,7 @@ namespace groomy.Auth
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error checking email: {ex.Message}");
+                //Console.WriteLine($"Error checking email: {ex.Message}");
                 return false;
             }
         }
@@ -53,7 +53,7 @@ namespace groomy.Auth
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error checking email: {ex.Message}");
+                //Console.WriteLine($"Error checking email: {ex.Message}");
                 return false;
             }
         }

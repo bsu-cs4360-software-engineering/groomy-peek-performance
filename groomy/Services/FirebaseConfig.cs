@@ -17,9 +17,9 @@ namespace groomy.services
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsPath);
 
-            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
-            Console.WriteLine($"Checking for file at path: {credentialsPath}");
-            Console.WriteLine($"File exists: {File.Exists(credentialsPath)}");
+            //Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
+            //Console.WriteLine($"Checking for file at path: {credentialsPath}");
+            //Console.WriteLine($"File exists: {File.Exists(credentialsPath)}");
 
             if (!File.Exists(credentialsPath))
             {
@@ -58,7 +58,7 @@ namespace groomy.services
                 });
             }
 
-            Console.WriteLine("Firebase initialized successfully.");
+            //Console.WriteLine("Firebase initialized successfully.");
         }
     }
 }

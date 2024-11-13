@@ -46,6 +46,7 @@ namespace groomy
                 await customerGetter.updateCustomer(updatedCustomer);
 
                 MessageBox.Show("Customer updated successfully!");
+                this.Close();
             }
             catch (Exception ex)
             {
