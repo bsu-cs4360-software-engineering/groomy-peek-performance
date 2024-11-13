@@ -44,9 +44,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.grpNotes = new System.Windows.Forms.GroupBox();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNoteTitle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.grpNotes.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -192,11 +203,100 @@
             this.txtDescription.Size = new System.Drawing.Size(229, 85);
             this.txtDescription.TabIndex = 0;
             // 
+            // grpNotes
+            // 
+            this.grpNotes.Controls.Add(this.btnCreate);
+            this.grpNotes.Controls.Add(this.btnEdit);
+            this.grpNotes.Controls.Add(this.listView1);
+            this.grpNotes.Controls.Add(this.txtNote);
+            this.grpNotes.Controls.Add(this.label7);
+            this.grpNotes.Controls.Add(this.txtNoteTitle);
+            this.grpNotes.Controls.Add(this.label6);
+            this.grpNotes.Location = new System.Drawing.Point(263, 12);
+            this.grpNotes.Name = "grpNotes";
+            this.grpNotes.Size = new System.Drawing.Size(374, 389);
+            this.grpNotes.TabIndex = 30;
+            this.grpNotes.TabStop = false;
+            this.grpNotes.Text = "Notes";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(12, 358);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 5;
+            this.btnCreate.Text = "&Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(12, 358);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Title,
+            this.Created});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(9, 15);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(355, 141);
+            this.listView1.TabIndex = 4;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            // 
+            // Created
+            // 
+            this.Created.Text = "Created";
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(12, 224);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(355, 121);
+            this.txtNote.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 208);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Note: ";
+            // 
+            // txtNoteTitle
+            // 
+            this.txtNoteTitle.Location = new System.Drawing.Point(9, 181);
+            this.txtNoteTitle.Name = "txtNoteTitle";
+            this.txtNoteTitle.Size = new System.Drawing.Size(358, 20);
+            this.txtNoteTitle.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Title: ";
+            // 
             // UpdateAppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 440);
+            this.ClientSize = new System.Drawing.Size(645, 440);
+            this.Controls.Add(this.grpNotes);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnUpdate);
@@ -214,6 +314,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.grpNotes.ResumeLayout(false);
+            this.grpNotes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +339,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.GroupBox grpNotes;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Created;
+        private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNoteTitle;
+        private System.Windows.Forms.Label label6;
     }
 }

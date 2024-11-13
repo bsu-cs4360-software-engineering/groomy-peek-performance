@@ -43,20 +43,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNoteTitle = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtNote = new System.Windows.Forms.TextBox();
+            this.grpNotes = new System.Windows.Forms.GroupBox();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNoteTitle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.grpNotes.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -208,54 +208,40 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Title: ";
             // 
-            // groupBox4
+            // grpNotes
             // 
-            this.groupBox4.Controls.Add(this.btnCreate);
-            this.groupBox4.Controls.Add(this.btnEdit);
-            this.groupBox4.Controls.Add(this.listView1);
-            this.groupBox4.Controls.Add(this.txtNote);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.txtNoteTitle);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(273, 14);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(374, 389);
-            this.groupBox4.TabIndex = 29;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Notes";
+            this.grpNotes.Controls.Add(this.btnCreate);
+            this.grpNotes.Controls.Add(this.btnEdit);
+            this.grpNotes.Controls.Add(this.listView1);
+            this.grpNotes.Controls.Add(this.txtNote);
+            this.grpNotes.Controls.Add(this.label7);
+            this.grpNotes.Controls.Add(this.txtNoteTitle);
+            this.grpNotes.Controls.Add(this.label6);
+            this.grpNotes.Location = new System.Drawing.Point(273, 14);
+            this.grpNotes.Name = "grpNotes";
+            this.grpNotes.Size = new System.Drawing.Size(374, 389);
+            this.grpNotes.TabIndex = 29;
+            this.grpNotes.TabStop = false;
+            this.grpNotes.Text = "Notes";
             // 
-            // label6
+            // btnCreate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 164);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Title: ";
+            this.btnCreate.Location = new System.Drawing.Point(12, 358);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 5;
+            this.btnCreate.Text = "&Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
-            // txtNoteTitle
+            // btnEdit
             // 
-            this.txtNoteTitle.Location = new System.Drawing.Point(9, 181);
-            this.txtNoteTitle.Name = "txtNoteTitle";
-            this.txtNoteTitle.Size = new System.Drawing.Size(358, 20);
-            this.txtNoteTitle.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 208);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Note: ";
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(12, 224);
-            this.txtNote.Multiline = true;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(355, 121);
-            this.txtNote.TabIndex = 3;
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(12, 358);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
@@ -277,31 +263,45 @@
             // 
             this.Created.Text = "Created";
             // 
-            // btnCreate
+            // txtNote
             // 
-            this.btnCreate.Location = new System.Drawing.Point(12, 358);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 5;
-            this.btnCreate.Text = "&Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.txtNote.Location = new System.Drawing.Point(12, 224);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(355, 121);
+            this.txtNote.TabIndex = 3;
             // 
-            // btnEdit
+            // label7
             // 
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(12, 358);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "&Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 208);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Note: ";
+            // 
+            // txtNoteTitle
+            // 
+            this.txtNoteTitle.Location = new System.Drawing.Point(9, 181);
+            this.txtNoteTitle.Name = "txtNoteTitle";
+            this.txtNoteTitle.Size = new System.Drawing.Size(358, 20);
+            this.txtNoteTitle.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Title: ";
             // 
             // ViewAppointmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 415);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.grpNotes);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label5);
@@ -318,8 +318,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.grpNotes.ResumeLayout(false);
+            this.grpNotes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,7 +342,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grpNotes;
         private System.Windows.Forms.TextBox txtNoteTitle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNote;
