@@ -52,6 +52,7 @@
             this.lblNote = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.btnNoteCreate = new System.Windows.Forms.Button();
+            this.btnEditNote = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.grpID.SuspendLayout();
             this.grpContact.SuspendLayout();
@@ -214,6 +215,7 @@
             // 
             // grpNotes
             // 
+            this.grpNotes.Controls.Add(this.btnEditNote);
             this.grpNotes.Controls.Add(this.btnNoteCreate);
             this.grpNotes.Controls.Add(this.txtNote);
             this.grpNotes.Controls.Add(this.lblNote);
@@ -278,6 +280,15 @@
             this.btnNoteCreate.Text = "&Create";
             this.btnNoteCreate.UseVisualStyleBackColor = true;
             // 
+            // btnEditNote
+            // 
+            this.btnEditNote.Location = new System.Drawing.Point(10, 268);
+            this.btnEditNote.Name = "btnEditNote";
+            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
+            this.btnEditNote.TabIndex = 6;
+            this.btnEditNote.Text = "&Edit";
+            this.btnEditNote.UseVisualStyleBackColor = true;
+            // 
             // updateUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,5 +339,6 @@
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.TextBox txtNoteTitle;
+        private System.Windows.Forms.Button btnEditNote;
     }
 }
