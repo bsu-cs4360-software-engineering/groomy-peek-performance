@@ -200,6 +200,9 @@
     <Compile Include="CreateUserForm.Designer.cs">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notes\notesCRUD.cs" />
+    <Compile Include="Notes\notes.cs" />
+    <Compile Include="Notes\notesInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\firebaseConfig.cs" />
@@ -333,9 +336,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Notes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
