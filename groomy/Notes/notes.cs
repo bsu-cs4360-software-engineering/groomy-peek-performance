@@ -22,5 +22,8 @@ namespace groomy.Notes
         [FirestoreProperty("id")]
         public string id { get; set; }
 
+        [FirestoreProperty("deleted")]
+        public bool deleted { get; set; }
+
     }
 }
