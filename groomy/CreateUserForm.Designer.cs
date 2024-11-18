@@ -37,7 +37,7 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnShowPassword = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -72,28 +72,28 @@
             this.txtFirst.Location = new System.Drawing.Point(85, 32);
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.Size = new System.Drawing.Size(144, 20);
-            this.txtFirst.TabIndex = 3;
+            this.txtFirst.TabIndex = 1;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(86, 6);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(143, 20);
-            this.txtEmail.TabIndex = 4;
+            this.txtEmail.TabIndex = 0;
             // 
             // txtLast
             // 
             this.txtLast.Location = new System.Drawing.Point(86, 58);
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(143, 20);
-            this.txtLast.TabIndex = 5;
+            this.txtLast.TabIndex = 2;
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(86, 85);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(143, 20);
-            this.txtPass.TabIndex = 6;
+            this.txtPass.TabIndex = 3;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // label4
@@ -110,28 +110,28 @@
             this.btnShowPassword.Location = new System.Drawing.Point(235, 82);
             this.btnShowPassword.Name = "btnShowPassword";
             this.btnShowPassword.Size = new System.Drawing.Size(75, 23);
-            this.btnShowPassword.TabIndex = 8;
+            this.btnShowPassword.TabIndex = 5;
             this.btnShowPassword.Text = "Show";
             this.btnShowPassword.UseVisualStyleBackColor = true;
             this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
-            // button1
+            // btnCreate
             // 
-            this.button1.Location = new System.Drawing.Point(94, 119);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 19);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Create User";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCreate.Location = new System.Drawing.Point(94, 119);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(112, 19);
+            this.btnCreate.TabIndex = 4;
+            this.btnCreate.Text = "Create User";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.button1_Click);
             // 
             // AccountCreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(329, 173);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPass);
@@ -160,6 +160,6 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnShowPassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCreate;
     }
 }

@@ -37,7 +37,8 @@ namespace groomy
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD createThisUserPlease = new customerCRUD(db);
             await createThisUserPlease.addCustomerAsync(newCustomer);
-            
+            MessageBox.Show("New customer created!", "Finished", MessageBoxButtons.OK);
+            this.Close();
         }
 
         private void txtFName_TextChanged(object sender, EventArgs e)

@@ -29,6 +29,7 @@ namespace groomy
         {
             InitializeComponent();
             rdoCustomer.BackColor = PrimaryAccent;
+            this.ActiveControl = txtUsername;
         }
 
 
@@ -102,14 +103,14 @@ namespace groomy
         //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
         public async void loadCustomers()
         {
-            listView1.Items.Clear();
+            lstCustomers.Items.Clear();
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
 
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
-            Console.WriteLine(potato.Count);
+            //Console.WriteLine(potato.Count);
             if (potato == null || potato.Count == 0)
             {
                 MessageBox.Show("No customers found.");
@@ -126,7 +127,7 @@ namespace groomy
                     item.SubItems.Add(cust.email);
                     item.SubItems.Add(cust.address);
                     item.SubItems.Add(cust.id);
-                    listView1.Items.Add(item);
+                    lstCustomers.Items.Add(item);
                 }
             }
 
@@ -136,7 +137,7 @@ namespace groomy
 
         {
 
-            listView2.Items.Clear();
+            lstAppointments.Items.Clear();
 
             firebaseConfig config = firebaseConfig.Instance;
 
@@ -149,7 +150,7 @@ namespace groomy
 
             List<appointment> appointmentList = appointments; // Assuming this returns a List<appointment>
 
-            Console.WriteLine(appointmentList.Count);
+            //Console.WriteLine(appointmentList.Count);
 
 
             if (appointmentList == null || appointmentList.Count == 0)
@@ -179,7 +180,7 @@ namespace groomy
                     item.SubItems.Add(customerstuff.fName.ToString() + " " +customerstuff.lName.ToString());
                     item.SubItems.Add(app.id.ToString());
                     item.SubItems.Add(customerstuff.email);
-                    listView2.Items.Add(item);
+                    lstAppointments.Items.Add(item);
 
                 }
 
@@ -188,7 +189,7 @@ namespace groomy
         }
         private async void rdoHome_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton radioBtn = this.panel1.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
+            RadioButton radioBtn = this.pnlAccent.Controls.OfType<RadioButton>().Where(x => x.Checked).FirstOrDefault();
             if (radioBtn != null)
             {
                 switch (radioBtn.Text)
@@ -196,35 +197,31 @@ namespace groomy
                     case "Home":
                         // This is the home button.  It should automatically be selected. 
                         pnlLogin.BringToFront();
-                        pnlLogin.Visible = true;
                         pnlCustomer.Visible = false;
                         pnlAppointments.Visible = false;
                         break;
 
                     case "Customer":
                         // This is the customer button.  When this is clicked, it should run the getAllCustomers function. Jordan doesn't know how to set that up. 
-                        listView1.Items.Clear();
-                        listView1.View = View.Details;
-                        listView1.FullRowSelect = true;
+                        lstCustomers.Items.Clear();
+                        lstCustomers.View = View.Details;
+                        lstCustomers.FullRowSelect = true;
                         pnlCustomer.BringToFront();
-                        pnlLogin.Visible = false;
-                        pnlCustomer.Visible = true;
-                        pnlAppointments.Visible = false;
-                        loadCustomers();
-
-
+                        pnlLogin.Visible = !rdoCustomer.Checked;
+                        pnlAppointments.Visible = pnlLogin.Visible;
+                        pnlCustomer.Visible = rdoCustomer.Checked;
                         break;
 
                     case "Appointments":
                         //This is the appointments button.
-                        listView2.FullRowSelect = true;
-                        listView2.View = View.Details;
-                        listView2.Items.Clear();
+                        lstAppointments.FullRowSelect = true;
+                        lstAppointments.View = View.Details;
+                        lstAppointments.Items.Clear();
                         pnlAppointments.BringToFront();
-                        pnlAppointments.Visible = true;
-                        pnlLogin.Visible = false;
-                        pnlCustomer.Visible = false;
-                        loadAppointments();
+                        pnlLogin.Visible = !rdoAppointments.Checked;
+                        pnlCustomer.Visible = !rdoAppointments.Checked;
+                        pnlAppointments.Visible = rdoAppointments.Checked;
+                        
                         
                         break;
 
@@ -249,7 +246,7 @@ namespace groomy
 
         private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("I hate winforms");
+            //Console.WriteLine("I hate winforms");
         }
 
         private async void btnCustomerDelete_Click(object sender, EventArgs e)
@@ -257,11 +254,16 @@ namespace groomy
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
-            string email = listView1.SelectedItems[0].SubItems[3].Text;
-            Console.WriteLine(email);
+            string email = lstCustomers.SelectedItems[0].SubItems[3].Text;
+            //Console.WriteLine(email);
             customer cust = await customerGetter.getCustomerByEmail(email);
-            await customerGetter.deleteCustomerByEmail(email);
-            loadCustomers();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Are you sure?", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                await customerGetter.deleteCustomerByEmail(email);
+                loadCustomers();
+            }
+            
 
 
 
@@ -274,13 +276,17 @@ namespace groomy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            updateUsers cutForm = new updateUsers(listView1.SelectedItems[0].SubItems[3].Text,
-                listView1.SelectedItems[0].SubItems[0].Text,
-                listView1.SelectedItems[0].SubItems[1].Text,
-                listView1.SelectedItems[0].SubItems[5].Text,
-                listView1.SelectedItems[0].SubItems[2].Text,
-                listView1.SelectedItems[0].SubItems[4].Text);
-            cutForm.ShowDialog();
+            if (lstCustomers.SelectedItems.Count > 0)
+            {
+                updateUsers cutForm = new updateUsers(lstCustomers.SelectedItems[0].SubItems[3].Text,
+                    lstCustomers.SelectedItems[0].SubItems[0].Text,
+                    lstCustomers.SelectedItems[0].SubItems[1].Text,
+                    lstCustomers.SelectedItems[0].SubItems[5].Text,
+                    lstCustomers.SelectedItems[0].SubItems[2].Text,
+                    lstCustomers.SelectedItems[0].SubItems[4].Text);
+                cutForm.ShowDialog();
+            }
+            
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,13 +296,16 @@ namespace groomy
 
         private void btnCustView_Click(object sender, EventArgs e)
         {
-            ViewCustomerForm cutForm = new ViewCustomerForm(listView1.SelectedItems[0].SubItems[3].Text,
-                listView1.SelectedItems[0].SubItems[0].Text,
-                listView1.SelectedItems[0].SubItems[1].Text,
-                listView1.SelectedItems[0].SubItems[5].Text,
-                listView1.SelectedItems[0].SubItems[2].Text,
-                listView1.SelectedItems[0].SubItems[4].Text);
-            cutForm.ShowDialog();
+            if (lstCustomers.SelectedItems.Count > 0)
+            {
+                ViewCustomerForm cutForm = new ViewCustomerForm(lstCustomers.SelectedItems[0].SubItems[3].Text,
+                    lstCustomers.SelectedItems[0].SubItems[0].Text,
+                    lstCustomers.SelectedItems[0].SubItems[1].Text,
+                    lstCustomers.SelectedItems[0].SubItems[5].Text,
+                    lstCustomers.SelectedItems[0].SubItems[2].Text,
+                    lstCustomers.SelectedItems[0].SubItems[4].Text);
+                cutForm.ShowDialog();
+            }
 
         }
 
@@ -311,36 +320,52 @@ namespace groomy
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             appointmentCRUD potato = new appointmentCRUD(db);
-            await potato.deleteAppointmentById(listView2.SelectedItems[0].SubItems[6].Text);
-            loadAppointments();
+            DialogResult deleteResult = MessageBox.Show("Are you sure you want to delete this appointment?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (lstAppointments.SelectedItems.Count > 0 && deleteResult == DialogResult.Yes)
+            {
+                await potato.deleteAppointmentById(lstAppointments.SelectedItems[0].SubItems[6].Text);
+                loadAppointments();
+            }
         }
 
         private void btnAppUpdate_Click(object sender, EventArgs e)
         {
-            
-                
-            UpdateAppointmentForm upApp = new UpdateAppointmentForm(
-            listView2.SelectedItems[0].SubItems[0].Text,
-            listView2.SelectedItems[0].SubItems[1].Text,
-            listView2.SelectedItems[0].SubItems[2].Text,
-            listView2.SelectedItems[0].SubItems[3].Text,
-            listView2.SelectedItems[0].SubItems[4].Text,
-            listView2.SelectedItems[0].SubItems[6].Text,
-            listView2.SelectedItems[0].SubItems[7].Text);
-            upApp.ShowDialog();
+            if (lstAppointments.SelectedItems.Count > 0)
+            {
+
+                UpdateAppointmentForm upApp = new UpdateAppointmentForm(
+                lstAppointments.SelectedItems[0].SubItems[0].Text,
+                lstAppointments.SelectedItems[0].SubItems[1].Text,
+                lstAppointments.SelectedItems[0].SubItems[2].Text,
+                lstAppointments.SelectedItems[0].SubItems[3].Text,
+                lstAppointments.SelectedItems[0].SubItems[4].Text,
+                lstAppointments.SelectedItems[0].SubItems[6].Text,
+                lstAppointments.SelectedItems[0].SubItems[7].Text);
+                upApp.ShowDialog();
+            }
         }
 
         private void btnAppView_Click(object sender, EventArgs e)
         {
             ViewAppointmentsForm upApp = new ViewAppointmentsForm(
-            listView2.SelectedItems[0].SubItems[0].Text,
-            listView2.SelectedItems[0].SubItems[1].Text,
-            listView2.SelectedItems[0].SubItems[2].Text,
-            listView2.SelectedItems[0].SubItems[3].Text,
-            listView2.SelectedItems[0].SubItems[4].Text,
-            listView2.SelectedItems[0].SubItems[6].Text,
-            listView2.SelectedItems[0].SubItems[7].Text);
+            lstAppointments.SelectedItems[0].SubItems[0].Text,
+            lstAppointments.SelectedItems[0].SubItems[1].Text,
+            lstAppointments.SelectedItems[0].SubItems[2].Text,
+            lstAppointments.SelectedItems[0].SubItems[3].Text,
+            lstAppointments.SelectedItems[0].SubItems[4].Text,
+            lstAppointments.SelectedItems[0].SubItems[6].Text,
+            lstAppointments.SelectedItems[0].SubItems[7].Text);
             upApp.ShowDialog();
+        }
+
+        private void pnlCustomer_VisibleChanged(object sender, EventArgs e)
+        {
+            loadCustomers();
+        }
+
+        private void pnlAppointments_VisibleChanged(object sender, EventArgs e)
+        {
+            loadAppointments();
         }
     }
 }

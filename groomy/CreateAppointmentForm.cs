@@ -25,14 +25,14 @@ namespace groomy
         }
         public async void loadCustomers()
         {
-            comboBox1.Items.Clear();
+            cmbCust.Items.Clear();
             firebaseConfig config = firebaseConfig.Instance;
             FirestoreDb db = config.getFirestoreDB();
             customerCRUD customerGetter = new customerCRUD(db);
 
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
-            Console.WriteLine(potato.Count);
+            //Console.WriteLine(potato.Count);
             if (potato == null || potato.Count == 0)
             {
                 MessageBox.Show("No customers found.");
@@ -41,7 +41,7 @@ namespace groomy
 
             foreach (customer cust in potato)
             {
-                comboBox1.Items.Add(cust.email);
+                cmbCust.Items.Add(cust.email);
             }
         }
         private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,28 +56,30 @@ namespace groomy
             appointmentCRUD appointmentCRUD = new appointmentCRUD(db);
 
             // Assuming comboBox1.SelectedText contains the email you want to use
-            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(comboBox1.Text);
+            customer theCustomerInQuestion = await customerGetter.getCustomerByEmail(cmbCust.Text);
 
             // Ensure that the customer object is not null before accessing its properties
             if (theCustomerInQuestion != null)
             {
                 // Convert DateTimePicker values to UTC
-                DateTime startDateTimeUtc = dateTimePicker1.Value.ToUniversalTime();
-                DateTime endDateTimeUtc = dateTimePicker2.Value.ToUniversalTime();
+                DateTime startDateTimeUtc = dtpStart.Value.ToUniversalTime();
+                DateTime endDateTimeUtc = dtpEnd.Value.ToUniversalTime();
 
                 appointment newAppointment = new appointment
                 {
                     deleted = false,
                     foreignKey = theCustomerInQuestion.id, // Use the instance's id
                     id = "", // Assign a unique ID for the appointment
-                    location = textBox2.Text,
+                    location = txtLoc.Text,
                     start = Timestamp.FromDateTime(startDateTimeUtc), // Convert to Timestamp
                     endTime = Timestamp.FromDateTime(endDateTimeUtc), // Convert to Timestamp
-                    Title = textBox1.Text,
+                    Title = txtTitle.Text,
                     desc = txtDescription.Text,
                 };
 
                 await appointmentCRUD.addAppointmentAsync(newAppointment, theCustomerInQuestion.id);
+                MessageBox.Show("New Appointment made!", "Finished!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {

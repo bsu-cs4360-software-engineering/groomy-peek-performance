@@ -43,7 +43,7 @@ namespace groomy.Customers.Tests
             };
             await testCustCrud.addCustomerAsync(newCustomer);
             var z = testCustCrud.getCustomerByEmail("john.doe@example.com");
-            Console.WriteLine(z);
+            //Console.WriteLine(z);
             Assert.IsNotNull(z);
         }
 
@@ -83,7 +83,7 @@ namespace groomy.Customers.Tests
 
             Assert.IsNotNull(addedCustomer, "Customer should be added successfully.");
 
-            Console.WriteLine($"Added Customer ID: {addedCustomer.id}"); // Debugging line
+            //Console.WriteLine($"Added Customer ID: {addedCustomer.id}"); // Debugging line
 
 
             // Modify the customer object
@@ -102,7 +102,7 @@ namespace groomy.Customers.Tests
 
             var updatedCustomer = await testCustCrud.getCustomerById(addedCustomer.id);
 
-            Console.WriteLine($"Updated Customer ID: {updatedCustomer.id}");
+            //Console.WriteLine($"Updated Customer ID: {updatedCustomer.id}");
         }
     }
 }
