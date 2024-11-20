@@ -66,6 +66,7 @@ namespace groomy
                 pnlWelcome.Visible = true;
                 rdoCustomer.Visible = true;
                 rdoAppointments.Visible = true;
+                rdoServices.Visible = true;
             }
             else
             {
@@ -225,6 +226,14 @@ namespace groomy
                         break;
 
                     case "Services":
+                        //This is the services button.
+                        pnlAppointments.Visible = !rdoServices.Checked;
+                        pnlServices.Visible = rdoServices.Checked;
+                        pnlCustomer.Visible = !rdoServices.Checked;
+                        pnlServices.BringToFront();
+                        lstServices.Clear();
+                        lstServices.FullRowSelect= true;
+
                         break;
 
                     default:

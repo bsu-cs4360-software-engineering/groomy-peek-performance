@@ -43,6 +43,7 @@
             this.lblServDesc = new System.Windows.Forms.Label();
             this.txtServName = new System.Windows.Forms.TextBox();
             this.lblServName = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.grpNotes.SuspendLayout();
             this.grpService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
@@ -50,6 +51,7 @@
             // 
             // grpNotes
             // 
+            this.grpNotes.Controls.Add(this.btnDelete);
             this.grpNotes.Controls.Add(this.btnEditNote);
             this.grpNotes.Controls.Add(this.btnNoteCreate);
             this.grpNotes.Controls.Add(this.txtNote);
@@ -66,7 +68,7 @@
             // 
             // btnEditNote
             // 
-            this.btnEditNote.Location = new System.Drawing.Point(6, 194);
+            this.btnEditNote.Location = new System.Drawing.Point(87, 194);
             this.btnEditNote.Name = "btnEditNote";
             this.btnEditNote.Size = new System.Drawing.Size(75, 23);
             this.btnEditNote.TabIndex = 6;
@@ -193,6 +195,15 @@
             this.lblServName.TabIndex = 0;
             this.lblServName.Text = "Name:";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(165, 194);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "&Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // ViewServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,5 +242,6 @@
         private System.Windows.Forms.Label lblServDesc;
         private System.Windows.Forms.TextBox txtServName;
         private System.Windows.Forms.Label lblServName;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
