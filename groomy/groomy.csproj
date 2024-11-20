@@ -203,6 +203,9 @@
     <Compile Include="Notes\notesCRUD.cs" />
     <Compile Include="Notes\notes.cs" />
     <Compile Include="Notes\notesInterface.cs" />
+    <Compile Include="Pricing\serviceInterface.cs" />
+    <Compile Include="Pricing\service.cs" />
+    <Compile Include="Pricing\servicesCRUD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\firebaseConfig.cs" />
