@@ -2,7 +2,6 @@
 using groomy.Notes;
 using groomy.services;
 using System;
-
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
