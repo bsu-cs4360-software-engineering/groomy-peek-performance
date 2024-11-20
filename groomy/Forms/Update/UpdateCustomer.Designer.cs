@@ -31,28 +31,28 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.grpID = new System.Windows.Forms.GroupBox();
-            this.txtFName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtLName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFName = new System.Windows.Forms.TextBox();
             this.grpContact = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtAddr1 = new System.Windows.Forms.TextBox();
-            this.txtAddr2 = new System.Windows.Forms.TextBox();
-            this.txtAddr3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtAddr3 = new System.Windows.Forms.TextBox();
+            this.txtAddr2 = new System.Windows.Forms.TextBox();
+            this.txtAddr1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpNotes = new System.Windows.Forms.GroupBox();
-            this.lstNotes = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNoteTitle = new System.Windows.Forms.TextBox();
-            this.lblNote = new System.Windows.Forms.Label();
-            this.txtNote = new System.Windows.Forms.TextBox();
-            this.btnNoteCreate = new System.Windows.Forms.Button();
             this.btnEditNote = new System.Windows.Forms.Button();
+            this.btnNoteCreate = new System.Windows.Forms.Button();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.txtNoteTitle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lstNotes = new System.Windows.Forms.ListView();
             this.panel3.SuspendLayout();
             this.grpID.SuspendLayout();
             this.grpContact.SuspendLayout();
@@ -93,21 +93,12 @@
             this.grpID.TabStop = false;
             this.grpID.Text = "Identification";
             // 
-            // txtFName
+            // txtLName
             // 
-            this.txtFName.Location = new System.Drawing.Point(76, 19);
-            this.txtFName.Name = "txtFName";
-            this.txtFName.Size = new System.Drawing.Size(261, 20);
-            this.txtFName.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "First Name: ";
+            this.txtLName.Location = new System.Drawing.Point(76, 45);
+            this.txtLName.Name = "txtLName";
+            this.txtLName.Size = new System.Drawing.Size(261, 20);
+            this.txtLName.TabIndex = 1;
             // 
             // label2
             // 
@@ -118,12 +109,21 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Last Name: ";
             // 
-            // txtLName
+            // label1
             // 
-            this.txtLName.Location = new System.Drawing.Point(76, 45);
-            this.txtLName.Name = "txtLName";
-            this.txtLName.Size = new System.Drawing.Size(261, 20);
-            this.txtLName.TabIndex = 1;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "First Name: ";
+            // 
+            // txtFName
+            // 
+            this.txtFName.Location = new System.Drawing.Point(76, 19);
+            this.txtFName.Name = "txtFName";
+            this.txtFName.Size = new System.Drawing.Size(261, 20);
+            this.txtFName.TabIndex = 0;
             // 
             // grpContact
             // 
@@ -141,37 +141,14 @@
             this.grpContact.TabStop = false;
             this.grpContact.Text = "Contact";
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Email: ";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(75, 20);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(261, 20);
-            this.txtEmail.TabIndex = 0;
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(75, 47);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(261, 20);
-            this.txtPhoneNumber.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 50);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Phone: ";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 81);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Address: ";
             // 
             // panel1
             // 
@@ -183,12 +160,12 @@
             this.panel1.Size = new System.Drawing.Size(261, 84);
             this.panel1.TabIndex = 4;
             // 
-            // txtAddr1
+            // txtAddr3
             // 
-            this.txtAddr1.Location = new System.Drawing.Point(4, 4);
-            this.txtAddr1.Name = "txtAddr1";
-            this.txtAddr1.Size = new System.Drawing.Size(254, 20);
-            this.txtAddr1.TabIndex = 0;
+            this.txtAddr3.Location = new System.Drawing.Point(3, 57);
+            this.txtAddr3.Name = "txtAddr3";
+            this.txtAddr3.Size = new System.Drawing.Size(254, 20);
+            this.txtAddr3.TabIndex = 2;
             // 
             // txtAddr2
             // 
@@ -197,21 +174,44 @@
             this.txtAddr2.Size = new System.Drawing.Size(254, 20);
             this.txtAddr2.TabIndex = 1;
             // 
-            // txtAddr3
+            // txtAddr1
             // 
-            this.txtAddr3.Location = new System.Drawing.Point(3, 57);
-            this.txtAddr3.Name = "txtAddr3";
-            this.txtAddr3.Size = new System.Drawing.Size(254, 20);
-            this.txtAddr3.TabIndex = 2;
+            this.txtAddr1.Location = new System.Drawing.Point(4, 4);
+            this.txtAddr1.Name = "txtAddr1";
+            this.txtAddr1.Size = new System.Drawing.Size(254, 20);
+            this.txtAddr1.TabIndex = 0;
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 81);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Address: ";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Phone: ";
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(75, 47);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(261, 20);
+            this.txtPhoneNumber.TabIndex = 1;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(75, 20);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(261, 20);
+            this.txtEmail.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Email: ";
             // 
             // grpNotes
             // 
@@ -229,47 +229,14 @@
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
             // 
-            // lstNotes
+            // btnEditNote
             // 
-            this.lstNotes.HideSelection = false;
-            this.lstNotes.Location = new System.Drawing.Point(6, 19);
-            this.lstNotes.Name = "lstNotes";
-            this.lstNotes.Size = new System.Drawing.Size(423, 99);
-            this.lstNotes.TabIndex = 0;
-            this.lstNotes.UseCompatibleStateImageBehavior = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 125);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Title: ";
-            // 
-            // txtNoteTitle
-            // 
-            this.txtNoteTitle.Location = new System.Drawing.Point(6, 142);
-            this.txtNoteTitle.Name = "txtNoteTitle";
-            this.txtNoteTitle.Size = new System.Drawing.Size(423, 20);
-            this.txtNoteTitle.TabIndex = 2;
-            // 
-            // lblNote
-            // 
-            this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(10, 169);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(36, 13);
-            this.lblNote.TabIndex = 3;
-            this.lblNote.Text = "Note: ";
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(10, 186);
-            this.txtNote.Multiline = true;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(419, 73);
-            this.txtNote.TabIndex = 4;
+            this.btnEditNote.Location = new System.Drawing.Point(10, 268);
+            this.btnEditNote.Name = "btnEditNote";
+            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
+            this.btnEditNote.TabIndex = 6;
+            this.btnEditNote.Text = "&Edit";
+            this.btnEditNote.UseVisualStyleBackColor = true;
             // 
             // btnNoteCreate
             // 
@@ -280,14 +247,47 @@
             this.btnNoteCreate.Text = "&Create";
             this.btnNoteCreate.UseVisualStyleBackColor = true;
             // 
-            // btnEditNote
+            // txtNote
             // 
-            this.btnEditNote.Location = new System.Drawing.Point(10, 268);
-            this.btnEditNote.Name = "btnEditNote";
-            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
-            this.btnEditNote.TabIndex = 6;
-            this.btnEditNote.Text = "&Edit";
-            this.btnEditNote.UseVisualStyleBackColor = true;
+            this.txtNote.Location = new System.Drawing.Point(10, 186);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(419, 73);
+            this.txtNote.TabIndex = 4;
+            // 
+            // lblNote
+            // 
+            this.lblNote.AutoSize = true;
+            this.lblNote.Location = new System.Drawing.Point(10, 169);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(36, 13);
+            this.lblNote.TabIndex = 3;
+            this.lblNote.Text = "Note: ";
+            // 
+            // txtNoteTitle
+            // 
+            this.txtNoteTitle.Location = new System.Drawing.Point(6, 142);
+            this.txtNoteTitle.Name = "txtNoteTitle";
+            this.txtNoteTitle.Size = new System.Drawing.Size(423, 20);
+            this.txtNoteTitle.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Title: ";
+            // 
+            // lstNotes
+            // 
+            this.lstNotes.HideSelection = false;
+            this.lstNotes.Location = new System.Drawing.Point(6, 19);
+            this.lstNotes.Name = "lstNotes";
+            this.lstNotes.Size = new System.Drawing.Size(423, 99);
+            this.lstNotes.TabIndex = 0;
+            this.lstNotes.UseCompatibleStateImageBehavior = false;
             // 
             // updateUsers
             // 
@@ -298,7 +298,10 @@
             this.Controls.Add(this.grpID);
             this.Controls.Add(this.grpContact);
             this.Controls.Add(this.panel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "updateUsers";
             this.Text = "Update Customer";
             this.panel3.ResumeLayout(false);

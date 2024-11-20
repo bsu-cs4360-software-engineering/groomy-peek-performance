@@ -225,6 +225,9 @@ namespace groomy
                         
                         break;
 
+                    case "Services":
+                        break;
+
                     default:
                         break;
                 }
@@ -366,6 +369,31 @@ namespace groomy
         private void pnlAppointments_VisibleChanged(object sender, EventArgs e)
         {
             loadAppointments();
+        }
+
+        private void btnServiceAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnServiceDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnServiceRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnServiceUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnServiceView_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

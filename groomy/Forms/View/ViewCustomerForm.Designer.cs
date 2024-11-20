@@ -44,13 +44,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.grpContact = new System.Windows.Forms.GroupBox();
             this.grpNotes = new System.Windows.Forms.GroupBox();
+            this.btnEditNote = new System.Windows.Forms.Button();
             this.btnNoteCreate = new System.Windows.Forms.Button();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
             this.txtNoteTitle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lstNotes = new System.Windows.Forms.ListView();
-            this.btnEditNote = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.grpID.SuspendLayout();
             this.grpContact.SuspendLayout();
@@ -214,6 +214,15 @@
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
             // 
+            // btnEditNote
+            // 
+            this.btnEditNote.Location = new System.Drawing.Point(13, 269);
+            this.btnEditNote.Name = "btnEditNote";
+            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
+            this.btnEditNote.TabIndex = 6;
+            this.btnEditNote.Text = "&Edit";
+            this.btnEditNote.UseVisualStyleBackColor = true;
+            // 
             // btnNoteCreate
             // 
             this.btnNoteCreate.Location = new System.Drawing.Point(10, 269);
@@ -265,15 +274,6 @@
             this.lstNotes.TabIndex = 0;
             this.lstNotes.UseCompatibleStateImageBehavior = false;
             // 
-            // btnEditNote
-            // 
-            this.btnEditNote.Location = new System.Drawing.Point(13, 269);
-            this.btnEditNote.Name = "btnEditNote";
-            this.btnEditNote.Size = new System.Drawing.Size(75, 23);
-            this.btnEditNote.TabIndex = 6;
-            this.btnEditNote.Text = "&Edit";
-            this.btnEditNote.UseVisualStyleBackColor = true;
-            // 
             // ViewCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,6 +282,9 @@
             this.Controls.Add(this.grpNotes);
             this.Controls.Add(this.grpID);
             this.Controls.Add(this.grpContact);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewCustomerForm";
             this.Text = "View Customer";
             this.panel1.ResumeLayout(false);
