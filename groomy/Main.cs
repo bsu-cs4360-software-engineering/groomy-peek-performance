@@ -110,7 +110,6 @@ namespace groomy
 
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
-            //Console.WriteLine(potato.Count);
             if (potato == null || potato.Count == 0)
             {
                 MessageBox.Show("No customers found.");
@@ -231,7 +230,7 @@ namespace groomy
             }
         }
 
-        private async void btnCustomerAdd_Click(object sender, EventArgs e)
+        private void btnCustomerAdd_Click(object sender, EventArgs e)
         {
             CreateCustomerForm custFrm = new CreateCustomerForm();
             
@@ -244,7 +243,7 @@ namespace groomy
             appFrm.ShowDialog();
         }
 
-        private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Console.WriteLine("I hate winforms");
         }
