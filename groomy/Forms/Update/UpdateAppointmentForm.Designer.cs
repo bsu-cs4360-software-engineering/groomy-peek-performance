@@ -54,6 +54,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNoteTitle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.desc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -63,75 +64,86 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
+
+            this.label1.Location = new System.Drawing.Point(8, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Date: ";
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(48, 19);
+            this.dtpDate.Location = new System.Drawing.Point(64, 23);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(178, 20);
+            this.dtpDate.Size = new System.Drawing.Size(236, 22);
             this.dtpDate.TabIndex = 0;
             // 
             // dtpStart
             // 
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpStart.Location = new System.Drawing.Point(48, 59);
+            this.dtpStart.Location = new System.Drawing.Point(64, 73);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(95, 20);
+            this.dtpStart.Size = new System.Drawing.Size(125, 22);
             this.dtpStart.TabIndex = 1;
             // 
             // dtpEnd
             // 
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpEnd.Location = new System.Drawing.Point(48, 95);
+            this.dtpEnd.Location = new System.Drawing.Point(64, 117);
+            this.dtpEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(95, 20);
+            this.dtpEnd.Size = new System.Drawing.Size(125, 22);
             this.dtpEnd.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 59);
+            this.label2.Location = new System.Drawing.Point(9, 73);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Start: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 95);
+            this.label3.Location = new System.Drawing.Point(8, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(34, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "End:";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtLoc);
-            this.groupBox2.Location = new System.Drawing.Point(12, 220);
+            this.groupBox2.Location = new System.Drawing.Point(16, 271);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(245, 61);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(327, 75);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location";
             // 
             // txtLoc
             // 
-            this.txtLoc.Location = new System.Drawing.Point(10, 20);
+            this.txtLoc.Location = new System.Drawing.Point(13, 25);
+            this.txtLoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLoc.Name = "txtLoc";
-            this.txtLoc.Size = new System.Drawing.Size(216, 20);
+            this.txtLoc.Size = new System.Drawing.Size(287, 22);
             this.txtLoc.TabIndex = 0;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(12, 405);
+            this.btnUpdate.Location = new System.Drawing.Point(16, 498);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(100, 28);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "&Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -140,18 +152,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 41);
+            this.label5.Location = new System.Drawing.Point(12, 50);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.Size = new System.Drawing.Size(70, 16);
             this.label5.TabIndex = 17;
             this.label5.Text = "Customer: ";
             // 
             // cmbCust
             // 
             this.cmbCust.FormattingEnabled = true;
-            this.cmbCust.Location = new System.Drawing.Point(67, 38);
+            this.cmbCust.Location = new System.Drawing.Point(89, 47);
+            this.cmbCust.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbCust.Name = "cmbCust";
-            this.cmbCust.Size = new System.Drawing.Size(190, 21);
+            this.cmbCust.Size = new System.Drawing.Size(252, 24);
             this.cmbCust.TabIndex = 1;
             // 
             // groupBox1
@@ -162,45 +176,52 @@
             this.groupBox1.Controls.Add(this.dtpEnd);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 74);
+            this.groupBox1.Location = new System.Drawing.Point(16, 91);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(245, 139);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(327, 171);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Time";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(67, 12);
+            this.txtTitle.Location = new System.Drawing.Point(89, 15);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(190, 20);
+            this.txtTitle.Size = new System.Drawing.Size(252, 22);
             this.txtTitle.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 15);
+            this.label4.Location = new System.Drawing.Point(12, 18);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.Size = new System.Drawing.Size(39, 16);
             this.label4.TabIndex = 13;
             this.label4.Text = "Title: ";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtDescription);
-            this.groupBox3.Location = new System.Drawing.Point(13, 288);
+            this.groupBox3.Location = new System.Drawing.Point(17, 354);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(244, 111);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(325, 137);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Description";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(9, 20);
+            this.txtDescription.Location = new System.Drawing.Point(12, 25);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(229, 85);
+            this.txtDescription.Size = new System.Drawing.Size(304, 104);
             this.txtDescription.TabIndex = 0;
             // 
             // grpNotes
@@ -212,18 +233,21 @@
             this.grpNotes.Controls.Add(this.label7);
             this.grpNotes.Controls.Add(this.txtNoteTitle);
             this.grpNotes.Controls.Add(this.label6);
-            this.grpNotes.Location = new System.Drawing.Point(263, 12);
+            this.grpNotes.Location = new System.Drawing.Point(351, 15);
+            this.grpNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpNotes.Name = "grpNotes";
-            this.grpNotes.Size = new System.Drawing.Size(374, 389);
+            this.grpNotes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpNotes.Size = new System.Drawing.Size(499, 479);
             this.grpNotes.TabIndex = 30;
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(12, 358);
+            this.btnCreate.Location = new System.Drawing.Point(16, 441);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(100, 28);
             this.btnCreate.TabIndex = 5;
             this.btnCreate.Text = "&Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -231,9 +255,11 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(12, 358);
+
+            this.btnEdit.Location = new System.Drawing.Point(16, 441);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(100, 28);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -242,13 +268,16 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Title,
-            this.Created});
+            this.Created,
+            this.desc});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(9, 15);
+            this.listView1.Location = new System.Drawing.Point(12, 18);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(355, 141);
+            this.listView1.Size = new System.Drawing.Size(472, 173);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Title
             // 
@@ -260,42 +289,48 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(12, 224);
+            this.txtNote.Location = new System.Drawing.Point(16, 276);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(355, 121);
+            this.txtNote.Size = new System.Drawing.Size(472, 148);
             this.txtNote.TabIndex = 3;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 208);
+
+            this.label7.Location = new System.Drawing.Point(12, 256);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.Size = new System.Drawing.Size(42, 16);
             this.label7.TabIndex = 2;
             this.label7.Text = "Note: ";
             // 
             // txtNoteTitle
             // 
-            this.txtNoteTitle.Location = new System.Drawing.Point(9, 181);
+            this.txtNoteTitle.Location = new System.Drawing.Point(12, 223);
+            this.txtNoteTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoteTitle.Name = "txtNoteTitle";
-            this.txtNoteTitle.Size = new System.Drawing.Size(358, 20);
+            this.txtNoteTitle.Size = new System.Drawing.Size(476, 22);
+
             this.txtNoteTitle.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 164);
+            this.label6.Location = new System.Drawing.Point(8, 202);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(39, 16);
             this.label6.TabIndex = 0;
             this.label6.Text = "Title: ";
             // 
             // UpdateAppointmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 440);
+            this.ClientSize = new System.Drawing.Size(860, 542);
             this.Controls.Add(this.grpNotes);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -352,5 +387,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNoteTitle;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ColumnHeader desc;
     }
 }

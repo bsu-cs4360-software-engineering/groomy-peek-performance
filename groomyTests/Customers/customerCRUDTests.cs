@@ -22,6 +22,10 @@ namespace groomy.Customers.Tests
             customerCRUD testCustCrud = new customerCRUD(__db);
             
             var customersQuestionMark = await testCustCrud.getAllCustomers();
+            foreach (var customers in customersQuestionMark)
+            {
+                Console.WriteLine(customers.fName);
+            }
             Assert.IsNotNull(customersQuestionMark);
             
         }
