@@ -46,7 +46,7 @@
             this.grpNotes = new System.Windows.Forms.GroupBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstNotes = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -212,7 +212,7 @@
             // 
             this.grpNotes.Controls.Add(this.btnCreate);
             this.grpNotes.Controls.Add(this.btnEdit);
-            this.grpNotes.Controls.Add(this.listView1);
+            this.grpNotes.Controls.Add(this.lstNotes);
             this.grpNotes.Controls.Add(this.txtNote);
             this.grpNotes.Controls.Add(this.label7);
             this.grpNotes.Controls.Add(this.txtNoteTitle);
@@ -243,17 +243,17 @@
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // lstNotes
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstNotes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Title,
             this.Created});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(355, 141);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstNotes.HideSelection = false;
+            this.lstNotes.Location = new System.Drawing.Point(12, 20);
+            this.lstNotes.Name = "lstNotes";
+            this.lstNotes.Size = new System.Drawing.Size(355, 141);
+            this.lstNotes.TabIndex = 4;
+            this.lstNotes.UseCompatibleStateImageBehavior = false;
             // 
             // Title
             // 
@@ -309,6 +309,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewAppointmentsForm";
             this.Text = "AppointmentView";
             this.Load += new System.EventHandler(this.ViewAppointmentsForm_Load);
@@ -348,7 +351,7 @@
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstNotes;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Created;
         private System.Windows.Forms.Button btnEdit;

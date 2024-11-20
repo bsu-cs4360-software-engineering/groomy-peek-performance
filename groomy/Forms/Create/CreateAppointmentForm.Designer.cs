@@ -210,7 +210,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateAppointmentForm";
             this.Text = "Create Appointment";
             this.groupBox1.ResumeLayout(false);

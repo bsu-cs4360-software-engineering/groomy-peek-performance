@@ -194,6 +194,18 @@
     <Compile Include="Forms\Create\CreateServiceForm.Designer.cs">
       <DependentUpon>CreateServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Update\UpdateServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Update\UpdateServiceForm.Designer.cs">
+      <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\ViewServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View\ViewServiceForm.Designer.cs">
+      <DependentUpon>ViewServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Create\CreateServiceForm.resx">
       <DependentUpon>CreateServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Update\UpdateServiceForm.resx">
+      <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\View\ViewServiceForm.resx">
+      <DependentUpon>ViewServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
