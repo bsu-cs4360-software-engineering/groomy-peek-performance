@@ -309,6 +309,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewAppointmentsForm";
             this.Text = "AppointmentView";
             this.Load += new System.EventHandler(this.ViewAppointmentsForm_Load);

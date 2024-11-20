@@ -53,7 +53,6 @@ namespace groomy
         {
 
         }
-
         private void lstNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
 

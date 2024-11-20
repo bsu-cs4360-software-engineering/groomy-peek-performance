@@ -23,7 +23,6 @@ namespace groomy
             dtpEnd.Value = System.DateTime.Parse(end);
             cmbCust.Text = email;
             appointmentId = id; // Assign the ID to the class-level variable
-           
         }
 
         private async void btnUpdate_Click(object sender, EventArgs e)

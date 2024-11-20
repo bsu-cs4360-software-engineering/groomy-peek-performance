@@ -64,6 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+
             this.label1.Location = new System.Drawing.Point(8, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -254,6 +255,7 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
+
             this.btnEdit.Location = new System.Drawing.Point(16, 441);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
@@ -297,6 +299,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+
             this.label7.Location = new System.Drawing.Point(12, 256);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
@@ -310,6 +313,7 @@
             this.txtNoteTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoteTitle.Name = "txtNoteTitle";
             this.txtNoteTitle.Size = new System.Drawing.Size(476, 22);
+
             this.txtNoteTitle.TabIndex = 1;
             // 
             // label6
@@ -336,7 +340,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label4);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UpdateAppointmentForm";
             this.Text = "Update Appointment";
             this.Load += new System.EventHandler(this.UpdateAppointmentForm_Load);
