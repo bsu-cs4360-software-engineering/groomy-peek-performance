@@ -166,6 +166,11 @@
             // 
             this.nudPrice.DecimalPlaces = 2;
             this.nudPrice.Location = new System.Drawing.Point(55, 168);
+            this.nudPrice.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudPrice.Name = "nudPrice";
             this.nudPrice.ReadOnly = true;
             this.nudPrice.Size = new System.Drawing.Size(57, 20);
