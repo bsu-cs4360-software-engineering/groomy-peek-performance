@@ -186,4 +186,5 @@ namespace groomy.Pricing.Tests
 
         }
     }
+
 }
