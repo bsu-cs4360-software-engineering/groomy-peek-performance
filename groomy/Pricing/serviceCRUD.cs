@@ -56,7 +56,7 @@ namespace groomy.Pricing
         }
 
 
-        public async void SoftDeleteService(string documentID)
+        public async Task SoftDeleteService(string documentID)
 
         {
 

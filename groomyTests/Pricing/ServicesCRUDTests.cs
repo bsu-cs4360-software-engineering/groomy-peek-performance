@@ -91,7 +91,7 @@ namespace groomy.Pricing.Tests
 
             // Act
 
-            servicesCRUD.SoftDeleteService(addService.Id);
+            await servicesCRUD.SoftDeleteService(addService.Id);
 
             Service deletedService = await servicesCRUD.GetService(addService.Id);
 
@@ -99,7 +99,7 @@ namespace groomy.Pricing.Tests
             // Assert
 
             Assert.IsNotNull(deletedService);
-
+            Console.WriteLine(deletedService.Deleted);
             Assert.IsTrue(deletedService.Deleted); // Check if the service is marked as deleted
 
         }
