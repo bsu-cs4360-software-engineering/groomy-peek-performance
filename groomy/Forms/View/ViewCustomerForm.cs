@@ -57,5 +57,20 @@ namespace groomy
         {
 
         }
+
+        private void btnNoteCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstNotes_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

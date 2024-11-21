@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using groomy.Pricing;
+using groomy.services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +18,21 @@ namespace groomy.Forms.Create
         public CreateServiceForm()
         {
             InitializeComponent();
+        }
+
+        private async void btnServCreate_Click(object sender, EventArgs e)
+        {
+            FirestoreDb db =  firebaseConfig.Instance.getFirestoreDB();
+            ServicesCRUD createService = new ServicesCRUD(db, "Services");
+            Service serviceToBeAdded = new Service
+            {
+                Name = txtServName.Text,
+                Desc = txtServDesc.Text,
+                Price = (double)nudPrice.Value,
+                Deleted = false,
+                Id = ""
+            };
+            await createService.CreateService(serviceToBeAdded);
         }
     }
 }

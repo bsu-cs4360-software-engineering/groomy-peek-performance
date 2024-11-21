@@ -11,7 +11,10 @@ using Google.Cloud.Firestore;
 using groomy.Appointments;
 using groomy.Auth;
 using groomy.Customers;
+using groomy.Forms.Update;
 using groomy.services;
+using groomy.Pricing;
+using groomy.Forms.Create;
 
 namespace groomy
 {
@@ -100,7 +103,30 @@ namespace groomy
                 e.Handled = true;
             }
         }
+        private async Task loadServices()
+        {
+            lstServices.Items.Clear();
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            ServicesCRUD serviceGetter = new ServicesCRUD(db, "Services");
 
+            var services = await serviceGetter.GetAllServices();
+
+            if (services == null || services.Count == 0)
+            {
+                MessageBox.Show("No services found.");
+                return;
+            }
+
+            foreach (Service service in services)
+            {
+                ListViewItem item = new ListViewItem(service.Name);
+                item.SubItems.Add(service.Desc);
+                item.SubItems.Add(service.Price.ToString("C"));
+                item.SubItems.Add(service.Id);
+                lstServices.Items.Add(item);
+            }
+        }
         //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
         public async void loadCustomers()
         {
@@ -227,13 +253,13 @@ namespace groomy
 
                     case "Services":
                         //This is the services button.
+                        lstServices.View = View.Details;
+                        lstServices.FullRowSelect = true;
                         pnlAppointments.Visible = !rdoServices.Checked;
                         pnlServices.Visible = rdoServices.Checked;
                         pnlCustomer.Visible = !rdoServices.Checked;
                         pnlServices.BringToFront();
-                        lstServices.Clear();
                         lstServices.FullRowSelect= true;
-
                         break;
 
                     default:
@@ -381,6 +407,8 @@ namespace groomy
 
         private void btnServiceAdd_Click(object sender, EventArgs e)
         {
+            CreateServiceForm crtService = new CreateServiceForm();
+            crtService.ShowDialog();
 
         }
 
@@ -389,19 +417,42 @@ namespace groomy
 
         }
 
-        private void btnServiceRefresh_Click(object sender, EventArgs e)
+        private async void btnServiceRefresh_Click(object sender, EventArgs e)
         {
-
+            await loadServices();
         }
 
         private void btnServiceUpdate_Click(object sender, EventArgs e)
         {
-
+            if (lstServices.SelectedItems.Count > 0)
+            {
+                Service potato = new Service {
+                    Name = lstServices.SelectedItems[0].SubItems[0].Text,
+                    Desc = lstServices.SelectedItems[0].SubItems[1].Text,
+                    Price = double.Parse(
+                        lstServices.SelectedItems[0].SubItems[2].Text.Replace("$", ""),
+                        System.Globalization.NumberStyles.Number
+                    ) ,
+                    Deleted = false
+                };
+                UpdateServiceForm updateServiceFrm = new UpdateServiceForm(potato);
+                updateServiceFrm.ShowDialog();
+            }
         }
 
         private void btnServiceView_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lstServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void pnlServices_VisibleChanged(object sender, EventArgs e)
+        {
+            await loadServices();
         }
     }
 }

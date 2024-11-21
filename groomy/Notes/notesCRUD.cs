@@ -44,20 +44,32 @@ namespace groomy.Notes
         }
         public async void updateNote(note updatedNote, string noteID, string docID)
         {
-
             CollectionReference collectionDoc = __db.Collection(__collectionName).Document(docID).Collection("notes");
             DocumentReference docRef = collectionDoc.Document(noteID);
+
+            // First, retrieve the existing note to preserve the original dateCreated
+            var existingNoteSnapshot = await docRef.GetSnapshotAsync();
+            var existingNote = existingNoteSnapshot.ConvertTo<note>();
+
+            // Preserve the original dateCreated
+            updatedNote.dateCreated = existingNote.dateCreated;
+
+            updatedNote.id = docRef.Id;
             await docRef.SetAsync(updatedNote, SetOptions.MergeAll);
         }
         public async Task<List<note>> getAllNotes(string docID)
         {
-            
             CollectionReference collectionDoc = __db.Collection(__collectionName).Document(docID).Collection("notes");
             List<note> notes = new List<note>();
-            var snapshotes = await collectionDoc.GetSnapshotAsync();
-            foreach (var snapshot in snapshotes)
+            var snapshots = await collectionDoc
+                .OrderByDescending("dateCreated")
+                .GetSnapshotAsync();
+
+            foreach (var snapshot in snapshots)
             {
-                notes.Add(snapshot.ConvertTo<note>());
+                var note = snapshot.ConvertTo<note>();
+                // Convert UTC Firestore timestamp to local DateTime
+                notes.Add(note);
             }
             return notes;
         }
