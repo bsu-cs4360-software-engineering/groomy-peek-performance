@@ -64,9 +64,9 @@ namespace groomy.Notes.Tests
             await createNotes.createNote(appointmentId, addNote);
             createdNoteIds.Add(addNote.id); // Track the created note ID
 
-            createNotes.deleteNote(appointmentId, addNote.id);
+            await createNotes.deleteNote(appointmentId, addNote.id);
             note zbele = await createNotes.getNote(appointmentId, addNote.id);
-            Assert.IsNull(zbele);
+            Assert.IsTrue(zbele.deleted);
         }
 
         [TestMethod()]

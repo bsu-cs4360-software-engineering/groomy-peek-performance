@@ -12,7 +12,7 @@ namespace groomy.Notes
         Task createNote(string documentID, note addableNote);
         Task<note> getNote(string documentID, string noteID);
 
-        void deleteNote(string documentID, string noteID);
+        Task deleteNote(string documentID, string noteID);
 
         void updateNote(note updatedNote, string noteID, string docID);
 
