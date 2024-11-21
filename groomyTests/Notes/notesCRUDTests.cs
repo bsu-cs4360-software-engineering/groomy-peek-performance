@@ -28,7 +28,7 @@ namespace groomy.Notes.Tests
         {
             FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
             notesCRUD createNotes = new notesCRUD(db, "Appointments");
-            note zbele = await createNotes.getNote("011Gdx3GvZ9vs0Bsatdg", "hlnUhf5VlQtYBxV2JF9N");
+            note zbele = await createNotes.getNote("011Gdx3GvZ9vs0Bsatdg", "1Au7pC2WIHiAg9AAUjrd");
             Console.WriteLine(zbele.id);
             Assert.IsNotNull(zbele);
         }
