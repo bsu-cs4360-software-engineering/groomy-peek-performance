@@ -10,7 +10,7 @@ using groomy.services;
 
 namespace groomy.Notes
 {
-    public class notesCRUD
+    public class notesCRUD : notesInterface
     {
         private FirestoreDb __db;
         private string __collectionName;
@@ -36,11 +36,17 @@ namespace groomy.Notes
             var noteToReturn = noteSnapshot.ConvertTo<note>();
             return noteToReturn;
         }
-        public async void deleteNote(string documentID, string noteID)
+        public async Task deleteNote(string documentID, string noteID)
         {
             CollectionReference collectionReference = __db.Collection(__collectionName).Document(documentID).Collection("notes");
             DocumentReference docRef = collectionReference.Document(noteID);
-            await docRef.DeleteAsync();
+            var noteSnapshot = await docRef.GetSnapshotAsync();
+            if (noteSnapshot.Exists)
+            {
+                var note = noteSnapshot.ConvertTo<note>();
+                note.deleted = true;
+                await docRef.SetAsync(note, SetOptions.MergeAll);
+            }
         }
         public async void updateNote(note updatedNote, string noteID, string docID)
         {

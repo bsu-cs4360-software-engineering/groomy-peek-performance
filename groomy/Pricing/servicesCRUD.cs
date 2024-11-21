@@ -1,5 +1,4 @@
-﻿using Google.Api;
-using Google.Cloud.Firestore;
+﻿using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace groomy.Pricing
 {
-    public class ServicesCRUD : serviceInterface
+    public class ServicesCRUD:serviceInterface
 
     {
 
@@ -56,7 +55,7 @@ namespace groomy.Pricing
         }
 
 
-        public async Task SoftDeleteService(string documentID)
+        public async void SoftDeleteService(string documentID)
 
         {
 
