@@ -107,7 +107,7 @@ namespace groomy.Forms.Update
                 };
 
                 // Update the service
-                await serviceCRUD.UpdateService(updatedService);
+               await serviceCRUD.UpdateService(updatedService);
 
                 MessageBox.Show("Service Updated Successfully!", "Update",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -167,7 +167,7 @@ namespace groomy.Forms.Update
             }
         }
 
-        private async Task btnEditNote_Click(object sender, EventArgs e)
+        private async void btnEditNote_Click(object sender, EventArgs e)
         {
             try
             {
@@ -199,7 +199,7 @@ namespace groomy.Forms.Update
             }
         }
 
-        private async Task btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -226,6 +226,11 @@ namespace groomy.Forms.Update
                 MessageBox.Show($"Error deleting note: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void UpdateServiceForm_Load(object sender, EventArgs e)
+        {
+            LoadNotesAsync();
         }
     }
 }

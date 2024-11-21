@@ -15,6 +15,7 @@ using groomy.Forms.Update;
 using groomy.services;
 using groomy.Pricing;
 using groomy.Forms.Create;
+using groomy.Forms.View;
 
 namespace groomy
 {
@@ -412,9 +413,14 @@ namespace groomy
 
         }
 
-        private void btnServiceDelete_Click(object sender, EventArgs e)
+        private async void btnServiceDelete_Click(object sender, EventArgs e)
         {
-
+            FirestoreDb potato = firebaseConfig.Instance.getFirestoreDB();
+            ServicesCRUD delServices = new ServicesCRUD(potato, "Services");
+            if (lstServices.SelectedItems[0].SubItems[3].Text != null)
+            {
+                delServices.SoftDeleteService(lstServices.SelectedItems[0].SubItems[3].Text);
+            }
         }
 
         private async void btnServiceRefresh_Click(object sender, EventArgs e)
@@ -432,7 +438,8 @@ namespace groomy
                     Price = double.Parse(
                         lstServices.SelectedItems[0].SubItems[2].Text.Replace("$", ""),
                         System.Globalization.NumberStyles.Number
-                    ) ,
+                    ),
+                    Id = lstServices.SelectedItems[0].SubItems[3].Text,
                     Deleted = false
                 };
                 UpdateServiceForm updateServiceFrm = new UpdateServiceForm(potato);
@@ -442,7 +449,19 @@ namespace groomy
 
         private void btnServiceView_Click(object sender, EventArgs e)
         {
-
+            Service potato = new Service
+            {
+                Name = lstServices.SelectedItems[0].SubItems[0].Text,
+                Desc = lstServices.SelectedItems[0].SubItems[1].Text,
+                Price = double.Parse(
+                        lstServices.SelectedItems[0].SubItems[2].Text.Replace("$", ""),
+                        System.Globalization.NumberStyles.Number
+                    ),
+                Id = lstServices.SelectedItems[0].SubItems[3].Text,
+                Deleted = false
+            };
+            ViewServiceForm viewServiceFrm = new ViewServiceForm(potato);
+            viewServiceFrm.ShowDialog();
         }
 
         private void lstServices_SelectedIndexChanged(object sender, EventArgs e)

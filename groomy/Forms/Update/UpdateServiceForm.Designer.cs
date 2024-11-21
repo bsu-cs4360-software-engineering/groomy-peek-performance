@@ -279,6 +279,7 @@
             this.MinimizeBox = false;
             this.Name = "UpdateServiceForm";
             this.Text = "Update Service";
+            this.Load += new System.EventHandler(this.UpdateServiceForm_Load);
             this.grpService.ResumeLayout(false);
             this.grpService.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();

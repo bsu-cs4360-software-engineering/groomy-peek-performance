@@ -16,26 +16,37 @@ namespace groomy
     public partial class ViewCustomerForm : Form
     {
         private string __id;
-        public async void loadNotes()
+        private async void LoadNotesAsync()
         {
-            FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
-            notesCRUD notesCreate = new notesCRUD(db,"Customers");
-            lstNotes.Items.Clear();
-            var notes = await notesCreate.getAllNotes(__id);
-            List<note> allNotes = notes;
-            foreach(note thisNote in allNotes)
+            try
             {
-                if(!thisNote.deleted)
-                {
-                    ListViewItem item = new ListViewItem(thisNote.title);
-                    item.SubItems.Add(thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"));
-                    item.SubItems.Add(thisNote.desc);
+                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
+                notesCRUD notesCreate = new notesCRUD(db, "Customers");
+                lstNotes.View = System.Windows.Forms.View.Details;
+                lstNotes.FullRowSelect = true;
+                var notes = await notesCreate.getAllNotes(__id);
 
-                    
-                    lstNotes.Items.Add(item);
-                }
+                this.Invoke((MethodInvoker)delegate {
+                    lstNotes.Items.Clear();
+                    foreach (note thisNote in notes)
+                    {
+                        ListViewItem item = new ListViewItem(thisNote.title)
+                        {
+                            SubItems = {
+                                thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"),
+                                thisNote.desc,
+                                thisNote.id
+                            }
+                        };
+                        lstNotes.Items.Add(item);
+                    }
+                });
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading notes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public ViewCustomerForm(string email, string fName, string lName, string id, string phoneNumber, string address)
         {
@@ -46,7 +57,6 @@ namespace groomy
             txtPhoneNumber.Text = phoneNumber;
             txtAddr1.Text = address;
             __id = id;
-            loadNotes();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -65,12 +75,25 @@ namespace groomy
 
         private void lstNotes_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            if (lstNotes.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lstNotes.SelectedItems[0];
+                txtNoteTitle.Text = selectedItem.Text;
+                txtNote.Text = selectedItem.SubItems[2].Text;
+                // Assuming the note ID is stored as a tag or you have a way to retrieve it
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ViewCustomerForm_Load(object sender, EventArgs e)
+        {
+            lstNotes.View = View.Details;
+            lstNotes.FullRowSelect= true;
+            LoadNotesAsync();
         }
     }
 }

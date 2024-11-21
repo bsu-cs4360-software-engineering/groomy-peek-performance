@@ -52,6 +52,10 @@
             this.txtNoteTitle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lstNotes = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Desc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.idp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.grpID.SuspendLayout();
             this.grpContact.SuspendLayout();
@@ -61,7 +65,7 @@
             // txtAddr3
             // 
             this.txtAddr3.Location = new System.Drawing.Point(5, 86);
-            this.txtAddr3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtAddr3.Margin = new System.Windows.Forms.Padding(5);
             this.txtAddr3.Name = "txtAddr3";
             this.txtAddr3.ReadOnly = true;
             this.txtAddr3.Size = new System.Drawing.Size(448, 22);
@@ -71,7 +75,7 @@
             // txtAddr2
             // 
             this.txtAddr2.Location = new System.Drawing.Point(7, 47);
-            this.txtAddr2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtAddr2.Margin = new System.Windows.Forms.Padding(5);
             this.txtAddr2.Name = "txtAddr2";
             this.txtAddr2.ReadOnly = true;
             this.txtAddr2.Size = new System.Drawing.Size(448, 22);
@@ -81,7 +85,7 @@
             // txtAddr1
             // 
             this.txtAddr1.Location = new System.Drawing.Point(7, 6);
-            this.txtAddr1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtAddr1.Margin = new System.Windows.Forms.Padding(5);
             this.txtAddr1.Name = "txtAddr1";
             this.txtAddr1.ReadOnly = true;
             this.txtAddr1.Size = new System.Drawing.Size(448, 22);
@@ -103,7 +107,7 @@
             this.panel1.Controls.Add(this.txtAddr2);
             this.panel1.Controls.Add(this.txtAddr1);
             this.panel1.Location = new System.Drawing.Point(133, 112);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 127);
             this.panel1.TabIndex = 4;
@@ -111,7 +115,7 @@
             // txtLName
             // 
             this.txtLName.Location = new System.Drawing.Point(135, 68);
-            this.txtLName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtLName.Margin = new System.Windows.Forms.Padding(5);
             this.txtLName.Name = "txtLName";
             this.txtLName.ReadOnly = true;
             this.txtLName.Size = new System.Drawing.Size(461, 22);
@@ -140,7 +144,7 @@
             // txtFName
             // 
             this.txtFName.Location = new System.Drawing.Point(135, 28);
-            this.txtFName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(5);
             this.txtFName.Name = "txtFName";
             this.txtFName.ReadOnly = true;
             this.txtFName.Size = new System.Drawing.Size(461, 22);
@@ -153,9 +157,9 @@
             this.grpID.Controls.Add(this.label1);
             this.grpID.Controls.Add(this.txtFName);
             this.grpID.Location = new System.Drawing.Point(21, 18);
-            this.grpID.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.grpID.Margin = new System.Windows.Forms.Padding(5);
             this.grpID.Name = "grpID";
-            this.grpID.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.grpID.Padding = new System.Windows.Forms.Padding(5);
             this.grpID.Size = new System.Drawing.Size(644, 130);
             this.grpID.TabIndex = 5;
             this.grpID.TabStop = false;
@@ -174,7 +178,7 @@
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(133, 71);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(5);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.ReadOnly = true;
             this.txtPhoneNumber.Size = new System.Drawing.Size(461, 22);
@@ -183,7 +187,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(133, 31);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(461, 22);
@@ -208,9 +212,9 @@
             this.grpContact.Controls.Add(this.txtEmail);
             this.grpContact.Controls.Add(this.label3);
             this.grpContact.Location = new System.Drawing.Point(23, 158);
-            this.grpContact.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.grpContact.Margin = new System.Windows.Forms.Padding(5);
             this.grpContact.Name = "grpContact";
-            this.grpContact.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.grpContact.Padding = new System.Windows.Forms.Padding(5);
             this.grpContact.Size = new System.Drawing.Size(641, 255);
             this.grpContact.TabIndex = 6;
             this.grpContact.TabStop = false;
@@ -227,9 +231,9 @@
             this.grpNotes.Controls.Add(this.label6);
             this.grpNotes.Controls.Add(this.lstNotes);
             this.grpNotes.Location = new System.Drawing.Point(687, 18);
-            this.grpNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpNotes.Margin = new System.Windows.Forms.Padding(4);
             this.grpNotes.Name = "grpNotes";
-            this.grpNotes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpNotes.Padding = new System.Windows.Forms.Padding(4);
             this.grpNotes.Size = new System.Drawing.Size(580, 362);
             this.grpNotes.TabIndex = 6;
             this.grpNotes.TabStop = false;
@@ -238,7 +242,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(229, 330);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 7;
@@ -249,7 +253,7 @@
             // btnEditNote
             // 
             this.btnEditNote.Location = new System.Drawing.Point(121, 330);
-            this.btnEditNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditNote.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditNote.Name = "btnEditNote";
             this.btnEditNote.Size = new System.Drawing.Size(100, 28);
             this.btnEditNote.TabIndex = 6;
@@ -259,7 +263,7 @@
             // btnNoteCreate
             // 
             this.btnNoteCreate.Location = new System.Drawing.Point(13, 331);
-            this.btnNoteCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNoteCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnNoteCreate.Name = "btnNoteCreate";
             this.btnNoteCreate.Size = new System.Drawing.Size(100, 28);
             this.btnNoteCreate.TabIndex = 5;
@@ -270,7 +274,7 @@
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(13, 229);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
@@ -290,7 +294,7 @@
             // txtNoteTitle
             // 
             this.txtNoteTitle.Location = new System.Drawing.Point(8, 175);
-            this.txtNoteTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNoteTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtNoteTitle.Name = "txtNoteTitle";
             this.txtNoteTitle.ReadOnly = true;
             this.txtNoteTitle.Size = new System.Drawing.Size(563, 22);
@@ -308,14 +312,35 @@
             // 
             // lstNotes
             // 
+            this.lstNotes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Title,
+            this.Created,
+            this.Desc,
+            this.idp});
             this.lstNotes.HideSelection = false;
             this.lstNotes.Location = new System.Drawing.Point(8, 23);
-            this.lstNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstNotes.Margin = new System.Windows.Forms.Padding(4);
             this.lstNotes.Name = "lstNotes";
             this.lstNotes.Size = new System.Drawing.Size(563, 121);
             this.lstNotes.TabIndex = 0;
             this.lstNotes.UseCompatibleStateImageBehavior = false;
             this.lstNotes.SelectedIndexChanged += new System.EventHandler(this.lstNotes_SelectedIndexChanged_1);
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            // 
+            // Created
+            // 
+            this.Created.Text = "Created";
+            // 
+            // Desc
+            // 
+            this.Desc.Text = "Desc";
+            // 
+            // idp
+            // 
+            this.idp.Text = "idp";
             // 
             // ViewCustomerForm
             // 
@@ -326,11 +351,12 @@
             this.Controls.Add(this.grpID);
             this.Controls.Add(this.grpContact);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewCustomerForm";
             this.Text = "View Customer";
+            this.Load += new System.EventHandler(this.ViewCustomerForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grpID.ResumeLayout(false);
@@ -368,5 +394,9 @@
         private System.Windows.Forms.TextBox txtNoteTitle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListView lstNotes;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Created;
+        private System.Windows.Forms.ColumnHeader Desc;
+        private System.Windows.Forms.ColumnHeader idp;
     }
 }
