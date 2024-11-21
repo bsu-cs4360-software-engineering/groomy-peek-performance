@@ -177,8 +177,12 @@
             // nudPrice
             // 
             this.nudPrice.DecimalPlaces = 2;
-            this.nudPrice.Location = new System.Drawing.Point(73, 207);
-            this.nudPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudPrice.Location = new System.Drawing.Point(55, 168);
+            this.nudPrice.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudPrice.Name = "nudPrice";
             this.nudPrice.ReadOnly = true;
             this.nudPrice.Size = new System.Drawing.Size(76, 22);
