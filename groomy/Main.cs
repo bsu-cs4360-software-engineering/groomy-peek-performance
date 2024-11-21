@@ -417,10 +417,14 @@ namespace groomy
         {
             FirestoreDb potato = firebaseConfig.Instance.getFirestoreDB();
             ServicesCRUD delServices = new ServicesCRUD(potato, "Services");
-            if (lstServices.SelectedItems[0].SubItems[3].Text != null)
-            {
+            DialogResult deleteResult = MessageBox.Show("Are you sure you want to delete this service?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (lstServices.SelectedItems[0].SubItems[3].Text != null &&
+            deleteResult == DialogResult.Yes)
+            { 
                 delServices.SoftDeleteService(lstServices.SelectedItems[0].SubItems[3].Text);
+            
             }
+            
         }
 
         private async void btnServiceRefresh_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using FirebaseAdmin.Messaging;
+using Google.Cloud.Firestore;
 using groomy.Pricing;
 using groomy.services;
 using System;
@@ -33,6 +34,8 @@ namespace groomy.Forms.Create
                 Id = ""
             };
             await createService.CreateService(serviceToBeAdded);
+            MessageBox.Show("Service Created Successfully!", "Service Created", MessageBoxButtons.OK);
+            this.Close();
         }
     }
 }
