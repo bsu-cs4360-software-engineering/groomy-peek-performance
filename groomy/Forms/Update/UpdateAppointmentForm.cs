@@ -78,7 +78,8 @@ namespace groomy
                     listView1.Items.Clear();
                     foreach (note thisNote in allNotes)
                     {
-                        ListViewItem item = new ListViewItem(thisNote.title)
+                        if (thisNote.deleted == false)
+                            {ListViewItem item = new ListViewItem(thisNote.title)
                         {
                             SubItems = {
                         thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"),
@@ -86,7 +87,8 @@ namespace groomy
                         thisNote.id
                     }
                         };
-                        listView1.Items.Add(item);
+                            listView1.Items.Add(item);
+                        }
                     }
                 });
             }
@@ -198,7 +200,7 @@ namespace groomy
                     return;
                 }
 
-                notesCreate.deleteNote(appointmentId, currentNoteID);
+                await notesCreate.deleteNote(appointmentId, currentNoteID);
                 await LoadNotesAsync();
                 txtNote.Text = null;
                 txtNoteTitle.Text = null;

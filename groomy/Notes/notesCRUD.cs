@@ -36,7 +36,7 @@ namespace groomy.Notes
             var noteToReturn = noteSnapshot.ConvertTo<note>();
             return noteToReturn;
         }
-        public async void deleteNote(string documentID, string noteID)
+        public async Task deleteNote(string documentID, string noteID)
         {
             CollectionReference collectionReference = __db.Collection(__collectionName).Document(documentID).Collection("notes");
             DocumentReference docRef = collectionReference.Document(noteID);

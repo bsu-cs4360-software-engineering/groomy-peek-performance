@@ -12,7 +12,7 @@ namespace groomy.Pricing
 
         Task<Service> GetService(string documentID);
 
-        void SoftDeleteService(string documentID);
+        Task SoftDeleteService(string documentID);
 
         Task UpdateService(Service updatedService);
 

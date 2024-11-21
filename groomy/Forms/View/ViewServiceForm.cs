@@ -40,7 +40,8 @@ namespace groomy.Forms.View
                     lstNotes.Items.Clear();
                     foreach (note thisNote in notes)
                     {
-                        ListViewItem item = new ListViewItem(thisNote.title)
+                        if (thisNote.deleted == false){
+                            ListViewItem item = new ListViewItem(thisNote.title)
                         {
                             SubItems = {
                                 thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"),
@@ -48,7 +49,8 @@ namespace groomy.Forms.View
                                 thisNote.id
                             }
                         };
-                        lstNotes.Items.Add(item);
+                            lstNotes.Items.Add(item);
+                        }
                     }
                 });
             }
@@ -71,6 +73,11 @@ namespace groomy.Forms.View
                 txtNoteTitle.Text = selectedItem.Text;
                 txtNote.Text = selectedItem.SubItems[2].Text;
             }
+        }
+
+        private void grpNotes_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

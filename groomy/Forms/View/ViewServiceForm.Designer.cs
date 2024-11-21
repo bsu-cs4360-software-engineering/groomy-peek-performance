@@ -57,43 +57,50 @@
             this.grpNotes.Controls.Add(this.txtNoteTitle);
             this.grpNotes.Controls.Add(this.label6);
             this.grpNotes.Controls.Add(this.lstNotes);
-            this.grpNotes.Location = new System.Drawing.Point(186, 12);
+            this.grpNotes.Location = new System.Drawing.Point(248, 15);
+            this.grpNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpNotes.Name = "grpNotes";
-            this.grpNotes.Size = new System.Drawing.Size(246, 228);
+            this.grpNotes.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpNotes.Size = new System.Drawing.Size(328, 281);
             this.grpNotes.TabIndex = 8;
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
+            this.grpNotes.Enter += new System.EventHandler(this.grpNotes_Enter);
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(7, 147);
+            this.txtNote.Location = new System.Drawing.Point(9, 181);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(223, 41);
+            this.txtNote.Size = new System.Drawing.Size(296, 50);
             this.txtNote.TabIndex = 4;
             // 
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(7, 130);
+            this.lblNote.Location = new System.Drawing.Point(9, 160);
+            this.lblNote.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(36, 13);
+            this.lblNote.Size = new System.Drawing.Size(42, 16);
             this.lblNote.TabIndex = 3;
             this.lblNote.Text = "Note: ";
             // 
             // txtNoteTitle
             // 
-            this.txtNoteTitle.Location = new System.Drawing.Point(9, 107);
+            this.txtNoteTitle.Location = new System.Drawing.Point(12, 132);
+            this.txtNoteTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNoteTitle.Name = "txtNoteTitle";
-            this.txtNoteTitle.Size = new System.Drawing.Size(221, 20);
+            this.txtNoteTitle.Size = new System.Drawing.Size(293, 22);
             this.txtNoteTitle.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 90);
+            this.label6.Location = new System.Drawing.Point(13, 111);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(39, 16);
             this.label6.TabIndex = 1;
             this.label6.Text = "Title: ";
             // 
@@ -105,9 +112,10 @@
             this.Desc,
             this.Id});
             this.lstNotes.HideSelection = false;
-            this.lstNotes.Location = new System.Drawing.Point(6, 19);
+            this.lstNotes.Location = new System.Drawing.Point(8, 23);
+            this.lstNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstNotes.Name = "lstNotes";
-            this.lstNotes.Size = new System.Drawing.Size(224, 68);
+            this.lstNotes.Size = new System.Drawing.Size(297, 83);
             this.lstNotes.TabIndex = 0;
             this.lstNotes.UseCompatibleStateImageBehavior = false;
             this.lstNotes.SelectedIndexChanged += new System.EventHandler(this.lstNotes_SelectedIndexChanged);
@@ -136,9 +144,11 @@
             this.grpService.Controls.Add(this.lblServDesc);
             this.grpService.Controls.Add(this.txtServName);
             this.grpService.Controls.Add(this.lblServName);
-            this.grpService.Location = new System.Drawing.Point(12, 12);
+            this.grpService.Location = new System.Drawing.Point(16, 15);
+            this.grpService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpService.Name = "grpService";
-            this.grpService.Size = new System.Drawing.Size(168, 228);
+            this.grpService.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpService.Size = new System.Drawing.Size(224, 281);
             this.grpService.TabIndex = 7;
             this.grpService.TabStop = false;
             this.grpService.Text = "Service";
@@ -146,65 +156,72 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 170);
+            this.label1.Location = new System.Drawing.Point(8, 209);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Price: $";
             // 
             // txtServDesc
             // 
-            this.txtServDesc.Location = new System.Drawing.Point(9, 69);
+            this.txtServDesc.Location = new System.Drawing.Point(12, 85);
+            this.txtServDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtServDesc.MaxLength = 100;
             this.txtServDesc.Multiline = true;
             this.txtServDesc.Name = "txtServDesc";
             this.txtServDesc.ReadOnly = true;
-            this.txtServDesc.Size = new System.Drawing.Size(143, 93);
+            this.txtServDesc.Size = new System.Drawing.Size(189, 114);
             this.txtServDesc.TabIndex = 4;
             // 
             // nudPrice
             // 
             this.nudPrice.DecimalPlaces = 2;
-            this.nudPrice.Location = new System.Drawing.Point(55, 168);
+            this.nudPrice.Location = new System.Drawing.Point(73, 207);
+            this.nudPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudPrice.Name = "nudPrice";
             this.nudPrice.ReadOnly = true;
-            this.nudPrice.Size = new System.Drawing.Size(57, 20);
+            this.nudPrice.Size = new System.Drawing.Size(76, 22);
             this.nudPrice.TabIndex = 3;
             // 
             // lblServDesc
             // 
             this.lblServDesc.AutoSize = true;
-            this.lblServDesc.Location = new System.Drawing.Point(6, 53);
+            this.lblServDesc.Location = new System.Drawing.Point(8, 65);
+            this.lblServDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServDesc.Name = "lblServDesc";
-            this.lblServDesc.Size = new System.Drawing.Size(63, 13);
+            this.lblServDesc.Size = new System.Drawing.Size(78, 16);
             this.lblServDesc.TabIndex = 2;
             this.lblServDesc.Text = "Description:";
             // 
             // txtServName
             // 
-            this.txtServName.Location = new System.Drawing.Point(50, 25);
+            this.txtServName.Location = new System.Drawing.Point(67, 31);
+            this.txtServName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtServName.Name = "txtServName";
             this.txtServName.ReadOnly = true;
-            this.txtServName.Size = new System.Drawing.Size(101, 20);
+            this.txtServName.Size = new System.Drawing.Size(133, 22);
             this.txtServName.TabIndex = 1;
             // 
             // lblServName
             // 
             this.lblServName.AutoSize = true;
-            this.lblServName.Location = new System.Drawing.Point(6, 28);
+            this.lblServName.Location = new System.Drawing.Point(8, 34);
+            this.lblServName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServName.Name = "lblServName";
-            this.lblServName.Size = new System.Drawing.Size(38, 13);
+            this.lblServName.Size = new System.Drawing.Size(47, 16);
             this.lblServName.TabIndex = 0;
             this.lblServName.Text = "Name:";
             // 
             // ViewServiceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 256);
+            this.ClientSize = new System.Drawing.Size(593, 315);
             this.Controls.Add(this.grpNotes);
             this.Controls.Add(this.grpService);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewServiceForm";

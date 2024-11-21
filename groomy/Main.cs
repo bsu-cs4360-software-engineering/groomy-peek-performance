@@ -421,9 +421,11 @@ namespace groomy
             if (lstServices.SelectedItems[0].SubItems[3].Text != null &&
             deleteResult == DialogResult.Yes)
             { 
-                delServices.SoftDeleteService(lstServices.SelectedItems[0].SubItems[3].Text);
+                await delServices.SoftDeleteService(lstServices.SelectedItems[0].SubItems[3].Text);
             
             }
+            lstServices.Items.Clear();
+            await loadServices();
             
         }
 

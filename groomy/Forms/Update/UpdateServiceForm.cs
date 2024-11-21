@@ -33,6 +33,7 @@ namespace groomy.Forms.Update
                         lstNotes.Items.Clear();
                     foreach (note thisNote in notes)
                     {
+                        if(thisNote.deleted == false){
                         ListViewItem item = new ListViewItem(thisNote.title)
                         {
                             SubItems = {
@@ -41,7 +42,8 @@ namespace groomy.Forms.Update
                                 thisNote.id
                             }
                         };
-                        lstNotes.Items.Add(item);
+                            lstNotes.Items.Add(item);
+                        }
                     }
                 });
             }
@@ -215,7 +217,7 @@ namespace groomy.Forms.Update
                     return;
                 }
 
-                notesCreate.deleteNote(serviceId, currentNoteID);
+                await notesCreate.deleteNote(serviceId, currentNoteID);
                 LoadNotesAsync();
                 txtNote.Text = null;
                 txtNoteTitle.Text = null;
