@@ -19,10 +19,11 @@ namespace groomy.Forms.Update
     {
         private string serviceId; // To store the ID of the service being updated
         private string currentNoteID;
-        private async void LoadNotesAsync()
+        private async Task LoadNotesAsync()
         {
             try
             {
+                lstNotes.Items.Clear();
                 FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
                 notesCRUD notesCreate = new notesCRUD(db, "Services");
                 lstNotes.View = System.Windows.Forms.View.Details;
@@ -156,7 +157,7 @@ namespace groomy.Forms.Update
                 };
 
                 await notesCreate.createNote(serviceId, newNote);
-                LoadNotesAsync();
+                await LoadNotesAsync();
 
                 // Clear input fields after successful creation
                 txtNoteTitle.Text = string.Empty;
@@ -192,7 +193,7 @@ namespace groomy.Forms.Update
                 };
 
                 notesCreate.updateNote(updatedNote, currentNoteID, serviceId);
-                LoadNotesAsync();
+                await LoadNotesAsync();
             }
             catch (Exception ex)
             {
@@ -218,7 +219,7 @@ namespace groomy.Forms.Update
                 }
 
                 await notesCreate.deleteNote(serviceId, currentNoteID);
-                LoadNotesAsync();
+                await LoadNotesAsync();
                 txtNote.Text = null;
                 txtNoteTitle.Text = null;
                 currentNoteID = null;
@@ -232,7 +233,7 @@ namespace groomy.Forms.Update
 
         private async void UpdateServiceForm_Load(object sender, EventArgs e)
         {
-            LoadNotesAsync();
+            await LoadNotesAsync();
         }
     }
 }
