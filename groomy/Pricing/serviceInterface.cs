@@ -19,3 +19,4 @@ namespace groomy.Pricing
         Task<List<Service>> GetAllServices();
     }
 }
+

@@ -12,178 +12,179 @@ namespace groomy.Pricing.Tests
     public class ServicesCRUDTests
     {
 
-            private FirestoreDb db;
+        private FirestoreDb db;
 
-            private ServicesCRUD servicesCRUD;
+        private ServicesCRUD servicesCRUD;
 
 
-            [TestInitialize]
+        [TestInitialize]
 
-            public void Initialize()
+        public void Initialize()
+
+        {
+
+            db = firebaseConfig.Instance.getFirestoreDB();
+
+            servicesCRUD = new ServicesCRUD(db, "Services");
+
+        }
+
+
+        [TestMethod()]
+
+        public async Task CreateServiceTest()
+
+        {
+
+            Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+
+            await servicesCRUD.CreateService(addService);
+
+            Assert.IsNotNull(addService.Id); // Ensure the service ID is set
+
+        }
+
+
+        [TestMethod()]
+
+        public async Task GetServiceTest()
+
+        {
+
+            // Arrange
+
+            Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+
+            await servicesCRUD.CreateService(addService);
+
+
+            // Act
+
+            Service service = await servicesCRUD.GetService(addService.Id);
+
+
+            // Assert
+
+            Assert.IsNotNull(service);
+
+            Assert.AreEqual(addService.Name, service.Name);
+
+            Assert.AreEqual(addService.Desc, service.Desc);
+
+            Assert.AreEqual(addService.Price, service.Price);
+
+        }
+
+
+        [TestMethod()]
+
+        public async Task SoftDeleteServiceTest()
+
+        {
+
+            // Arrange
+
+            Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+
+            await servicesCRUD.CreateService(addService);
+
+
+            // Act
+
+            servicesCRUD.SoftDeleteService(addService.Id);
+
+            Service deletedService = await servicesCRUD.GetService(addService.Id);
+
+
+            // Assert
+
+            Assert.IsNotNull(deletedService);
+
+            Assert.IsTrue(deletedService.Deleted); // Check if the service is marked as deleted
+
+        }
+
+
+        [TestMethod()]
+
+        public async Task UpdateServiceTest()
+
+        {
+
+            // Arrange
+
+            Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+
+            await servicesCRUD.CreateService(addService);
+
+
+            Service updatedService = new Service
 
             {
 
-                db = firebaseConfig.Instance.getFirestoreDB();
+                Id = addService.Id, // Make sure to set the ID for the update
 
-                servicesCRUD = new ServicesCRUD(db, "Services");
+                Name = "Updated Service",
 
-            }
+                Desc = "This is an updated service description.",
 
+                Price = 149.99
 
-            [TestMethod()]
+            };
 
-            public async Task CreateServiceTest()
 
-            {
+            // Act
 
-                Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+            await servicesCRUD.UpdateService(updatedService);
 
-                await servicesCRUD.CreateService(addService);
+            Service service = await servicesCRUD.GetService(addService.Id);
 
-                Assert.IsNotNull(addService.Id); // Ensure the service ID is set
 
-            }
+            // Assert
 
+            Assert.IsNotNull(service);
 
-            [TestMethod()]
+            Assert.AreEqual(updatedService.Name, service.Name);
 
-            public async Task GetServiceTest()
+            Assert.AreEqual(updatedService.Desc, service.Desc);
 
-            {
+            Assert.AreEqual(updatedService.Price, service.Price);
 
-                // Arrange
+        }
 
-                Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
 
-                await servicesCRUD.CreateService(addService);
+        [TestMethod()]
 
+        public async Task GetAllServicesTest()
 
-                // Act
+        {
 
-                Service service = await servicesCRUD.GetService(addService.Id);
+            // Arrange
 
+            Service service1 = new Service { Name = "Service One", Desc = "This is the first service.", Price = 50.00 };
 
-                // Assert
+            Service service2 = new Service { Name = "Service Two", Desc = "This is the second service.", Price = 75.00 };
 
-                Assert.IsNotNull(service);
 
-                Assert.AreEqual(addService.Name, service.Name);
+            await servicesCRUD.CreateService(service1);
 
-                Assert.AreEqual(addService.Desc, service.Desc);
+            await servicesCRUD.CreateService(service2);
 
-                Assert.AreEqual(addService.Price, service.Price);
 
-            }
+            // Act
 
+            List<Service> allServices = await servicesCRUD.GetAllServices();
 
-            [TestMethod()]
 
-            public async Task SoftDeleteServiceTest()
+            // Assert
 
-            {
+            Assert.IsNotNull(allServices);
 
-                // Arrange
+            Assert.IsTrue(allServices.Any(s => s.Name == service1.Name && s.Desc == service1.Desc && s.Price == service1.Price));
 
-                Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
+            Assert.IsTrue(allServices.Any(s => s.Name == service2.Name && s.Desc == service2.Desc && s.Price == service2.Price));
 
-                await servicesCRUD.CreateService(addService);
+        }
+    }
 
-
-                // Act
-
-                servicesCRUD.SoftDeleteService(addService.Id);
-
-                Service deletedService = await servicesCRUD.GetService(addService.Id);
-
-
-                // Assert
-
-                Assert.IsNotNull(deletedService);
-
-                Assert.IsTrue(deletedService.Deleted); // Check if the service is marked as deleted
-
-            }
-
-
-            [TestMethod()]
-
-            public async Task UpdateServiceTest()
-
-            {
-
-                // Arrange
-
-                Service addService = new Service() { Name = "Test Service", Desc = "This is a test service.", Price = 99.99 };
-
-                await servicesCRUD.CreateService(addService);
-
-
-                Service updatedService = new Service
-
-                {
-
-                    Id = addService.Id, // Make sure to set the ID for the update
-
-                    Name = "Updated Service",
-
-                    Desc = "This is an updated service description.",
-
-                    Price = 149.99
-
-                };
-
-
-                // Act
-
-                await servicesCRUD.UpdateService(updatedService);
-
-                Service service = await servicesCRUD.GetService(addService.Id);
-
-
-                // Assert
-
-                Assert.IsNotNull(service);
-
-                Assert.AreEqual(updatedService.Name, service.Name);
-
-                Assert.AreEqual(updatedService.Desc, service.Desc);
-
-                Assert.AreEqual(updatedService.Price, service.Price);
-
-            }
-
-
-            [TestMethod()]
-
-            public async Task GetAllServicesTest()
-
-            {
-
-                // Arrange
-
-                Service service1 = new Service { Name = "Service One", Desc = "This is the first service.", Price = 50.00 };
-
-                Service service2 = new Service { Name = "Service Two", Desc = "This is the second service.", Price = 75.00 };
-
-
-                await servicesCRUD.CreateService(service1);
-
-                await servicesCRUD.CreateService(service2);
-
-
-                // Act
-
-                List<Service> allServices = await servicesCRUD.GetAllServices();
-
-
-                // Assert
-
-                Assert.IsNotNull(allServices);
-
-                Assert.IsTrue(allServices.Any(s => s.Name == service1.Name && s.Desc == service1.Desc && s.Price == service1.Price));
-
-                Assert.IsTrue(allServices.Any(s => s.Name == service2.Name && s.Desc == service2.Desc && s.Price == service2.Price));
-
-            }
-       }
 }

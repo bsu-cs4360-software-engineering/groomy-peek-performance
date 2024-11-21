@@ -11,7 +11,11 @@ using Google.Cloud.Firestore;
 using groomy.Appointments;
 using groomy.Auth;
 using groomy.Customers;
+using groomy.Forms.Update;
 using groomy.services;
+using groomy.Pricing;
+using groomy.Forms.Create;
+using groomy.Forms.View;
 
 namespace groomy
 {
@@ -66,6 +70,7 @@ namespace groomy
                 pnlWelcome.Visible = true;
                 rdoCustomer.Visible = true;
                 rdoAppointments.Visible = true;
+                rdoServices.Visible = true;
             }
             else
             {
@@ -99,7 +104,30 @@ namespace groomy
                 e.Handled = true;
             }
         }
+        private async Task loadServices()
+        {
+            lstServices.Items.Clear();
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            ServicesCRUD serviceGetter = new ServicesCRUD(db, "Services");
 
+            var services = await serviceGetter.GetAllServices();
+
+            if (services == null || services.Count == 0)
+            {
+                MessageBox.Show("No services found.");
+                return;
+            }
+
+            foreach (Service service in services)
+            {
+                ListViewItem item = new ListViewItem(service.Name);
+                item.SubItems.Add(service.Desc);
+                item.SubItems.Add(service.Price.ToString("C"));
+                item.SubItems.Add(service.Id);
+                lstServices.Items.Add(item);
+            }
+        }
         //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
         public async void loadCustomers()
         {
@@ -110,7 +138,6 @@ namespace groomy
 
             var customers = await customerGetter.getAllCustomers();
             List<customer> potato = customers;
-            //Console.WriteLine(potato.Count);
             if (potato == null || potato.Count == 0)
             {
                 MessageBox.Show("No customers found.");
@@ -225,13 +252,24 @@ namespace groomy
                         
                         break;
 
+                    case "Services":
+                        //This is the services button.
+                        lstServices.View = View.Details;
+                        lstServices.FullRowSelect = true;
+                        pnlAppointments.Visible = !rdoServices.Checked;
+                        pnlServices.Visible = rdoServices.Checked;
+                        pnlCustomer.Visible = !rdoServices.Checked;
+                        pnlServices.BringToFront();
+                        lstServices.FullRowSelect= true;
+                        break;
+
                     default:
                         break;
                 }
             }
         }
 
-        private async void btnCustomerAdd_Click(object sender, EventArgs e)
+        private void btnCustomerAdd_Click(object sender, EventArgs e)
         {
             CreateCustomerForm custFrm = new CreateCustomerForm();
             
@@ -244,7 +282,7 @@ namespace groomy
             appFrm.ShowDialog();
         }
 
-        private async void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Console.WriteLine("I hate winforms");
         }
@@ -366,6 +404,78 @@ namespace groomy
         private void pnlAppointments_VisibleChanged(object sender, EventArgs e)
         {
             loadAppointments();
+        }
+
+        private void btnServiceAdd_Click(object sender, EventArgs e)
+        {
+            CreateServiceForm crtService = new CreateServiceForm();
+            crtService.ShowDialog();
+
+        }
+
+        private async void btnServiceDelete_Click(object sender, EventArgs e)
+        {
+            FirestoreDb potato = firebaseConfig.Instance.getFirestoreDB();
+            ServicesCRUD delServices = new ServicesCRUD(potato, "Services");
+            DialogResult deleteResult = MessageBox.Show("Are you sure you want to delete this service?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (lstServices.SelectedItems[0].SubItems[3].Text != null &&
+            deleteResult == DialogResult.Yes)
+            { 
+                delServices.SoftDeleteService(lstServices.SelectedItems[0].SubItems[3].Text);
+            
+            }
+            
+        }
+
+        private async void btnServiceRefresh_Click(object sender, EventArgs e)
+        {
+            await loadServices();
+        }
+
+        private void btnServiceUpdate_Click(object sender, EventArgs e)
+        {
+            if (lstServices.SelectedItems.Count > 0)
+            {
+                Service potato = new Service {
+                    Name = lstServices.SelectedItems[0].SubItems[0].Text,
+                    Desc = lstServices.SelectedItems[0].SubItems[1].Text,
+                    Price = double.Parse(
+                        lstServices.SelectedItems[0].SubItems[2].Text.Replace("$", ""),
+                        System.Globalization.NumberStyles.Number
+                    ),
+                    Id = lstServices.SelectedItems[0].SubItems[3].Text,
+                    Deleted = false
+                };
+                UpdateServiceForm updateServiceFrm = new UpdateServiceForm(potato);
+                updateServiceFrm.ShowDialog();
+            }
+        }
+
+        private void btnServiceView_Click(object sender, EventArgs e)
+        {
+            Service potato = new Service
+            {
+                Name = lstServices.SelectedItems[0].SubItems[0].Text,
+                Desc = lstServices.SelectedItems[0].SubItems[1].Text,
+                Price = double.Parse(
+                        lstServices.SelectedItems[0].SubItems[2].Text.Replace("$", ""),
+                        System.Globalization.NumberStyles.Number
+                    ),
+                Id = lstServices.SelectedItems[0].SubItems[3].Text,
+                Deleted = false
+            };
+            ViewServiceForm viewServiceFrm = new ViewServiceForm(potato);
+            viewServiceFrm.ShowDialog();
+        }
+
+        private void lstServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void pnlServices_VisibleChanged(object sender, EventArgs e)
+        {
+            await loadServices();
         }
     }
 }

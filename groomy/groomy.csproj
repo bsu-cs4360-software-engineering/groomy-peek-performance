@@ -173,76 +173,103 @@
     <Compile Include="Auth\AdminUsers.cs" />
     <Compile Include="Auth\checkLogin.cs" />
     <Compile Include="Auth\createAdminUsercs.cs" />
-    <Compile Include="CreateAppointmentForm.cs">
+    <Compile Include="Forms\Create\CreateAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateAppointmentForm.Designer.cs">
+    <Compile Include="Forms\Create\CreateAppointmentForm.Designer.cs">
       <DependentUpon>CreateAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateCustomerForm.cs">
+    <Compile Include="Forms\Create\CreateCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateCustomerForm.Designer.cs">
+    <Compile Include="Forms\Create\CreateCustomerForm.Designer.cs">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\customer.cs" />
     <Compile Include="Customers\customerCRUD.cs" />
     <Compile Include="Customers\customerInterface.cs" />
+    <Compile Include="Forms\Create\CreateServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Create\CreateServiceForm.Designer.cs">
+      <DependentUpon>CreateServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Update\UpdateServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Update\UpdateServiceForm.Designer.cs">
+      <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\ViewServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View\ViewServiceForm.Designer.cs">
+      <DependentUpon>ViewServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateUserForm.cs">
+    <Compile Include="Forms\Create\CreateUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateUserForm.Designer.cs">
+    <Compile Include="Forms\Create\CreateUserForm.Designer.cs">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Notes\notesCRUD.cs" />
     <Compile Include="Notes\notes.cs" />
     <Compile Include="Notes\notesInterface.cs" />
-    <Compile Include="Pricing\serviceInterface.cs" />
     <Compile Include="Pricing\service.cs" />
-    <Compile Include="Pricing\servicesCRUD.cs" />
+    <Compile Include="Pricing\serviceCRUD.cs" />
+    <Compile Include="Pricing\serviceInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\firebaseConfig.cs" />
-    <Compile Include="UpdateAppointmentForm.cs">
+    <Compile Include="Forms\Update\UpdateAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateAppointmentForm.Designer.cs">
+    <Compile Include="Forms\Update\UpdateAppointmentForm.Designer.cs">
       <DependentUpon>UpdateAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateCustomer.cs">
+    <Compile Include="Forms\Update\UpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateCustomer.Designer.cs">
+    <Compile Include="Forms\Update\UpdateCustomer.Designer.cs">
       <DependentUpon>UpdateCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewAppointmentsForm.cs">
+    <Compile Include="Forms\View\ViewAppointmentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewAppointmentsForm.Designer.cs">
+    <Compile Include="Forms\View\ViewAppointmentsForm.Designer.cs">
       <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewCustomerForm.cs">
+    <Compile Include="Forms\View\ViewCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewCustomerForm.Designer.cs">
+    <Compile Include="Forms\View\ViewCustomerForm.Designer.cs">
       <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateAppointmentForm.resx">
+    <EmbeddedResource Include="Forms\Create\CreateAppointmentForm.resx">
       <DependentUpon>CreateAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCustomerForm.resx">
+    <EmbeddedResource Include="Forms\Create\CreateCustomerForm.resx">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Create\CreateServiceForm.resx">
+      <DependentUpon>CreateServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Update\UpdateServiceForm.resx">
+      <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\View\ViewServiceForm.resx">
+      <DependentUpon>ViewServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateUserForm.resx">
+    <EmbeddedResource Include="Forms\Create\CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -254,16 +281,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UpdateAppointmentForm.resx">
+    <EmbeddedResource Include="Forms\Update\UpdateAppointmentForm.resx">
       <DependentUpon>UpdateAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateCustomer.resx">
+    <EmbeddedResource Include="Forms\Update\UpdateCustomer.resx">
       <DependentUpon>UpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewAppointmentsForm.resx">
+    <EmbeddedResource Include="Forms\View\ViewAppointmentsForm.resx">
       <DependentUpon>ViewAppointmentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewCustomerForm.resx">
+    <EmbeddedResource Include="Forms\View\ViewCustomerForm.resx">
       <DependentUpon>ViewCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

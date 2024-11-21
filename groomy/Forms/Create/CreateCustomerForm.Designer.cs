@@ -224,7 +224,7 @@
             this.Controls.Add(this.grpID);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateCustomerForm";
