@@ -28,21 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Name");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Title");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Start");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Location");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("End");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem85 = new System.Windows.Forms.ListViewItem("Invoice ID");
+            System.Windows.Forms.ListViewItem listViewItem86 = new System.Windows.Forms.ListViewItem("Client");
+            System.Windows.Forms.ListViewItem listViewItem87 = new System.Windows.Forms.ListViewItem("Date");
+            System.Windows.Forms.ListViewItem listViewItem88 = new System.Windows.Forms.ListViewItem("Total");
+            System.Windows.Forms.ListViewItem listViewItem89 = new System.Windows.Forms.ListViewItem("Paid");
+            System.Windows.Forms.ListViewItem listViewItem90 = new System.Windows.Forms.ListViewItem("Name");
+            System.Windows.Forms.ListViewItem listViewItem91 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem92 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem93 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem94 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem95 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem96 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("");
             this.pnlAccent = new System.Windows.Forms.Panel();
+            this.rdoInvoices = new System.Windows.Forms.RadioButton();
             this.rdoServices = new System.Windows.Forms.RadioButton();
             this.rdoAppointments = new System.Windows.Forms.RadioButton();
             this.rdoCustomer = new System.Windows.Forms.RadioButton();
             this.rdoHome = new System.Windows.Forms.RadioButton();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlInvoices = new System.Windows.Forms.Panel();
+            this.btnInvView = new System.Windows.Forms.Button();
+            this.btnInvUpdate = new System.Windows.Forms.Button();
+            this.btnInvRefresh = new System.Windows.Forms.Button();
+            this.btnInvDelete = new System.Windows.Forms.Button();
+            this.btnInvAdd = new System.Windows.Forms.Button();
+            this.lstInvoices = new System.Windows.Forms.ListView();
+            this.clmInvID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmPaid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlServices = new System.Windows.Forms.Panel();
             this.btnServiceView = new System.Windows.Forms.Button();
             this.btnServiceUpdate = new System.Windows.Forms.Button();
@@ -53,6 +71,7 @@
             this.cmhName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmhDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmhPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IdP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlAppointments = new System.Windows.Forms.Panel();
             this.btnAppAdd = new System.Windows.Forms.Button();
             this.btnAppDelete = new System.Windows.Forms.Button();
@@ -100,9 +119,9 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.IdP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlAccent.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            this.pnlInvoices.SuspendLayout();
             this.pnlServices.SuspendLayout();
             this.pnlAppointments.SuspendLayout();
             this.pnlCustomer.SuspendLayout();
@@ -114,16 +133,36 @@
             // 
             this.pnlAccent.AutoSize = true;
             this.pnlAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
+            this.pnlAccent.Controls.Add(this.rdoInvoices);
             this.pnlAccent.Controls.Add(this.rdoServices);
             this.pnlAccent.Controls.Add(this.rdoAppointments);
             this.pnlAccent.Controls.Add(this.rdoCustomer);
             this.pnlAccent.Controls.Add(this.rdoHome);
             this.pnlAccent.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlAccent.Location = new System.Drawing.Point(0, 0);
-            this.pnlAccent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlAccent.Name = "pnlAccent";
-            this.pnlAccent.Size = new System.Drawing.Size(304, 543);
+            this.pnlAccent.Size = new System.Drawing.Size(228, 441);
             this.pnlAccent.TabIndex = 0;
+            // 
+            // rdoInvoices
+            // 
+            this.rdoInvoices.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdoInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(60)))), ((int)(((byte)(82)))));
+            this.rdoInvoices.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.rdoInvoices.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoInvoices.FlatAppearance.BorderSize = 0;
+            this.rdoInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdoInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoInvoices.ForeColor = System.Drawing.Color.White;
+            this.rdoInvoices.Location = new System.Drawing.Point(4, 226);
+            this.rdoInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.rdoInvoices.Name = "rdoInvoices";
+            this.rdoInvoices.Size = new System.Drawing.Size(221, 47);
+            this.rdoInvoices.TabIndex = 4;
+            this.rdoInvoices.Text = "Invoices";
+            this.rdoInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rdoInvoices.UseVisualStyleBackColor = false;
+            this.rdoInvoices.Visible = false;
             // 
             // rdoServices
             // 
@@ -135,10 +174,10 @@
             this.rdoServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoServices.ForeColor = System.Drawing.Color.White;
-            this.rdoServices.Location = new System.Drawing.Point(5, 215);
-            this.rdoServices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoServices.Location = new System.Drawing.Point(4, 175);
+            this.rdoServices.Margin = new System.Windows.Forms.Padding(2);
             this.rdoServices.Name = "rdoServices";
-            this.rdoServices.Size = new System.Drawing.Size(295, 58);
+            this.rdoServices.Size = new System.Drawing.Size(221, 47);
             this.rdoServices.TabIndex = 3;
             this.rdoServices.Text = "Services";
             this.rdoServices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,10 +195,10 @@
             this.rdoAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoAppointments.ForeColor = System.Drawing.Color.White;
-            this.rdoAppointments.Location = new System.Drawing.Point(5, 153);
-            this.rdoAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoAppointments.Location = new System.Drawing.Point(4, 124);
+            this.rdoAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.rdoAppointments.Name = "rdoAppointments";
-            this.rdoAppointments.Size = new System.Drawing.Size(295, 58);
+            this.rdoAppointments.Size = new System.Drawing.Size(221, 47);
             this.rdoAppointments.TabIndex = 2;
             this.rdoAppointments.Text = "Appointments";
             this.rdoAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,10 +216,10 @@
             this.rdoCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoCustomer.ForeColor = System.Drawing.Color.White;
-            this.rdoCustomer.Location = new System.Drawing.Point(5, 92);
-            this.rdoCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdoCustomer.Location = new System.Drawing.Point(4, 75);
+            this.rdoCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCustomer.Name = "rdoCustomer";
-            this.rdoCustomer.Size = new System.Drawing.Size(295, 58);
+            this.rdoCustomer.Size = new System.Drawing.Size(221, 47);
             this.rdoCustomer.TabIndex = 1;
             this.rdoCustomer.Text = "Customer";
             this.rdoCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,10 +238,9 @@
             this.rdoHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdoHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoHome.ForeColor = System.Drawing.Color.White;
-            this.rdoHome.Location = new System.Drawing.Point(5, 28);
-            this.rdoHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoHome.Location = new System.Drawing.Point(4, 23);
             this.rdoHome.Name = "rdoHome";
-            this.rdoHome.Size = new System.Drawing.Size(295, 58);
+            this.rdoHome.Size = new System.Drawing.Size(221, 47);
             this.rdoHome.TabIndex = 0;
             this.rdoHome.TabStop = true;
             this.rdoHome.Text = "Home";
@@ -214,17 +252,124 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.pnlMain.Controls.Add(this.pnlInvoices);
             this.pnlMain.Controls.Add(this.pnlServices);
             this.pnlMain.Controls.Add(this.pnlAppointments);
             this.pnlMain.Controls.Add(this.pnlCustomer);
             this.pnlMain.Controls.Add(this.pnlWelcome);
             this.pnlMain.Controls.Add(this.pnlLogin);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(304, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Location = new System.Drawing.Point(228, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1127, 543);
+            this.pnlMain.Size = new System.Drawing.Size(845, 441);
             this.pnlMain.TabIndex = 1;
+            // 
+            // pnlInvoices
+            // 
+            this.pnlInvoices.Controls.Add(this.btnInvView);
+            this.pnlInvoices.Controls.Add(this.btnInvUpdate);
+            this.pnlInvoices.Controls.Add(this.btnInvRefresh);
+            this.pnlInvoices.Controls.Add(this.btnInvDelete);
+            this.pnlInvoices.Controls.Add(this.btnInvAdd);
+            this.pnlInvoices.Controls.Add(this.lstInvoices);
+            this.pnlInvoices.Location = new System.Drawing.Point(0, 0);
+            this.pnlInvoices.Name = "pnlInvoices";
+            this.pnlInvoices.Size = new System.Drawing.Size(845, 441);
+            this.pnlInvoices.TabIndex = 13;
+            this.pnlInvoices.Visible = false;
+            // 
+            // btnInvView
+            // 
+            this.btnInvView.Location = new System.Drawing.Point(771, 128);
+            this.btnInvView.Name = "btnInvView";
+            this.btnInvView.Size = new System.Drawing.Size(58, 23);
+            this.btnInvView.TabIndex = 12;
+            this.btnInvView.Text = "View";
+            this.btnInvView.UseVisualStyleBackColor = true;
+            this.btnInvView.Click += new System.EventHandler(this.btnInvView_Click);
+            // 
+            // btnInvUpdate
+            // 
+            this.btnInvUpdate.Location = new System.Drawing.Point(771, 99);
+            this.btnInvUpdate.Name = "btnInvUpdate";
+            this.btnInvUpdate.Size = new System.Drawing.Size(58, 23);
+            this.btnInvUpdate.TabIndex = 11;
+            this.btnInvUpdate.Text = "Update";
+            this.btnInvUpdate.UseVisualStyleBackColor = true;
+            this.btnInvUpdate.Click += new System.EventHandler(this.btnInvUpdate_Click);
+            // 
+            // btnInvRefresh
+            // 
+            this.btnInvRefresh.Location = new System.Drawing.Point(771, 70);
+            this.btnInvRefresh.Name = "btnInvRefresh";
+            this.btnInvRefresh.Size = new System.Drawing.Size(58, 23);
+            this.btnInvRefresh.TabIndex = 10;
+            this.btnInvRefresh.Text = "Refresh";
+            this.btnInvRefresh.UseVisualStyleBackColor = true;
+            this.btnInvRefresh.Click += new System.EventHandler(this.btnInvRefresh_Click);
+            // 
+            // btnInvDelete
+            // 
+            this.btnInvDelete.Location = new System.Drawing.Point(771, 41);
+            this.btnInvDelete.Name = "btnInvDelete";
+            this.btnInvDelete.Size = new System.Drawing.Size(58, 23);
+            this.btnInvDelete.TabIndex = 9;
+            this.btnInvDelete.Text = "Delete";
+            this.btnInvDelete.UseVisualStyleBackColor = true;
+            this.btnInvDelete.Click += new System.EventHandler(this.btnInvDelete_Click);
+            // 
+            // btnInvAdd
+            // 
+            this.btnInvAdd.Location = new System.Drawing.Point(771, 12);
+            this.btnInvAdd.Name = "btnInvAdd";
+            this.btnInvAdd.Size = new System.Drawing.Size(58, 23);
+            this.btnInvAdd.TabIndex = 8;
+            this.btnInvAdd.Text = "Add...";
+            this.btnInvAdd.UseVisualStyleBackColor = true;
+            this.btnInvAdd.Click += new System.EventHandler(this.btnInvAdd_Click);
+            // 
+            // lstInvoices
+            // 
+            this.lstInvoices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmInvID,
+            this.clmClient,
+            this.clmDate,
+            this.clmTotal,
+            this.clmPaid});
+            this.lstInvoices.HideSelection = false;
+            listViewItem89.StateImageIndex = 0;
+            this.lstInvoices.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem85,
+            listViewItem86,
+            listViewItem87,
+            listViewItem88,
+            listViewItem89});
+            this.lstInvoices.Location = new System.Drawing.Point(10, 9);
+            this.lstInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.lstInvoices.Name = "lstInvoices";
+            this.lstInvoices.Size = new System.Drawing.Size(756, 421);
+            this.lstInvoices.TabIndex = 8;
+            this.lstInvoices.UseCompatibleStateImageBehavior = false;
+            // 
+            // clmInvID
+            // 
+            this.clmInvID.Text = "Invoice ID";
+            // 
+            // clmClient
+            // 
+            this.clmClient.Text = "Client";
+            // 
+            // clmDate
+            // 
+            this.clmDate.Text = "Date";
+            // 
+            // clmTotal
+            // 
+            this.clmTotal.Text = "Total";
+            // 
+            // clmPaid
+            // 
+            this.clmPaid.Text = "Paid";
             // 
             // pnlServices
             // 
@@ -235,19 +380,17 @@
             this.pnlServices.Controls.Add(this.btnServiceAdd);
             this.pnlServices.Controls.Add(this.lstServices);
             this.pnlServices.Location = new System.Drawing.Point(0, 0);
-            this.pnlServices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlServices.Name = "pnlServices";
-            this.pnlServices.Size = new System.Drawing.Size(1127, 543);
+            this.pnlServices.Size = new System.Drawing.Size(845, 441);
             this.pnlServices.TabIndex = 8;
             this.pnlServices.Visible = false;
             this.pnlServices.VisibleChanged += new System.EventHandler(this.pnlServices_VisibleChanged);
             // 
             // btnServiceView
             // 
-            this.btnServiceView.Location = new System.Drawing.Point(1028, 158);
-            this.btnServiceView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceView.Location = new System.Drawing.Point(771, 128);
             this.btnServiceView.Name = "btnServiceView";
-            this.btnServiceView.Size = new System.Drawing.Size(77, 28);
+            this.btnServiceView.Size = new System.Drawing.Size(58, 23);
             this.btnServiceView.TabIndex = 12;
             this.btnServiceView.Text = "View";
             this.btnServiceView.UseVisualStyleBackColor = true;
@@ -255,10 +398,9 @@
             // 
             // btnServiceUpdate
             // 
-            this.btnServiceUpdate.Location = new System.Drawing.Point(1028, 122);
-            this.btnServiceUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceUpdate.Location = new System.Drawing.Point(771, 99);
             this.btnServiceUpdate.Name = "btnServiceUpdate";
-            this.btnServiceUpdate.Size = new System.Drawing.Size(77, 28);
+            this.btnServiceUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnServiceUpdate.TabIndex = 11;
             this.btnServiceUpdate.Text = "Update";
             this.btnServiceUpdate.UseVisualStyleBackColor = true;
@@ -266,10 +408,9 @@
             // 
             // btnServiceRefresh
             // 
-            this.btnServiceRefresh.Location = new System.Drawing.Point(1028, 86);
-            this.btnServiceRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceRefresh.Location = new System.Drawing.Point(771, 70);
             this.btnServiceRefresh.Name = "btnServiceRefresh";
-            this.btnServiceRefresh.Size = new System.Drawing.Size(77, 28);
+            this.btnServiceRefresh.Size = new System.Drawing.Size(58, 23);
             this.btnServiceRefresh.TabIndex = 10;
             this.btnServiceRefresh.Text = "Refresh";
             this.btnServiceRefresh.UseVisualStyleBackColor = true;
@@ -277,10 +418,9 @@
             // 
             // btnServiceDelete
             // 
-            this.btnServiceDelete.Location = new System.Drawing.Point(1028, 50);
-            this.btnServiceDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceDelete.Location = new System.Drawing.Point(771, 41);
             this.btnServiceDelete.Name = "btnServiceDelete";
-            this.btnServiceDelete.Size = new System.Drawing.Size(77, 28);
+            this.btnServiceDelete.Size = new System.Drawing.Size(58, 23);
             this.btnServiceDelete.TabIndex = 9;
             this.btnServiceDelete.Text = "Delete";
             this.btnServiceDelete.UseVisualStyleBackColor = true;
@@ -288,10 +428,9 @@
             // 
             // btnServiceAdd
             // 
-            this.btnServiceAdd.Location = new System.Drawing.Point(1028, 15);
-            this.btnServiceAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceAdd.Location = new System.Drawing.Point(771, 12);
             this.btnServiceAdd.Name = "btnServiceAdd";
-            this.btnServiceAdd.Size = new System.Drawing.Size(77, 28);
+            this.btnServiceAdd.Size = new System.Drawing.Size(58, 23);
             this.btnServiceAdd.TabIndex = 8;
             this.btnServiceAdd.Text = "Add...";
             this.btnServiceAdd.UseVisualStyleBackColor = true;
@@ -306,13 +445,13 @@
             this.IdP});
             this.lstServices.HideSelection = false;
             this.lstServices.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
-            this.lstServices.Location = new System.Drawing.Point(13, 11);
-            this.lstServices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            listViewItem90,
+            listViewItem91,
+            listViewItem92});
+            this.lstServices.Location = new System.Drawing.Point(10, 9);
+            this.lstServices.Margin = new System.Windows.Forms.Padding(2);
             this.lstServices.Name = "lstServices";
-            this.lstServices.Size = new System.Drawing.Size(1007, 517);
+            this.lstServices.Size = new System.Drawing.Size(756, 421);
             this.lstServices.TabIndex = 8;
             this.lstServices.UseCompatibleStateImageBehavior = false;
             this.lstServices.SelectedIndexChanged += new System.EventHandler(this.lstServices_SelectedIndexChanged);
@@ -329,6 +468,10 @@
             // 
             this.cmhPrice.Text = "Price";
             // 
+            // IdP
+            // 
+            this.IdP.Text = "ID";
+            // 
             // pnlAppointments
             // 
             this.pnlAppointments.Controls.Add(this.btnAppAdd);
@@ -339,19 +482,17 @@
             this.pnlAppointments.Controls.Add(this.lstAppointments);
             this.pnlAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAppointments.Location = new System.Drawing.Point(0, 0);
-            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(1127, 543);
+            this.pnlAppointments.Size = new System.Drawing.Size(845, 441);
             this.pnlAppointments.TabIndex = 10;
             this.pnlAppointments.Visible = false;
             this.pnlAppointments.VisibleChanged += new System.EventHandler(this.pnlAppointments_VisibleChanged);
             // 
             // btnAppAdd
             // 
-            this.btnAppAdd.Location = new System.Drawing.Point(1035, 15);
-            this.btnAppAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAppAdd.Location = new System.Drawing.Point(776, 12);
             this.btnAppAdd.Name = "btnAppAdd";
-            this.btnAppAdd.Size = new System.Drawing.Size(77, 28);
+            this.btnAppAdd.Size = new System.Drawing.Size(58, 23);
             this.btnAppAdd.TabIndex = 3;
             this.btnAppAdd.Text = "Add...";
             this.btnAppAdd.UseVisualStyleBackColor = true;
@@ -359,10 +500,9 @@
             // 
             // btnAppDelete
             // 
-            this.btnAppDelete.Location = new System.Drawing.Point(1035, 50);
-            this.btnAppDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAppDelete.Location = new System.Drawing.Point(776, 41);
             this.btnAppDelete.Name = "btnAppDelete";
-            this.btnAppDelete.Size = new System.Drawing.Size(77, 28);
+            this.btnAppDelete.Size = new System.Drawing.Size(58, 23);
             this.btnAppDelete.TabIndex = 4;
             this.btnAppDelete.Text = "Delete...";
             this.btnAppDelete.UseVisualStyleBackColor = true;
@@ -370,10 +510,9 @@
             // 
             // btnAppRefresh
             // 
-            this.btnAppRefresh.Location = new System.Drawing.Point(1035, 86);
-            this.btnAppRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAppRefresh.Location = new System.Drawing.Point(776, 70);
             this.btnAppRefresh.Name = "btnAppRefresh";
-            this.btnAppRefresh.Size = new System.Drawing.Size(79, 28);
+            this.btnAppRefresh.Size = new System.Drawing.Size(59, 23);
             this.btnAppRefresh.TabIndex = 5;
             this.btnAppRefresh.Text = "Refresh";
             this.btnAppRefresh.UseVisualStyleBackColor = true;
@@ -381,10 +520,9 @@
             // 
             // btnAppUpdate
             // 
-            this.btnAppUpdate.Location = new System.Drawing.Point(1036, 122);
-            this.btnAppUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAppUpdate.Location = new System.Drawing.Point(777, 99);
             this.btnAppUpdate.Name = "btnAppUpdate";
-            this.btnAppUpdate.Size = new System.Drawing.Size(77, 28);
+            this.btnAppUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnAppUpdate.TabIndex = 6;
             this.btnAppUpdate.Text = "Update";
             this.btnAppUpdate.UseVisualStyleBackColor = true;
@@ -392,10 +530,10 @@
             // 
             // btnAppView
             // 
-            this.btnAppView.Location = new System.Drawing.Point(1037, 156);
-            this.btnAppView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAppView.Location = new System.Drawing.Point(778, 127);
+            this.btnAppView.Margin = new System.Windows.Forms.Padding(2);
             this.btnAppView.Name = "btnAppView";
-            this.btnAppView.Size = new System.Drawing.Size(77, 28);
+            this.btnAppView.Size = new System.Drawing.Size(58, 23);
             this.btnAppView.TabIndex = 7;
             this.btnAppView.Text = "View";
             this.btnAppView.UseVisualStyleBackColor = true;
@@ -414,15 +552,15 @@
             this.emailApp});
             this.lstAppointments.HideSelection = false;
             this.lstAppointments.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17});
-            this.lstAppointments.Location = new System.Drawing.Point(13, 11);
-            this.lstAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            listViewItem93,
+            listViewItem94,
+            listViewItem95,
+            listViewItem96,
+            listViewItem97});
+            this.lstAppointments.Location = new System.Drawing.Point(10, 9);
+            this.lstAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.lstAppointments.Name = "lstAppointments";
-            this.lstAppointments.Size = new System.Drawing.Size(1007, 517);
+            this.lstAppointments.Size = new System.Drawing.Size(756, 421);
             this.lstAppointments.TabIndex = 0;
             this.lstAppointments.UseCompatibleStateImageBehavior = false;
             this.lstAppointments.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
@@ -471,19 +609,17 @@
             this.pnlCustomer.Controls.Add(this.lstCustomers);
             this.pnlCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCustomer.Location = new System.Drawing.Point(0, 0);
-            this.pnlCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlCustomer.Name = "pnlCustomer";
-            this.pnlCustomer.Size = new System.Drawing.Size(1127, 543);
+            this.pnlCustomer.Size = new System.Drawing.Size(845, 441);
             this.pnlCustomer.TabIndex = 9;
             this.pnlCustomer.Visible = false;
             this.pnlCustomer.VisibleChanged += new System.EventHandler(this.pnlCustomer_VisibleChanged);
             // 
             // btnCustomerAdd
             // 
-            this.btnCustomerAdd.Location = new System.Drawing.Point(1035, 15);
-            this.btnCustomerAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomerAdd.Location = new System.Drawing.Point(776, 12);
             this.btnCustomerAdd.Name = "btnCustomerAdd";
-            this.btnCustomerAdd.Size = new System.Drawing.Size(77, 28);
+            this.btnCustomerAdd.Size = new System.Drawing.Size(58, 23);
             this.btnCustomerAdd.TabIndex = 1;
             this.btnCustomerAdd.Text = "Add...";
             this.btnCustomerAdd.UseVisualStyleBackColor = true;
@@ -491,10 +627,9 @@
             // 
             // btnCustomerDelete
             // 
-            this.btnCustomerDelete.Location = new System.Drawing.Point(1035, 50);
-            this.btnCustomerDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomerDelete.Location = new System.Drawing.Point(776, 41);
             this.btnCustomerDelete.Name = "btnCustomerDelete";
-            this.btnCustomerDelete.Size = new System.Drawing.Size(77, 28);
+            this.btnCustomerDelete.Size = new System.Drawing.Size(58, 23);
             this.btnCustomerDelete.TabIndex = 2;
             this.btnCustomerDelete.Text = "Delete...";
             this.btnCustomerDelete.UseVisualStyleBackColor = true;
@@ -502,10 +637,9 @@
             // 
             // btnCustRefresh
             // 
-            this.btnCustRefresh.Location = new System.Drawing.Point(1035, 86);
-            this.btnCustRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustRefresh.Location = new System.Drawing.Point(776, 70);
             this.btnCustRefresh.Name = "btnCustRefresh";
-            this.btnCustRefresh.Size = new System.Drawing.Size(77, 28);
+            this.btnCustRefresh.Size = new System.Drawing.Size(58, 23);
             this.btnCustRefresh.TabIndex = 3;
             this.btnCustRefresh.Text = "Refresh";
             this.btnCustRefresh.UseVisualStyleBackColor = true;
@@ -513,10 +647,9 @@
             // 
             // btnCustUpdate
             // 
-            this.btnCustUpdate.Location = new System.Drawing.Point(1035, 122);
-            this.btnCustUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustUpdate.Location = new System.Drawing.Point(776, 99);
             this.btnCustUpdate.Name = "btnCustUpdate";
-            this.btnCustUpdate.Size = new System.Drawing.Size(77, 28);
+            this.btnCustUpdate.Size = new System.Drawing.Size(58, 23);
             this.btnCustUpdate.TabIndex = 4;
             this.btnCustUpdate.Text = "Update";
             this.btnCustUpdate.UseVisualStyleBackColor = true;
@@ -524,10 +657,10 @@
             // 
             // btnCustView
             // 
-            this.btnCustView.Location = new System.Drawing.Point(1036, 156);
-            this.btnCustView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCustView.Location = new System.Drawing.Point(777, 127);
+            this.btnCustView.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustView.Name = "btnCustView";
-            this.btnCustView.Size = new System.Drawing.Size(77, 28);
+            this.btnCustView.Size = new System.Drawing.Size(58, 23);
             this.btnCustView.TabIndex = 5;
             this.btnCustView.Text = "View";
             this.btnCustView.UseVisualStyleBackColor = true;
@@ -544,11 +677,11 @@
             this.id});
             this.lstCustomers.HideSelection = false;
             this.lstCustomers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem18});
-            this.lstCustomers.Location = new System.Drawing.Point(13, 11);
-            this.lstCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            listViewItem98});
+            this.lstCustomers.Location = new System.Drawing.Point(10, 9);
+            this.lstCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.lstCustomers.Name = "lstCustomers";
-            this.lstCustomers.Size = new System.Drawing.Size(1007, 517);
+            this.lstCustomers.Size = new System.Drawing.Size(756, 421);
             this.lstCustomers.TabIndex = 0;
             this.lstCustomers.UseCompatibleStateImageBehavior = false;
             this.lstCustomers.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -583,19 +716,17 @@
             // 
             this.pnlWelcome.Controls.Add(this.btnBack);
             this.pnlWelcome.Controls.Add(this.label4);
-            this.pnlWelcome.Location = new System.Drawing.Point(8, 15);
-            this.pnlWelcome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlWelcome.Location = new System.Drawing.Point(6, 12);
             this.pnlWelcome.Name = "pnlWelcome";
-            this.pnlWelcome.Size = new System.Drawing.Size(267, 123);
+            this.pnlWelcome.Size = new System.Drawing.Size(200, 100);
             this.pnlWelcome.TabIndex = 8;
             this.pnlWelcome.Visible = false;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(11, 91);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Location = new System.Drawing.Point(8, 74);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(100, 28);
+            this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "&Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -605,10 +736,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 12);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(3, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 31);
+            this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 0;
             this.label4.Text = "Welcome!";
             // 
@@ -622,18 +752,16 @@
             this.pnlLogin.Controls.Add(this.label3);
             this.pnlLogin.Controls.Add(this.txtPassword);
             this.pnlLogin.Controls.Add(this.label2);
-            this.pnlLogin.Location = new System.Drawing.Point(177, 193);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLogin.Location = new System.Drawing.Point(133, 157);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(746, 123);
+            this.pnlLogin.Size = new System.Drawing.Size(560, 100);
             this.pnlLogin.TabIndex = 7;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(605, 30);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Location = new System.Drawing.Point(454, 24);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 57);
+            this.btnLogin.Size = new System.Drawing.Size(75, 46);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -642,20 +770,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(70, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username:";
             // 
             // lnkCreateAccount
             // 
             this.lnkCreateAccount.AutoSize = true;
-            this.lnkCreateAccount.Location = new System.Drawing.Point(280, 90);
-            this.lnkCreateAccount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lnkCreateAccount.Location = new System.Drawing.Point(210, 73);
             this.lnkCreateAccount.Name = "lnkCreateAccount";
-            this.lnkCreateAccount.Size = new System.Drawing.Size(76, 16);
+            this.lnkCreateAccount.Size = new System.Drawing.Size(62, 13);
             this.lnkCreateAccount.TabIndex = 4;
             this.lnkCreateAccount.TabStop = true;
             this.lnkCreateAccount.Text = "Create one!";
@@ -664,29 +790,26 @@
             // txtUsername
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsername.Location = new System.Drawing.Point(179, 30);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Location = new System.Drawing.Point(134, 24);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(418, 22);
+            this.txtUsername.Size = new System.Drawing.Size(314, 20);
             this.txtUsername.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(175, 90);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(131, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "No Account? ";
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Location = new System.Drawing.Point(179, 62);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Location = new System.Drawing.Point(134, 50);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(418, 22);
+            this.txtPassword.Size = new System.Drawing.Size(314, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -694,10 +817,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 65);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(72, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
             // 
@@ -730,24 +852,20 @@
             // 
             this.columnHeader1.Text = "Description";
             // 
-            // IdP
-            // 
-            this.IdP.Text = "ID";
-            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1431, 543);
+            this.ClientSize = new System.Drawing.Size(1073, 441);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlAccent);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Groomy";
             this.pnlAccent.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
+            this.pnlInvoices.ResumeLayout(false);
             this.pnlServices.ResumeLayout(false);
             this.pnlAppointments.ResumeLayout(false);
             this.pnlCustomer.ResumeLayout(false);
@@ -827,6 +945,19 @@
         private System.Windows.Forms.Button btnServiceDelete;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ColumnHeader IdP;
+        private System.Windows.Forms.RadioButton rdoInvoices;
+        private System.Windows.Forms.Panel pnlInvoices;
+        private System.Windows.Forms.Button btnInvView;
+        private System.Windows.Forms.Button btnInvUpdate;
+        private System.Windows.Forms.Button btnInvRefresh;
+        private System.Windows.Forms.Button btnInvDelete;
+        private System.Windows.Forms.Button btnInvAdd;
+        private System.Windows.Forms.ListView lstInvoices;
+        private System.Windows.Forms.ColumnHeader clmInvID;
+        private System.Windows.Forms.ColumnHeader clmClient;
+        private System.Windows.Forms.ColumnHeader clmDate;
+        private System.Windows.Forms.ColumnHeader clmTotal;
+        private System.Windows.Forms.ColumnHeader clmPaid;
     }
 }
 
