@@ -206,6 +206,9 @@
     <Compile Include="Forms\View\ViewServiceForm.Designer.cs">
       <DependentUpon>ViewServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoices\invoice.cs" />
+    <Compile Include="Invoices\invoiceInterface.cs" />
+    <Compile Include="Invoices\invoicesCRUD.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
