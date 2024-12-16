@@ -165,6 +165,7 @@
     <Compile Include="Auth\createAdminUserTests.cs" />
     <Compile Include="Auth\loginCheckTests.cs" />
     <Compile Include="Customers\customerCRUDTests.cs" />
+    <Compile Include="Invoices\InvoiceCRUDTests.cs" />
     <Compile Include="Notes\notesCRUDTests.cs" />
     <Compile Include="Pricing\ServicesCRUDTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
