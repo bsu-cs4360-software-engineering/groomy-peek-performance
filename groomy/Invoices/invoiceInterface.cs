@@ -8,7 +8,8 @@ namespace groomy.Invoices
         Task CreateInvoice(Invoice invoice);
         Task<Invoice> GetInvoice(string documentId);
         Task<List<Invoice>> GetAllInvoices();
-        Task<List<Invoice>> GetUnpaidInvoices();
+        Task<List<Invoice>> GetUnPaidInvoices();
+        Task<List<Invoice>> GetPaidInvoices();
         Task UpdateInvoice(Invoice invoice);
         Task SoftDeleteInvoice(string documentId);
     }

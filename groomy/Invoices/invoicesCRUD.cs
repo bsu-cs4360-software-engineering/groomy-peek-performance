@@ -48,52 +48,45 @@ namespace groomy.Invoices
 
         public async Task<List<Invoice>> GetAllInvoices()
         {
-            Query query = __db.Collection(__collectionName).OrderByDescending("createdDate");
-            QuerySnapshot snapshot = await query.GetSnapshotAsync();
-
-            return snapshot.Documents
-                .Select(doc => doc.ConvertTo<Invoice>())
-                .Where(inv => !inv.Deleted)
-                .ToList();
-        }
-
-        public async Task<List<Invoice>> GetUnpaidInvoices()
-        {
+            // First get all non-deleted invoices
             Query query = __db.Collection(__collectionName)
-                .WhereEqualTo("isPaid", false)
-                .WhereEqualTo("deleted", false)
-                .OrderByDescending("createdDate");
+                .WhereEqualTo("deleted", false);
 
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
 
+            // Then sort in memory
             return snapshot.Documents
                 .Select(doc => doc.ConvertTo<Invoice>())
+                .OrderByDescending(inv => inv.CreatedDate)
                 .ToList();
         }
         public async Task<List<Invoice>> GetPaidInvoices()
         {
-            // First get all invoices
-            CollectionReference colRef = __db.Collection(__collectionName);
-            QuerySnapshot snapshot = await colRef.GetSnapshotAsync();
+            // Get all non-deleted paid invoices
+            Query query = __db.Collection(__collectionName)
+                .WhereEqualTo("deleted", false)
+                .WhereEqualTo("isPaid", true);
 
-            // Then filter in memory
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
             return snapshot.Documents
                 .Select(doc => doc.ConvertTo<Invoice>())
-                .Where(inv => !inv.Deleted && inv.IsPaid)
-                .OrderByDescending(inv => inv.CreatedDate)
+                .OrderByDescending(inv => inv.DueDate)
                 .ToList();
         }
+
         public async Task<List<Invoice>> GetUnPaidInvoices()
         {
-            // First get all invoices
-            CollectionReference colRef = __db.Collection(__collectionName);
-            QuerySnapshot snapshot = await colRef.GetSnapshotAsync();
+            // Get all non-deleted unpaid invoices
+            Query query = __db.Collection(__collectionName)
+                .WhereEqualTo("deleted", false)
+                .WhereEqualTo("isPaid", false);
 
-            // Then filter in memory
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
             return snapshot.Documents
                 .Select(doc => doc.ConvertTo<Invoice>())
-                .Where(inv => !inv.Deleted && !inv.IsPaid)
-                .OrderByDescending(inv => inv.CreatedDate)
+                .OrderByDescending(inv => inv.DueDate)
                 .ToList();
         }
         public async Task UpdateInvoice(Invoice invoice)
@@ -118,4 +111,4 @@ namespace groomy.Invoices
             }
         }
     }
-}
+}   
