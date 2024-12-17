@@ -47,7 +47,7 @@
             this.clmQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.nudTotal = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkPaid = new System.Windows.Forms.CheckBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
             this.txtNoteTitle = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@
             // 
             // grpInvoice
             // 
-            this.grpInvoice.Controls.Add(this.checkBox1);
+            this.grpInvoice.Controls.Add(this.chkPaid);
             this.grpInvoice.Controls.Add(this.nudTotal);
             this.grpInvoice.Controls.Add(this.label4);
             this.grpInvoice.Controls.Add(this.listView1);
@@ -188,16 +188,17 @@
             this.nudTotal.TabIndex = 8;
             this.nudTotal.ThousandsSeparator = true;
             // 
-            // checkBox1
+            // chkPaid
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(13, 480);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 17);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Paid:   ";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkPaid.AutoSize = true;
+            this.chkPaid.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkPaid.Enabled = false;
+            this.chkPaid.Location = new System.Drawing.Point(13, 480);
+            this.chkPaid.Name = "chkPaid";
+            this.chkPaid.Size = new System.Drawing.Size(59, 17);
+            this.chkPaid.TabIndex = 9;
+            this.chkPaid.Text = "Paid:   ";
+            this.chkPaid.UseVisualStyleBackColor = true;
             // 
             // txtNote
             // 
@@ -298,7 +299,7 @@
         private System.Windows.Forms.ColumnHeader clmQuantity;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkPaid;
         private System.Windows.Forms.NumericUpDown nudTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNote;
