@@ -694,5 +694,10 @@ namespace groomy
             }
 
         }
+
+        private void all_Click(object sender, EventArgs e)
+        {
+            loadInvoices();
+        }
     }
 }
