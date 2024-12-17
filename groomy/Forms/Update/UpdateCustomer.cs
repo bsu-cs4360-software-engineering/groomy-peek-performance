@@ -73,7 +73,7 @@ namespace groomy
                 FirestoreDb db = config.getFirestoreDB();
                 customerCRUD customerGetter = new customerCRUD(db);
                 loginCheck verify = new loginCheck(txtEmail.Text, txtFName.Text);
-                bool verifyEmail = await verify.IsValidEmail(txtEmail.Text);
+                bool verifyEmail =  verify.IsValidEmail(txtEmail.Text);
                 if (verifyEmail)
                 {
                     // Create a new customer object with updated details

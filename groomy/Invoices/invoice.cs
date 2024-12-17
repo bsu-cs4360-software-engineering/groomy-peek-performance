@@ -14,10 +14,10 @@ namespace groomy.Invoices
         public string ClientId { get; set; }
 
         [FirestoreProperty("createdDate")]
-        public DateTime CreatedDate { get; set; }
+        public Timestamp CreatedDate { get; set; }
 
         [FirestoreProperty("dueDate")]
-        public DateTime DueDate { get; set; }
+        public Timestamp DueDate { get; set; }
 
         [FirestoreProperty("isPaid")]
         public bool IsPaid { get; set; }

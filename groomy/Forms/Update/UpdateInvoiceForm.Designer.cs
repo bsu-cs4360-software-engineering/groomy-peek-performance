@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quantity");
             this.grpNotes = new System.Windows.Forms.GroupBox();
             this.btnNoteUpdate = new System.Windows.Forms.Button();
             this.btnNoteAdd = new System.Windows.Forms.Button();
@@ -46,18 +42,9 @@
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnInvUpdate = new System.Windows.Forms.Button();
             this.grpInvoice = new System.Windows.Forms.GroupBox();
-            this.cmbCustName = new System.Windows.Forms.ComboBox();
-            this.txtCustAddr = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.chkPaid = new System.Windows.Forms.CheckBox();
             this.nudTotal = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.clmService = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tdpInvDate = new System.Windows.Forms.DateTimePicker();
@@ -68,6 +55,18 @@
             this.lstAvailable = new System.Windows.Forms.ListView();
             this.btnRemoveService = new System.Windows.Forms.Button();
             this.btnAddService = new System.Windows.Forms.Button();
+            this.cstText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbCustName = new System.Windows.Forms.ComboBox();
+            this.txtCustAddr = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnDeleteNote = new System.Windows.Forms.Button();
             this.grpNotes.SuspendLayout();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
@@ -76,6 +75,7 @@
             // 
             // grpNotes
             // 
+            this.grpNotes.Controls.Add(this.btnDeleteNote);
             this.grpNotes.Controls.Add(this.btnNoteUpdate);
             this.grpNotes.Controls.Add(this.btnNoteAdd);
             this.grpNotes.Controls.Add(this.txtNote);
@@ -98,6 +98,7 @@
             this.btnNoteUpdate.TabIndex = 11;
             this.btnNoteUpdate.Text = "Update";
             this.btnNoteUpdate.UseVisualStyleBackColor = true;
+            this.btnNoteUpdate.Click += new System.EventHandler(this.btnNoteUpdate_Click_1);
             // 
             // btnNoteAdd
             // 
@@ -107,6 +108,7 @@
             this.btnNoteAdd.TabIndex = 10;
             this.btnNoteAdd.Text = "Add Note";
             this.btnNoteAdd.UseVisualStyleBackColor = true;
+            this.btnNoteAdd.Click += new System.EventHandler(this.btnNoteAdd_Click_1);
             // 
             // txtNote
             // 
@@ -179,17 +181,20 @@
             this.btnInvUpdate.TabIndex = 4;
             this.btnInvUpdate.Text = "&Update";
             this.btnInvUpdate.UseVisualStyleBackColor = true;
+            this.btnInvUpdate.Click += new System.EventHandler(this.btnInvUpdate_Click_1);
             // 
             // grpInvoice
             // 
+            this.grpInvoice.Controls.Add(this.listView2);
+            this.grpInvoice.Controls.Add(this.cstText);
+            this.grpInvoice.Controls.Add(this.label1);
             this.grpInvoice.Controls.Add(this.cmbCustName);
             this.grpInvoice.Controls.Add(this.txtCustAddr);
-            this.grpInvoice.Controls.Add(this.label1);
             this.grpInvoice.Controls.Add(this.label5);
+            this.grpInvoice.Controls.Add(this.label8);
             this.grpInvoice.Controls.Add(this.chkPaid);
             this.grpInvoice.Controls.Add(this.nudTotal);
             this.grpInvoice.Controls.Add(this.label4);
-            this.grpInvoice.Controls.Add(this.listView1);
             this.grpInvoice.Controls.Add(this.label3);
             this.grpInvoice.Controls.Add(this.dateTimePicker1);
             this.grpInvoice.Controls.Add(this.tdpInvDate);
@@ -202,41 +207,6 @@
             this.grpInvoice.TabIndex = 5;
             this.grpInvoice.TabStop = false;
             this.grpInvoice.Text = "Invoice";
-            // 
-            // cmbCustName
-            // 
-            this.cmbCustName.FormattingEnabled = true;
-            this.cmbCustName.Location = new System.Drawing.Point(114, 20);
-            this.cmbCustName.Name = "cmbCustName";
-            this.cmbCustName.Size = new System.Drawing.Size(268, 21);
-            this.cmbCustName.TabIndex = 14;
-            // 
-            // txtCustAddr
-            // 
-            this.txtCustAddr.Location = new System.Drawing.Point(114, 44);
-            this.txtCustAddr.Multiline = true;
-            this.txtCustAddr.Name = "txtCustAddr";
-            this.txtCustAddr.ReadOnly = true;
-            this.txtCustAddr.Size = new System.Drawing.Size(268, 141);
-            this.txtCustAddr.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Customer Address: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Customer Name: ";
             // 
             // chkPaid
             // 
@@ -253,6 +223,11 @@
             // 
             this.nudTotal.DecimalPlaces = 2;
             this.nudTotal.Location = new System.Drawing.Point(59, 456);
+            this.nudTotal.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.nudTotal.Name = "nudTotal";
             this.nudTotal.ReadOnly = true;
             this.nudTotal.Size = new System.Drawing.Size(120, 20);
@@ -267,30 +242,6 @@
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Total: $";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmService,
-            this.clmDate,
-            this.clmPrice,
-            this.clmQuantity});
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
-            this.listView1.Location = new System.Drawing.Point(10, 293);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(372, 156);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // clmService
-            // 
-            this.clmService.Text = "Service Name";
-            this.clmService.Width = 120;
             // 
             // label3
             // 
@@ -380,6 +331,97 @@
             this.btnAddService.TabIndex = 10;
             this.btnAddService.Text = "Add Service";
             this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click_1);
+            // 
+            // cstText
+            // 
+            this.cstText.Location = new System.Drawing.Point(102, 48);
+            this.cstText.Name = "cstText";
+            this.cstText.ReadOnly = true;
+            this.cstText.Size = new System.Drawing.Size(268, 20);
+            this.cstText.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-2, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Customer Name: ";
+            // 
+            // cmbCustName
+            // 
+            this.cmbCustName.FormattingEnabled = true;
+            this.cmbCustName.Location = new System.Drawing.Point(102, 20);
+            this.cmbCustName.Name = "cmbCustName";
+            this.cmbCustName.Size = new System.Drawing.Size(268, 21);
+            this.cmbCustName.TabIndex = 20;
+            this.cmbCustName.SelectedIndexChanged += new System.EventHandler(this.cmbCustName_SelectedIndexChanged);
+            // 
+            // txtCustAddr
+            // 
+            this.txtCustAddr.Location = new System.Drawing.Point(102, 83);
+            this.txtCustAddr.Multiline = true;
+            this.txtCustAddr.Name = "txtCustAddr";
+            this.txtCustAddr.ReadOnly = true;
+            this.txtCustAddr.Size = new System.Drawing.Size(268, 102);
+            this.txtCustAddr.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-2, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Customer Address: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(-2, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Customer Email: ";
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.clmDesc,
+            this.columnHeader2,
+            this.clmID});
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(0, 293);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(372, 156);
+            this.listView2.TabIndex = 23;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Service Name";
+            this.columnHeader1.Width = 180;
+            // 
+            // clmDesc
+            // 
+            this.clmDesc.Text = "Desc";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Price";
+            // 
+            // btnDeleteNote
+            // 
+            this.btnDeleteNote.Location = new System.Drawing.Point(172, 482);
+            this.btnDeleteNote.Name = "btnDeleteNote";
+            this.btnDeleteNote.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteNote.TabIndex = 12;
+            this.btnDeleteNote.Text = "Delete";
+            this.btnDeleteNote.UseVisualStyleBackColor = true;
+            this.btnDeleteNote.Click += new System.EventHandler(this.btnDeleteNote_Click);
             // 
             // UpdateInvoiceForm
             // 
@@ -421,18 +463,9 @@
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.Button btnInvUpdate;
         private System.Windows.Forms.GroupBox grpInvoice;
-        private System.Windows.Forms.ComboBox cmbCustName;
-        private System.Windows.Forms.TextBox txtCustAddr;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkPaid;
         private System.Windows.Forms.NumericUpDown nudTotal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader clmService;
-        private System.Windows.Forms.ColumnHeader clmDate;
-        private System.Windows.Forms.ColumnHeader clmPrice;
-        private System.Windows.Forms.ColumnHeader clmQuantity;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker tdpInvDate;
@@ -443,5 +476,17 @@
         private System.Windows.Forms.ListView lstAvailable;
         private System.Windows.Forms.Button btnRemoveService;
         private System.Windows.Forms.Button btnAddService;
+        private System.Windows.Forms.TextBox cstText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbCustName;
+        private System.Windows.Forms.TextBox txtCustAddr;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader clmDesc;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader clmID;
+        private System.Windows.Forms.Button btnDeleteNote;
     }
 }

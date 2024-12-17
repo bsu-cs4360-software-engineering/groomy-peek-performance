@@ -23,7 +23,7 @@ namespace groomy.Invoices
         {
             DocumentReference docRef = __db.Collection(__collectionName).Document();
             invoice.Id = docRef.Id;
-            invoice.CreatedDate = DateTime.UtcNow;
+            invoice.CreatedDate = Timestamp.FromDateTime(DateTime.UtcNow.ToUniversalTime());
             invoice.Deleted = false;
 
             // Calculate total based on line items

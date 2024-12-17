@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Title");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Start");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Location");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("End");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Name");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Start");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Location");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("End");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("");
             this.pnlAccent = new System.Windows.Forms.Panel();
             this.rdoInvoices = new System.Windows.Forms.RadioButton();
             this.rdoServices = new System.Windows.Forms.RadioButton();
@@ -158,6 +158,7 @@
             this.rdoInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rdoInvoices.UseVisualStyleBackColor = false;
             this.rdoInvoices.Visible = false;
+            this.rdoInvoices.CheckedChanged += new System.EventHandler(this.rdoInvoices_CheckedChanged);
             // 
             // rdoServices
             // 
@@ -338,6 +339,7 @@
             this.lstInvoices.Size = new System.Drawing.Size(756, 421);
             this.lstInvoices.TabIndex = 8;
             this.lstInvoices.UseCompatibleStateImageBehavior = false;
+            this.lstInvoices.SelectedIndexChanged += new System.EventHandler(this.lstInvoices_SelectedIndexChanged);
             // 
             // clmInvID
             // 
@@ -433,9 +435,9 @@
             this.IdP});
             this.lstServices.HideSelection = false;
             this.lstServices.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
             this.lstServices.Location = new System.Drawing.Point(10, 9);
             this.lstServices.Margin = new System.Windows.Forms.Padding(2);
             this.lstServices.Name = "lstServices";
@@ -540,11 +542,11 @@
             this.emailApp});
             this.lstAppointments.HideSelection = false;
             this.lstAppointments.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17});
             this.lstAppointments.Location = new System.Drawing.Point(10, 9);
             this.lstAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.lstAppointments.Name = "lstAppointments";
@@ -665,7 +667,7 @@
             this.id});
             this.lstCustomers.HideSelection = false;
             this.lstCustomers.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem9});
+            listViewItem18});
             this.lstCustomers.Location = new System.Drawing.Point(10, 9);
             this.lstCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.lstCustomers.Name = "lstCustomers";

@@ -64,7 +64,7 @@ namespace groomy.Auth
             return emailExists && passExists;
         }
 
-        public async Task<bool> IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             bool Result = false;
             try
@@ -76,6 +76,7 @@ namespace groomy.Auth
             {
                 Result = false;
             }
+
             return Result;
         }
     }

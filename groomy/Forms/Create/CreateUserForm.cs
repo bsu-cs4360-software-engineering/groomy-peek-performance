@@ -35,7 +35,7 @@ namespace groomy
         private async void button1_Click(object sender, EventArgs e)
         {
             loginCheck verify = new loginCheck(txtEmail.Text,txtPass.Text);
-            bool verifyEmail = await verify.IsValidEmail(txtEmail.Text);
+            bool verifyEmail =  verify.IsValidEmail(txtEmail.Text);
             if (verifyEmail)
             {
                 adminUser user = new adminUser();

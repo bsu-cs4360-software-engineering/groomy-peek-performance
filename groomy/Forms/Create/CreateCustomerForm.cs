@@ -25,7 +25,7 @@ namespace groomy
         private async void btnCreate_Click(object sender, EventArgs e)
         {
             loginCheck VerifyCustomer = new loginCheck(txtEmail.Text, txtFName.Text);
-            bool VerifyEmail = await VerifyCustomer.IsValidEmail(txtEmail.Text);
+            bool VerifyEmail =  VerifyCustomer.IsValidEmail(txtEmail.Text);
             if (VerifyEmail)
             {
                 customer newCustomer = new customer

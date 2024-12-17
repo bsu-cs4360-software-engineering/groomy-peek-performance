@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Quantity");
             this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpInvoice = new System.Windows.Forms.GroupBox();
             this.cstText = new System.Windows.Forms.TextBox();
@@ -40,13 +36,12 @@
             this.txtCustAddr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chkPaid = new System.Windows.Forms.CheckBox();
             this.nudTotal = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.clmService = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tdpInvDate = new System.Windows.Forms.DateTimePicker();
@@ -56,7 +51,11 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.btnServiceRemove = new System.Windows.Forms.Button();
-            this.lstAvailable = new System.Windows.Forms.ListView();
+            this.lstServices = new System.Windows.Forms.ListView();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.desc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
@@ -71,7 +70,6 @@
             this.grpInvoice.Controls.Add(this.txtCustAddr);
             this.grpInvoice.Controls.Add(this.label6);
             this.grpInvoice.Controls.Add(this.label5);
-            this.grpInvoice.Controls.Add(this.chkPaid);
             this.grpInvoice.Controls.Add(this.nudTotal);
             this.grpInvoice.Controls.Add(this.label4);
             this.grpInvoice.Controls.Add(this.listView1);
@@ -95,6 +93,7 @@
             this.cstText.ReadOnly = true;
             this.cstText.Size = new System.Drawing.Size(268, 20);
             this.cstText.TabIndex = 16;
+            this.cstText.TextChanged += new System.EventHandler(this.cstText_TextChanged);
             // 
             // label7
             // 
@@ -104,6 +103,7 @@
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 15;
             this.label7.Text = "Customer Name: ";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // cmbCustName
             // 
@@ -122,6 +122,7 @@
             this.txtCustAddr.ReadOnly = true;
             this.txtCustAddr.Size = new System.Drawing.Size(268, 102);
             this.txtCustAddr.TabIndex = 13;
+            this.txtCustAddr.TextChanged += new System.EventHandler(this.txtCustAddr_TextChanged);
             // 
             // label6
             // 
@@ -131,6 +132,7 @@
             this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Customer Address: ";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -140,22 +142,17 @@
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Customer Email: ";
-            // 
-            // chkPaid
-            // 
-            this.chkPaid.AutoSize = true;
-            this.chkPaid.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkPaid.Location = new System.Drawing.Point(13, 480);
-            this.chkPaid.Name = "chkPaid";
-            this.chkPaid.Size = new System.Drawing.Size(59, 17);
-            this.chkPaid.TabIndex = 9;
-            this.chkPaid.Text = "Paid:   ";
-            this.chkPaid.UseVisualStyleBackColor = true;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // nudTotal
             // 
             this.nudTotal.DecimalPlaces = 2;
             this.nudTotal.Location = new System.Drawing.Point(59, 456);
+            this.nudTotal.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.nudTotal.Name = "nudTotal";
             this.nudTotal.ReadOnly = true;
             this.nudTotal.Size = new System.Drawing.Size(120, 20);
@@ -175,15 +172,10 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmService,
+            this.clmDesc,
             this.clmPrice,
-            this.clmQuantity,
             this.clmID});
             this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
             this.listView1.Location = new System.Drawing.Point(10, 293);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(372, 156);
@@ -194,6 +186,14 @@
             // 
             this.clmService.Text = "Service Name";
             this.clmService.Width = 180;
+            // 
+            // clmDesc
+            // 
+            this.clmDesc.Text = "Desc";
+            // 
+            // clmPrice
+            // 
+            this.clmPrice.Text = "Price";
             // 
             // label3
             // 
@@ -275,18 +275,39 @@
             this.btnServiceRemove.UseVisualStyleBackColor = true;
             this.btnServiceRemove.Click += new System.EventHandler(this.btnServiceRemove_Click);
             // 
-            // lstAvailable
+            // lstServices
             // 
-            this.lstAvailable.HideSelection = false;
-            this.lstAvailable.Location = new System.Drawing.Point(6, 19);
-            this.lstAvailable.Name = "lstAvailable";
-            this.lstAvailable.Size = new System.Drawing.Size(377, 478);
-            this.lstAvailable.TabIndex = 12;
-            this.lstAvailable.UseCompatibleStateImageBehavior = false;
+            this.lstServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.name,
+            this.desc,
+            this.price,
+            this.ID});
+            this.lstServices.HideSelection = false;
+            this.lstServices.Location = new System.Drawing.Point(6, 19);
+            this.lstServices.Name = "lstServices";
+            this.lstServices.Size = new System.Drawing.Size(377, 478);
+            this.lstServices.TabIndex = 12;
+            this.lstServices.UseCompatibleStateImageBehavior = false;
+            // 
+            // name
+            // 
+            this.name.Text = "Name";
+            // 
+            // desc
+            // 
+            this.desc.Text = "Description";
+            // 
+            // price
+            // 
+            this.price.Text = "price";
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lstAvailable);
+            this.groupBox1.Controls.Add(this.lstServices);
             this.groupBox1.Controls.Add(this.btnServiceRemove);
             this.groupBox1.Controls.Add(this.btnServiceAdd);
             this.groupBox1.Location = new System.Drawing.Point(406, 12);
@@ -321,13 +342,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpInvoice;
-        private System.Windows.Forms.CheckBox chkPaid;
         private System.Windows.Forms.NumericUpDown nudTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader clmService;
+        private System.Windows.Forms.ColumnHeader clmDesc;
         private System.Windows.Forms.ColumnHeader clmPrice;
-        private System.Windows.Forms.ColumnHeader clmQuantity;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker tdpInvDate;
@@ -344,7 +364,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox cstText;
         private System.Windows.Forms.ColumnHeader clmID;
-        private System.Windows.Forms.ListView lstAvailable;
+        private System.Windows.Forms.ListView lstServices;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader desc;
+        private System.Windows.Forms.ColumnHeader price;
+        private System.Windows.Forms.ColumnHeader ID;
     }
 }
