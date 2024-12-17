@@ -260,7 +260,15 @@ namespace groomy
                         pnlServices.Visible = rdoServices.Checked;
                         pnlCustomer.Visible = !rdoServices.Checked;
                         pnlServices.BringToFront();
-                        lstServices.FullRowSelect= true;
+                        break;
+
+                    case "Invoices":
+                        pnlInvoices.Visible = rdoInvoices.Checked;
+                        pnlInvoices.BringToFront();
+                        pnlAppointments.Visible= rdoAppointments.Checked;
+                        pnlServices.Visible= rdoServices.Checked;
+                        lstInvoices.View = View.Details;
+                        lstInvoices.FullRowSelect = true;
                         break;
 
                     default:
@@ -478,6 +486,31 @@ namespace groomy
         private async void pnlServices_VisibleChanged(object sender, EventArgs e)
         {
             await loadServices();
+        }
+
+        private void btnInvAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInvDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInvRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInvUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInvView_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

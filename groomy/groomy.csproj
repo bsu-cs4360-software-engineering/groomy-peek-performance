@@ -188,17 +188,41 @@
     <Compile Include="Customers\customer.cs" />
     <Compile Include="Customers\customerCRUD.cs" />
     <Compile Include="Customers\customerInterface.cs" />
+    <Compile Include="Forms\Create\CreateInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Create\CreateInvoiceForm.Designer.cs">
+      <DependentUpon>CreateInvoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Create\CreateServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Create\CreateServiceForm.Designer.cs">
       <DependentUpon>CreateServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Misc\InvoiceAddServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Misc\InvoiceAddServiceForm.Designer.cs">
+      <DependentUpon>InvoiceAddServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Update\UpdateInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Update\UpdateInvoiceForm.Designer.cs">
+      <DependentUpon>UpdateInvoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Update\UpdateServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Update\UpdateServiceForm.Designer.cs">
       <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\ViewInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View\ViewInvoiceForm.Designer.cs">
+      <DependentUpon>ViewInvoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\View\ViewServiceForm.cs">
       <SubType>Form</SubType>
@@ -260,11 +284,23 @@
     <EmbeddedResource Include="Forms\Create\CreateCustomerForm.resx">
       <DependentUpon>CreateCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Create\CreateInvoiceForm.resx">
+      <DependentUpon>CreateInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Create\CreateServiceForm.resx">
       <DependentUpon>CreateServiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Misc\InvoiceAddServiceForm.resx">
+      <DependentUpon>InvoiceAddServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Update\UpdateInvoiceForm.resx">
+      <DependentUpon>UpdateInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Update\UpdateServiceForm.resx">
       <DependentUpon>UpdateServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\View\ViewInvoiceForm.resx">
+      <DependentUpon>ViewInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\View\ViewServiceForm.resx">
       <DependentUpon>ViewServiceForm.cs</DependentUpon>
