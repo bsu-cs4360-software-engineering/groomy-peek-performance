@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quantity");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Service Name");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Date");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Quantity");
             this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpInvoice = new System.Windows.Forms.GroupBox();
+            this.cstText = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.cmbCustName = new System.Windows.Forms.ComboBox();
             this.txtCustAddr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,10 +56,11 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.btnServiceRemove = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cstText = new System.Windows.Forms.TextBox();
+            this.lstAvailable = new System.Windows.Forms.ListView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpInvoice
@@ -84,6 +87,23 @@
             this.grpInvoice.TabIndex = 2;
             this.grpInvoice.TabStop = false;
             this.grpInvoice.Text = "Invoice";
+            // 
+            // cstText
+            // 
+            this.cstText.Location = new System.Drawing.Point(114, 48);
+            this.cstText.Name = "cstText";
+            this.cstText.ReadOnly = true;
+            this.cstText.Size = new System.Drawing.Size(268, 20);
+            this.cstText.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 51);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Customer Name: ";
             // 
             // cmbCustName
             // 
@@ -160,10 +180,10 @@
             this.clmID});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listView1.Location = new System.Drawing.Point(10, 293);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(372, 156);
@@ -227,7 +247,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(323, 529);
+            this.btnCreate.Location = new System.Drawing.Point(12, 529);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 4;
@@ -237,7 +257,7 @@
             // 
             // btnServiceAdd
             // 
-            this.btnServiceAdd.Location = new System.Drawing.Point(12, 529);
+            this.btnServiceAdd.Location = new System.Drawing.Point(6, 503);
             this.btnServiceAdd.Name = "btnServiceAdd";
             this.btnServiceAdd.Size = new System.Drawing.Size(75, 23);
             this.btnServiceAdd.TabIndex = 10;
@@ -247,7 +267,7 @@
             // 
             // btnServiceRemove
             // 
-            this.btnServiceRemove.Location = new System.Drawing.Point(93, 529);
+            this.btnServiceRemove.Location = new System.Drawing.Point(87, 503);
             this.btnServiceRemove.Name = "btnServiceRemove";
             this.btnServiceRemove.Size = new System.Drawing.Size(75, 23);
             this.btnServiceRemove.TabIndex = 11;
@@ -255,30 +275,33 @@
             this.btnServiceRemove.UseVisualStyleBackColor = true;
             this.btnServiceRemove.Click += new System.EventHandler(this.btnServiceRemove_Click);
             // 
-            // label7
+            // lstAvailable
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 51);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Customer Name: ";
+            this.lstAvailable.HideSelection = false;
+            this.lstAvailable.Location = new System.Drawing.Point(6, 19);
+            this.lstAvailable.Name = "lstAvailable";
+            this.lstAvailable.Size = new System.Drawing.Size(377, 478);
+            this.lstAvailable.TabIndex = 12;
+            this.lstAvailable.UseCompatibleStateImageBehavior = false;
             // 
-            // cstText
+            // groupBox1
             // 
-            this.cstText.Location = new System.Drawing.Point(114, 48);
-            this.cstText.Name = "cstText";
-            this.cstText.ReadOnly = true;
-            this.cstText.Size = new System.Drawing.Size(268, 20);
-            this.cstText.TabIndex = 16;
+            this.groupBox1.Controls.Add(this.lstAvailable);
+            this.groupBox1.Controls.Add(this.btnServiceRemove);
+            this.groupBox1.Controls.Add(this.btnServiceAdd);
+            this.groupBox1.Location = new System.Drawing.Point(406, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(389, 536);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Available Services";
             // 
             // CreateInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 560);
-            this.Controls.Add(this.btnServiceRemove);
-            this.Controls.Add(this.btnServiceAdd);
+            this.ClientSize = new System.Drawing.Size(806, 560);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.grpInvoice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -290,6 +313,7 @@
             this.grpInvoice.ResumeLayout(false);
             this.grpInvoice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -320,5 +344,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox cstText;
         private System.Windows.Forms.ColumnHeader clmID;
+        private System.Windows.Forms.ListView lstAvailable;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
