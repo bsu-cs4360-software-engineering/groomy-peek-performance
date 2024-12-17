@@ -13,9 +13,6 @@ namespace groomy.Invoices
         [FirestoreProperty("clientId")]
         public string ClientId { get; set; }
 
-        [FirestoreProperty("invoiceNumber")]
-        public string InvoiceNumber { get; set; }
-
         [FirestoreProperty("createdDate")]
         public DateTime CreatedDate { get; set; }
 
@@ -40,9 +37,6 @@ namespace groomy.Invoices
     {
         [FirestoreProperty("serviceId")]
         public string ServiceId { get; set; }
-
-        [FirestoreProperty("serviceDate")]
-        public DateTime ServiceDate { get; set; }
 
         [FirestoreProperty("serviceName")]
         public string ServiceName { get; set; }

@@ -44,8 +44,35 @@ namespace groomy.Forms.Create
             loadCustomers();
         }
         //Here's the create button function!  Add the fun stuff with the database to this. 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private async void btnCreate_Click(object sender, EventArgs e)
         {
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerGetter = new customerCRUD(db);
+            InvoiceCRUD invoiceCRUD = new InvoiceCRUD(db);
+            customer cust = await customerGetter.getCustomerByEmail(cmbCustName.Text);
+            List<LineItem> lineItems = new List<LineItem>();
+            foreach(ListViewItem item in listView1.Items)
+            {
+                LineItem lineItem = new LineItem {
+                    ServiceId = item.SubItems[3].Text,
+                    ServiceName = item.SubItems[0].Text,
+                    Cost = double.Parse(item.SubItems[1].Text),
+                    Quantity = 1,
+                };
+                lineItems.Add(lineItem);
+            }
+
+            Invoice invToAdd = new Invoice
+            {
+                ClientId = cust.id,
+                Total = (double)(nudTotal.Value),
+                LineItems = lineItems,
+                CreatedDate = DateTime.Now,
+                DueDate = dateTimePicker1.Value,
+
+
+            };
 
             MessageBox.Show("Invoice Created!", "Invoice Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();

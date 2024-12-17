@@ -43,7 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.clmService = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
@@ -156,7 +155,6 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmService,
-            this.clmDate,
             this.clmPrice,
             this.clmQuantity,
             this.clmID});
@@ -304,7 +302,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader clmService;
-        private System.Windows.Forms.ColumnHeader clmDate;
         private System.Windows.Forms.ColumnHeader clmPrice;
         private System.Windows.Forms.ColumnHeader clmQuantity;
         private System.Windows.Forms.Label label3;
