@@ -1,221 +1,183 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using groomy.Invoices;
+using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Google.Cloud.Firestore;
 using groomy.services;
 
 namespace groomy.Invoices.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class InvoiceCRUDTests
     {
-        public firebaseConfig __config = firebaseConfig.Instance;
+        private FirestoreDb _db;
+        private InvoiceCRUD _invoiceCrud;
+        private string _testCollectionName = "TestInvoices";
+        private List<string> _createdInvoiceIds;
 
-        [TestMethod()]
-        public async Task CreateInvoiceTest()
+        [TestInitialize]
+        public void Setup()
         {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
+            _db = firebaseConfig.Instance.getFirestoreDB();
+            _invoiceCrud = new InvoiceCRUD(_db, _testCollectionName);
+            _createdInvoiceIds = new List<string>();
+        }
 
-            // Create a test invoice
-            Invoice newInvoice = new Invoice
+        [TestCleanup]
+        public async Task Cleanup()
+        {
+            foreach (var id in _createdInvoiceIds)
             {
-                ClientId = "test-client-123",
-                InvoiceNumber = "INV-2024-001",
-                DueDate = DateTime.UtcNow.AddDays(30),
-                IsPaid = false,
+                var docRef = _db.Collection(_testCollectionName).Document(id);
+                await docRef.DeleteAsync();
+            }
+            _createdInvoiceIds.Clear();
+        }
+
+        private Invoice CreateTestInvoice(string clientId = "test-client", bool isPaid = false)
+        {
+            return new Invoice
+            {
+                ClientId = clientId,
+                DueDate = Timestamp.FromDateTime(DateTime.UtcNow.AddDays(30)),
+                IsPaid = isPaid,
                 LineItems = new List<LineItem>
                 {
                     new LineItem
                     {
                         ServiceId = "service-1",
-                        ServiceName = "Dog Grooming",
+                        ServiceName = "Test Service 1",
                         Cost = 50.00,
-                        Quantity = 1,
-                        ServiceDate = DateTime.UtcNow
+                        Quantity = 1
                     },
                     new LineItem
                     {
                         ServiceId = "service-2",
-                        ServiceName = "Nail Trim",
-                        Cost = 15.00,
-                        Quantity = 1,
-                        ServiceDate = DateTime.UtcNow
+                        ServiceName = "Test Service 2",
+                        Cost = 25.00,
+                        Quantity = 2
                     }
                 }
             };
-
-            // Act
-            await testInvoiceCrud.CreateInvoice(newInvoice);
-
-            // Assert
-            Assert.IsNotNull(newInvoice.Id, "Invoice ID should be generated");
-            Assert.AreEqual(65.00, newInvoice.Total, "Total should be calculated correctly");
-            Assert.IsFalse(newInvoice.Deleted, "New invoice should not be deleted");
-            Assert.IsNotNull(newInvoice.CreatedDate, "Created date should be set");
         }
 
-        [TestMethod()]
-        public async Task GetInvoiceTest()
+        private async Task<string> CreateAndTrackTestInvoice(Invoice invoice)
         {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
-
-            // Create a test invoice first
-            Invoice newInvoice = new Invoice
-            {
-                ClientId = "test-client-456",
-                InvoiceNumber = "INV-2024-002",
-                DueDate = DateTime.UtcNow.AddDays(30),
-                IsPaid = false,
-                LineItems = new List<LineItem>
-                {
-                    new LineItem
-                    {
-                        ServiceId = "service-3",
-                        ServiceName = "Bath",
-                        Cost = 40.00,
-                        Quantity = 1,
-                        ServiceDate = DateTime.UtcNow
-                    }
-                }
-            };
-
-            await testInvoiceCrud.CreateInvoice(newInvoice);
-
-            // Act
-            var retrievedInvoice = await testInvoiceCrud.GetInvoice(newInvoice.Id);
-
-            // Assert
-            Assert.IsNotNull(retrievedInvoice, "Invoice should be retrieved");
-            Assert.AreEqual(newInvoice.Id, retrievedInvoice.Id, "Retrieved invoice ID should match");
-            Assert.AreEqual(newInvoice.ClientId, retrievedInvoice.ClientId, "Client ID should match");
+            await _invoiceCrud.CreateInvoice(invoice);
+            _createdInvoiceIds.Add(invoice.Id);
+            return invoice.Id;
         }
 
-        [TestMethod()]
-        public async Task UpdateInvoiceTest()
+        [TestMethod]
+        public async Task CreateInvoice_ShouldCreateInvoiceWithCorrectData()
         {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
+            var invoice = CreateTestInvoice();
+            await _invoiceCrud.CreateInvoice(invoice);
+            _createdInvoiceIds.Add(invoice.Id);
 
-            // Create a test invoice
-            Invoice newInvoice = new Invoice
+            Assert.IsNotNull(invoice.Id);
+            Assert.IsNotNull(invoice.CreatedDate);
+            Assert.AreEqual(100.00, invoice.Total);
+            Assert.IsFalse(invoice.Deleted);
+        }
+
+        [TestMethod]
+        public async Task GetInvoice_ShouldReturnCorrectInvoice()
+        {
+            var invoice = CreateTestInvoice();
+            await CreateAndTrackTestInvoice(invoice);
+
+            var retrievedInvoice = await _invoiceCrud.GetInvoice(invoice.Id);
+
+            Assert.IsNotNull(retrievedInvoice);
+            Assert.AreEqual(invoice.Id, retrievedInvoice.Id);
+            Assert.AreEqual(invoice.Total, retrievedInvoice.Total);
+            Assert.AreEqual(invoice.ClientId, retrievedInvoice.ClientId);
+        }
+
+        [TestMethod]
+        public async Task GetAllInvoices_ShouldReturnActiveInvoices()
+        {
+            var initialInvoices = await _invoiceCrud.GetAllInvoices();
+            var initialCount = initialInvoices.Count;
+
+            var invoice1 = CreateTestInvoice("client-1");
+            var invoice2 = CreateTestInvoice("client-2");
+            await CreateAndTrackTestInvoice(invoice1);
+            await CreateAndTrackTestInvoice(invoice2);
+
+            var allInvoices = await _invoiceCrud.GetAllInvoices();
+
+            Assert.AreEqual(initialCount + 2, allInvoices.Count);
+            Assert.IsTrue(allInvoices.Any(i => i.Id == invoice1.Id));
+            Assert.IsTrue(allInvoices.Any(i => i.Id == invoice2.Id));
+            Assert.IsTrue(allInvoices.All(i => !i.Deleted));
+        }
+
+        [TestMethod]
+        public async Task GetPaidInvoices_ShouldReturnOnlyPaidInvoices()
+        {
+            var paidInvoice = CreateTestInvoice("client-paid", true);
+            var unpaidInvoice = CreateTestInvoice("client-unpaid", false);
+            await CreateAndTrackTestInvoice(paidInvoice);
+            await CreateAndTrackTestInvoice(unpaidInvoice);
+
+            var paidInvoices = await _invoiceCrud.GetPaidInvoices();
+
+            Assert.IsTrue(paidInvoices.All(i => i.IsPaid));
+            Assert.IsTrue(paidInvoices.Any(i => i.Id == paidInvoice.Id));
+            Assert.IsFalse(paidInvoices.Any(i => i.Id == unpaidInvoice.Id));
+        }
+
+        [TestMethod]
+        public async Task GetUnPaidInvoices_ShouldReturnOnlyUnpaidInvoices()
+        {
+            var paidInvoice = CreateTestInvoice("client-paid", true);
+            var unpaidInvoice = CreateTestInvoice("client-unpaid", false);
+            await CreateAndTrackTestInvoice(paidInvoice);
+            await CreateAndTrackTestInvoice(unpaidInvoice);
+
+            var unpaidInvoices = await _invoiceCrud.GetUnPaidInvoices();
+
+            Assert.IsTrue(unpaidInvoices.All(i => !i.IsPaid));
+            Assert.IsTrue(unpaidInvoices.Any(i => i.Id == unpaidInvoice.Id));
+            Assert.IsFalse(unpaidInvoices.Any(i => i.Id == paidInvoice.Id));
+        }
+
+        [TestMethod]
+        public async Task UpdateInvoice_ShouldUpdateCorrectly()
+        {
+            var invoice = CreateTestInvoice();
+            await CreateAndTrackTestInvoice(invoice);
+
+            invoice.IsPaid = true;
+            invoice.LineItems.Add(new LineItem
             {
-                ClientId = "test-client-789",
-                InvoiceNumber = "INV-2024-003",
-                DueDate = DateTime.UtcNow.AddDays(30),
-                IsPaid = false,
-                LineItems = new List<LineItem>
-                {
-                    new LineItem
-                    {
-                        ServiceId = "service-4",
-                        ServiceName = "Haircut",
-                        Cost = 60.00,
-                        Quantity = 1,
-                        ServiceDate = DateTime.UtcNow
-                    }
-                }
-            };
-
-            await testInvoiceCrud.CreateInvoice(newInvoice);
-
-            // Modify the invoice
-            newInvoice.IsPaid = true;
-            newInvoice.LineItems.Add(new LineItem
-            {
-                ServiceId = "service-5",
-                ServiceName = "Additional Service",
-                Cost = 25.00,
-                Quantity = 1,
-                ServiceDate = DateTime.UtcNow
+                ServiceId = "service-3",
+                ServiceName = "Test Service 3",
+                Cost = 30.00,
+                Quantity = 1
             });
 
-            // Act
-            await testInvoiceCrud.UpdateInvoice(newInvoice);
+            await _invoiceCrud.UpdateInvoice(invoice);
+            var updatedInvoice = await _invoiceCrud.GetInvoice(invoice.Id);
 
-            // Retrieve and verify
-            var updatedInvoice = await testInvoiceCrud.GetInvoice(newInvoice.Id);
-
-            // Assert
-            Assert.IsTrue(updatedInvoice.IsPaid, "Invoice should be marked as paid");
-            Assert.AreEqual(85.00, updatedInvoice.Total, "Total should be recalculated");
-            Assert.AreEqual(2, updatedInvoice.LineItems.Count, "Line items should be updated");
+            Assert.IsTrue(updatedInvoice.IsPaid);
+            Assert.AreEqual(130.00, updatedInvoice.Total);
+            Assert.AreEqual(3, updatedInvoice.LineItems.Count);
         }
 
-        [TestMethod()]
-        public async Task SoftDeleteInvoiceTest()
+        [TestMethod]
+        public async Task SoftDeleteInvoice_ShouldMarkAsDeleted()
         {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
+            var invoice = CreateTestInvoice();
+            await CreateAndTrackTestInvoice(invoice);
 
-            // Create a test invoice
-            Invoice newInvoice = new Invoice
-            {
-                ClientId = "test-client-101",
-                InvoiceNumber = "INV-2024-004",
-                DueDate = DateTime.UtcNow.AddDays(30),
-                IsPaid = false,
-                LineItems = new List<LineItem>
-                {
-                    new LineItem
-                    {
-                        ServiceId = "service-6",
-                        ServiceName = "Full Grooming",
-                        Cost = 75.00,
-                        Quantity = 1,
-                        ServiceDate = DateTime.UtcNow
-                    }
-                }
-            };
+            await _invoiceCrud.SoftDeleteInvoice(invoice.Id);
+            var deletedInvoice = await _invoiceCrud.GetInvoice(invoice.Id);
 
-            await testInvoiceCrud.CreateInvoice(newInvoice);
-
-            // Act
-            await testInvoiceCrud.SoftDeleteInvoice(newInvoice.Id);
-
-            // Retrieve and verify
-            var deletedInvoice = await testInvoiceCrud.GetInvoice(newInvoice.Id);
-
-            // Assert
-            Assert.IsNull(deletedInvoice, "Soft-deleted invoice should not be retrievable");
-        }
-
-        [TestMethod()]
-        public async Task GetAllInvoicesTest()
-        {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
-
-            // Act
-            var allInvoices = await testInvoiceCrud.GetAllInvoices();
-
-            // Assert
-            Assert.IsNotNull(allInvoices, "Should return a list of invoices");
-            Assert.IsTrue(allInvoices.Count > 0, "Should have at least one invoice");
-        }
-
-        [TestMethod()]
-        public async Task GetUnpaidInvoicesTest()
-        {
-            // Arrange
-            FirestoreDb __db = __config.getFirestoreDB();
-            InvoiceCRUD testInvoiceCrud = new InvoiceCRUD(__db);
-
-            // Act
-            var unpaidInvoices = await testInvoiceCrud.GetUnpaidInvoices();
-
-            // Assert
-            Assert.IsNotNull(unpaidInvoices, "Should return a list of unpaid invoices");
-            Assert.IsTrue(unpaidInvoices.All(inv => !inv.IsPaid), "All invoices should be unpaid");
+            Assert.IsNull(deletedInvoice);
         }
     }
 }
