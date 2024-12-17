@@ -83,6 +83,19 @@ namespace groomy.Invoices
                 .Select(doc => doc.ConvertTo<Invoice>())
                 .ToList();
         }
+        public async Task<List<Invoice>> GetUnPaidInvoices()
+        {
+            Query query = __db.Collection(__collectionName)
+                .WhereEqualTo("isPaid", false)
+                .WhereEqualTo("deleted", false)
+                .OrderByDescending("createdDate");
+
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            return snapshot.Documents
+                .Select(doc => doc.ConvertTo<Invoice>())
+                .ToList();
+        }
         public async Task UpdateInvoice(Invoice invoice)
         {
             // Recalculate total

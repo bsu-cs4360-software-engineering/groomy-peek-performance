@@ -114,6 +114,8 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.invPaid = new System.Windows.Forms.Button();
+            this.unPaid = new System.Windows.Forms.Button();
             this.pnlAccent.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlInvoices.SuspendLayout();
@@ -262,6 +264,8 @@
             // 
             // pnlInvoices
             // 
+            this.pnlInvoices.Controls.Add(this.unPaid);
+            this.pnlInvoices.Controls.Add(this.invPaid);
             this.pnlInvoices.Controls.Add(this.btnInvView);
             this.pnlInvoices.Controls.Add(this.btnInvUpdate);
             this.pnlInvoices.Controls.Add(this.btnInvRefresh);
@@ -842,6 +846,26 @@
             // 
             this.columnHeader1.Text = "Description";
             // 
+            // invPaid
+            // 
+            this.invPaid.Location = new System.Drawing.Point(771, 157);
+            this.invPaid.Name = "invPaid";
+            this.invPaid.Size = new System.Drawing.Size(58, 23);
+            this.invPaid.TabIndex = 13;
+            this.invPaid.Text = "Paid";
+            this.invPaid.UseVisualStyleBackColor = true;
+            this.invPaid.Click += new System.EventHandler(this.invPaid_Click);
+            // 
+            // unPaid
+            // 
+            this.unPaid.Location = new System.Drawing.Point(771, 186);
+            this.unPaid.Name = "unPaid";
+            this.unPaid.Size = new System.Drawing.Size(58, 23);
+            this.unPaid.TabIndex = 14;
+            this.unPaid.Text = "Unpaid";
+            this.unPaid.UseVisualStyleBackColor = true;
+            this.unPaid.Click += new System.EventHandler(this.unPaid_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -949,6 +973,8 @@
         private System.Windows.Forms.ColumnHeader clmDate;
         private System.Windows.Forms.ColumnHeader clmTotal;
         private System.Windows.Forms.ColumnHeader clmPaid;
+        private System.Windows.Forms.Button unPaid;
+        private System.Windows.Forms.Button invPaid;
     }
 }
 

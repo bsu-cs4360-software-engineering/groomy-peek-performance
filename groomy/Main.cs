@@ -624,5 +624,75 @@ namespace groomy
         {
 
         }
+
+        private async void invPaid_Click(object sender, EventArgs e)
+        {
+            lstInvoices.Items.Clear();
+            lstInvoices.Items.Clear();
+            lstInvoices.View = View.Details;
+            lstInvoices.FullRowSelect = true;
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            InvoiceCRUD invoiceGetter = new InvoiceCRUD(db);
+
+            var invoices = await invoiceGetter.GetPaidInvoices();
+
+            if (invoices == null || invoices.Count == 0)
+            {
+                MessageBox.Show("No invoices found.");
+                return;
+            }
+
+            foreach (Invoice inv in invoices)
+            {
+                if (!inv.Deleted)
+                {
+                    customer customerInfo = await customerCRUD.getCustomerById(inv.ClientId);
+                    ListViewItem item = new ListViewItem(inv.Id);
+                    item.SubItems.Add(inv.CreatedDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.DueDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.Total.ToString("C"));
+                    item.SubItems.Add(inv.IsPaid ? "Paid" : "Unpaid");
+                    lstInvoices.Items.Add(item);
+                }
+            }
+        
+        }
+
+        private async void unPaid_Click(object sender, EventArgs e)
+        {
+            lstInvoices.Items.Clear();
+            lstInvoices.Items.Clear();
+            lstInvoices.View = View.Details;
+            lstInvoices.FullRowSelect = true;
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            InvoiceCRUD invoiceGetter = new InvoiceCRUD(db);
+
+            var invoices = await invoiceGetter.GetUnPaidInvoices();
+
+            if (invoices == null || invoices.Count == 0)
+            {
+                MessageBox.Show("No invoices found.");
+                return;
+            }
+
+            foreach (Invoice inv in invoices)
+            {
+                if (!inv.Deleted)
+                {
+                    customer customerInfo = await customerCRUD.getCustomerById(inv.ClientId);
+                    ListViewItem item = new ListViewItem(inv.Id);
+                    item.SubItems.Add(inv.CreatedDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.DueDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.Total.ToString("C"));
+                    item.SubItems.Add(inv.IsPaid ? "Paid" : "Unpaid");
+                    lstInvoices.Items.Add(item);
+                }
+            }
+
+        }
     }
 }

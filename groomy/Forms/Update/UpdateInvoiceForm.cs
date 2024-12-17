@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows.Forms;
 using groomy.services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Threading.Tasks;
 
 namespace groomy.Forms.Update
 {
@@ -61,10 +62,36 @@ namespace groomy.Forms.Update
             // Load existing line items
             LoadLineItems();
 
-            // Load notes
-            LoadNotesAsync();
         }
+        private async Task LoadNotesAsync()
+        {
+            try
+            {
+                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
+                notesCRUD notesCreate = new notesCRUD(db, "Invoices");
+                lstNotes.View = System.Windows.Forms.View.Details;
+                lstNotes.FullRowSelect = true;
+                var notes = await notesCreate.getAllNotes(invoiceId);
 
+                lstNotes.Items.Clear();
+                foreach (note thisNote in notes)
+                {
+                    if (!thisNote.deleted)
+                    {
+                        ListViewItem item = new ListViewItem(thisNote.title);
+                        item.SubItems.Add(thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"));
+                        item.SubItems.Add(thisNote.desc);
+                        item.SubItems.Add(thisNote.id);
+                        lstNotes.Items.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading notes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private async void LoadCustomerAsync(string clientId)
         {
             
@@ -181,35 +208,7 @@ namespace groomy.Forms.Update
             nudTotal.Value = (decimal)total;
         }
 
-        private async void LoadNotesAsync()
-        {
-            try
-            {
-                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
-                notesCRUD notesCreate = new notesCRUD(db, "Invoices");
-                lstNotes.View = System.Windows.Forms.View.Details;
-                lstNotes.FullRowSelect = true;
-                var notes = await notesCreate.getAllNotes(invoiceId);
-
-                lstNotes.Items.Clear();
-                foreach (note thisNote in notes)
-                {
-                    if (!thisNote.deleted)
-                    {
-                        ListViewItem item = new ListViewItem(thisNote.title);
-                        item.SubItems.Add(thisNote.dateCreated.ToDateTime().ToLocalTime().ToString("g"));
-                        item.SubItems.Add(thisNote.desc);
-                        item.SubItems.Add(thisNote.id);
-                        lstNotes.Items.Add(item);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading notes: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private async void btnInvUpdate_Click(object sender, EventArgs e)
         {
@@ -323,7 +322,7 @@ namespace groomy.Forms.Update
                 };
 
                 await notesCreate.createNote(invoiceId, newNote);
-                LoadNotesAsync();
+                await LoadNotesAsync();
 
                 txtNoteTitle.Text = string.Empty;
                 txtNote.Text = string.Empty;
@@ -335,7 +334,7 @@ namespace groomy.Forms.Update
             }
         }
 
-        private void btnNoteUpdate_Click(object sender, EventArgs e)
+        private async void btnNoteUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -356,7 +355,7 @@ namespace groomy.Forms.Update
                 };
 
                 notesCreate.updateNote(updatedNote, currentNoteID, invoiceId);
-                LoadNotesAsync();
+                await LoadNotesAsync();
             }
             catch (Exception ex)
             {
@@ -484,16 +483,119 @@ namespace groomy.Forms.Update
             }
         }
 
-        private void btnNoteAdd_Click_1(object sender, EventArgs e)
+        private async void btnNoteAdd_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
+                notesCRUD notesCreate = new notesCRUD(db, "Invoices");
+
+                // Validate input fields
+                if (string.IsNullOrWhiteSpace(txtNoteTitle.Text) ||
+                    string.IsNullOrWhiteSpace(txtNote.Text))
+                {
+                    MessageBox.Show("Please enter both a title and a note.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                note newNote = new note
+                {
+                    title = txtNoteTitle.Text,
+                    desc = txtNote.Text,
+                };
+
+                await notesCreate.createNote(invoiceId, newNote);
+                await LoadNotesAsync();
+
+                // Clear input fields after successful creation
+                txtNoteTitle.Text = string.Empty;
+                txtNote.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating note: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private async void btnNoteUpdate_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
+                notesCRUD notesCreate = new notesCRUD(db, "Invoices");
+
+                // Validate input fields
+                if (string.IsNullOrWhiteSpace(txtNoteTitle.Text) ||
+                    string.IsNullOrWhiteSpace(txtNote.Text))
+                {
+                    MessageBox.Show("Please enter both a title and a note.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                note newNote = new note
+                {
+                    title = txtNoteTitle.Text,
+                    desc = txtNote.Text,
+                };
+
+                notesCreate.updateNote(newNote, currentNoteID, invoiceId);
+                await LoadNotesAsync();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating note: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            await LoadNotesAsync();
 
         }
-        private void btnNoteUpdate_Click_1(object sender, EventArgs e)
+        private async void btnDeleteNote_Click(object sender, EventArgs e)
         {
+            try
+            {
+                FirestoreDb db = firebaseConfig.Instance.getFirestoreDB();
+                notesCRUD notesCreate = new notesCRUD(db, "Invoices");
 
+                // Validate input fields
+                if (string.IsNullOrWhiteSpace(txtNoteTitle.Text) ||
+                    string.IsNullOrWhiteSpace(txtNote.Text))
+                {
+                    MessageBox.Show("Please enter both a title and a note.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                await notesCreate.deleteNote(invoiceId, currentNoteID);
+                await LoadNotesAsync();
+                txtNote.Text = null;
+                txtNoteTitle.Text = null;
+                currentNoteID = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating note: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        private void btnDeleteNote_Click(object sender, EventArgs e)
+
+        private void lstNotes_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            if (lstNotes.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = lstNotes.SelectedItems[0];
+                txtNoteTitle.Text = selectedItem.Text;
+                txtNote.Text = selectedItem.SubItems[2].Text;
+                currentNoteID = selectedItem.SubItems[3].Text;
+                // Assuming the note ID is stored as a tag or you have a way to retrieve it
+            }
+        }
+
+        private async void UpdateInvoiceForm_Load(object sender, EventArgs e)
+        {
+            await LoadNotesAsync();
 
         }
     }

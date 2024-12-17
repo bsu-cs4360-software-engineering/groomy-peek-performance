@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpNotes = new System.Windows.Forms.GroupBox();
+            this.btnDeleteNote = new System.Windows.Forms.Button();
             this.btnNoteUpdate = new System.Windows.Forms.Button();
             this.btnNoteAdd = new System.Windows.Forms.Button();
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -42,6 +43,17 @@
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnInvUpdate = new System.Windows.Forms.Button();
             this.grpInvoice = new System.Windows.Forms.GroupBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cstText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbCustName = new System.Windows.Forms.ComboBox();
+            this.txtCustAddr = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.chkPaid = new System.Windows.Forms.CheckBox();
             this.nudTotal = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,18 +67,6 @@
             this.lstAvailable = new System.Windows.Forms.ListView();
             this.btnRemoveService = new System.Windows.Forms.Button();
             this.btnAddService = new System.Windows.Forms.Button();
-            this.cstText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbCustName = new System.Windows.Forms.ComboBox();
-            this.txtCustAddr = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnDeleteNote = new System.Windows.Forms.Button();
             this.grpNotes.SuspendLayout();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
@@ -89,6 +89,16 @@
             this.grpNotes.TabIndex = 3;
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
+            // 
+            // btnDeleteNote
+            // 
+            this.btnDeleteNote.Location = new System.Drawing.Point(172, 482);
+            this.btnDeleteNote.Name = "btnDeleteNote";
+            this.btnDeleteNote.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteNote.TabIndex = 12;
+            this.btnDeleteNote.Text = "Delete";
+            this.btnDeleteNote.UseVisualStyleBackColor = true;
+            this.btnDeleteNote.Click += new System.EventHandler(this.btnDeleteNote_Click);
             // 
             // btnNoteUpdate
             // 
@@ -156,6 +166,7 @@
             this.lstNotes.Size = new System.Drawing.Size(370, 172);
             this.lstNotes.TabIndex = 5;
             this.lstNotes.UseCompatibleStateImageBehavior = false;
+            this.lstNotes.SelectedIndexChanged += new System.EventHandler(this.lstNotes_SelectedIndexChanged_1);
             // 
             // Title
             // 
@@ -207,6 +218,86 @@
             this.grpInvoice.TabIndex = 5;
             this.grpInvoice.TabStop = false;
             this.grpInvoice.Text = "Invoice";
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.clmDesc,
+            this.columnHeader2,
+            this.clmID});
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(0, 293);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(372, 156);
+            this.listView2.TabIndex = 23;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Service Name";
+            this.columnHeader1.Width = 180;
+            // 
+            // clmDesc
+            // 
+            this.clmDesc.Text = "Desc";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Price";
+            // 
+            // cstText
+            // 
+            this.cstText.Location = new System.Drawing.Point(102, 48);
+            this.cstText.Name = "cstText";
+            this.cstText.ReadOnly = true;
+            this.cstText.Size = new System.Drawing.Size(268, 20);
+            this.cstText.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-2, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Customer Name: ";
+            // 
+            // cmbCustName
+            // 
+            this.cmbCustName.FormattingEnabled = true;
+            this.cmbCustName.Location = new System.Drawing.Point(102, 20);
+            this.cmbCustName.Name = "cmbCustName";
+            this.cmbCustName.Size = new System.Drawing.Size(268, 21);
+            this.cmbCustName.TabIndex = 20;
+            this.cmbCustName.SelectedIndexChanged += new System.EventHandler(this.cmbCustName_SelectedIndexChanged);
+            // 
+            // txtCustAddr
+            // 
+            this.txtCustAddr.Location = new System.Drawing.Point(102, 83);
+            this.txtCustAddr.Multiline = true;
+            this.txtCustAddr.Name = "txtCustAddr";
+            this.txtCustAddr.ReadOnly = true;
+            this.txtCustAddr.Size = new System.Drawing.Size(268, 102);
+            this.txtCustAddr.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-2, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Customer Address: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(-2, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Customer Email: ";
             // 
             // chkPaid
             // 
@@ -333,96 +424,6 @@
             this.btnAddService.UseVisualStyleBackColor = true;
             this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click_1);
             // 
-            // cstText
-            // 
-            this.cstText.Location = new System.Drawing.Point(102, 48);
-            this.cstText.Name = "cstText";
-            this.cstText.ReadOnly = true;
-            this.cstText.Size = new System.Drawing.Size(268, 20);
-            this.cstText.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-2, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Customer Name: ";
-            // 
-            // cmbCustName
-            // 
-            this.cmbCustName.FormattingEnabled = true;
-            this.cmbCustName.Location = new System.Drawing.Point(102, 20);
-            this.cmbCustName.Name = "cmbCustName";
-            this.cmbCustName.Size = new System.Drawing.Size(268, 21);
-            this.cmbCustName.TabIndex = 20;
-            this.cmbCustName.SelectedIndexChanged += new System.EventHandler(this.cmbCustName_SelectedIndexChanged);
-            // 
-            // txtCustAddr
-            // 
-            this.txtCustAddr.Location = new System.Drawing.Point(102, 83);
-            this.txtCustAddr.Multiline = true;
-            this.txtCustAddr.Name = "txtCustAddr";
-            this.txtCustAddr.ReadOnly = true;
-            this.txtCustAddr.Size = new System.Drawing.Size(268, 102);
-            this.txtCustAddr.TabIndex = 19;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-2, 83);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Customer Address: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-2, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Customer Email: ";
-            // 
-            // listView2
-            // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.clmDesc,
-            this.columnHeader2,
-            this.clmID});
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(0, 293);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(372, 156);
-            this.listView2.TabIndex = 23;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Service Name";
-            this.columnHeader1.Width = 180;
-            // 
-            // clmDesc
-            // 
-            this.clmDesc.Text = "Desc";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Price";
-            // 
-            // btnDeleteNote
-            // 
-            this.btnDeleteNote.Location = new System.Drawing.Point(172, 482);
-            this.btnDeleteNote.Name = "btnDeleteNote";
-            this.btnDeleteNote.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteNote.TabIndex = 12;
-            this.btnDeleteNote.Text = "Delete";
-            this.btnDeleteNote.UseVisualStyleBackColor = true;
-            this.btnDeleteNote.Click += new System.EventHandler(this.btnDeleteNote_Click);
-            // 
             // UpdateInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,6 +438,7 @@
             this.MinimizeBox = false;
             this.Name = "UpdateInvoiceForm";
             this.Text = "Update Invoice";
+            this.Load += new System.EventHandler(this.UpdateInvoiceForm_Load);
             this.grpNotes.ResumeLayout(false);
             this.grpNotes.PerformLayout();
             this.grpInvoice.ResumeLayout(false);
