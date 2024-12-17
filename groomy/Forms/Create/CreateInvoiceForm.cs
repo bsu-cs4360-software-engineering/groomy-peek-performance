@@ -16,10 +16,11 @@ namespace groomy.Forms.Create
         {
             InitializeComponent();
         }
-
+        //Here's the create button function!  Add the fun stuff with the database to this. 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Invoice Created!", "Invoice Created!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

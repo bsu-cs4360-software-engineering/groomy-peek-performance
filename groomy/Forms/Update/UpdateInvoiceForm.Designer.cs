@@ -1,6 +1,6 @@
-﻿namespace groomy.Forms.View
+﻿namespace groomy.Forms.Update
 {
-    partial class ViewInvoiceForm
+    partial class UpdateInvoiceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quantity");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Service Name");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Date");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Quantity");
             this.grpNotes = new System.Windows.Forms.GroupBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
@@ -42,6 +42,9 @@
             this.Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Desc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnInvUpdate = new System.Windows.Forms.Button();
+            this.btnNoteAdd = new System.Windows.Forms.Button();
+            this.btnNoteUpdate = new System.Windows.Forms.Button();
             this.grpInvoice = new System.Windows.Forms.GroupBox();
             this.cmbCustName = new System.Windows.Forms.ComboBox();
             this.txtCustAddr = new System.Windows.Forms.TextBox();
@@ -61,6 +64,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtInvNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnServiceAdd = new System.Windows.Forms.Button();
+            this.btnServiceRemove = new System.Windows.Forms.Button();
             this.grpNotes.SuspendLayout();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
@@ -68,6 +73,8 @@
             // 
             // grpNotes
             // 
+            this.grpNotes.Controls.Add(this.btnNoteUpdate);
+            this.grpNotes.Controls.Add(this.btnNoteAdd);
             this.grpNotes.Controls.Add(this.txtNote);
             this.grpNotes.Controls.Add(this.lblNote);
             this.grpNotes.Controls.Add(this.txtNoteTitle);
@@ -76,13 +83,13 @@
             this.grpNotes.Location = new System.Drawing.Point(406, 12);
             this.grpNotes.Name = "grpNotes";
             this.grpNotes.Size = new System.Drawing.Size(382, 511);
-            this.grpNotes.TabIndex = 1;
+            this.grpNotes.TabIndex = 3;
             this.grpNotes.TabStop = false;
             this.grpNotes.Text = "Notes";
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(6, 277);
+            this.txtNote.Location = new System.Drawing.Point(3, 255);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(370, 220);
@@ -91,7 +98,7 @@
             // lblNote
             // 
             this.lblNote.AutoSize = true;
-            this.lblNote.Location = new System.Drawing.Point(8, 263);
+            this.lblNote.Location = new System.Drawing.Point(5, 241);
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(36, 13);
             this.lblNote.TabIndex = 8;
@@ -99,7 +106,7 @@
             // 
             // txtNoteTitle
             // 
-            this.txtNoteTitle.Location = new System.Drawing.Point(12, 234);
+            this.txtNoteTitle.Location = new System.Drawing.Point(9, 212);
             this.txtNoteTitle.Name = "txtNoteTitle";
             this.txtNoteTitle.Size = new System.Drawing.Size(364, 20);
             this.txtNoteTitle.TabIndex = 7;
@@ -107,7 +114,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 217);
+            this.label6.Location = new System.Drawing.Point(6, 195);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 6;
@@ -143,6 +150,33 @@
             // 
             this.Id.Text = "Id";
             // 
+            // btnInvUpdate
+            // 
+            this.btnInvUpdate.Location = new System.Drawing.Point(713, 529);
+            this.btnInvUpdate.Name = "btnInvUpdate";
+            this.btnInvUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnInvUpdate.TabIndex = 4;
+            this.btnInvUpdate.Text = "&Update";
+            this.btnInvUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnNoteAdd
+            // 
+            this.btnNoteAdd.Location = new System.Drawing.Point(9, 482);
+            this.btnNoteAdd.Name = "btnNoteAdd";
+            this.btnNoteAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnNoteAdd.TabIndex = 10;
+            this.btnNoteAdd.Text = "Add Note";
+            this.btnNoteAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnNoteUpdate
+            // 
+            this.btnNoteUpdate.Location = new System.Drawing.Point(91, 482);
+            this.btnNoteUpdate.Name = "btnNoteUpdate";
+            this.btnNoteUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnNoteUpdate.TabIndex = 11;
+            this.btnNoteUpdate.Text = "Update";
+            this.btnNoteUpdate.UseVisualStyleBackColor = true;
+            // 
             // grpInvoice
             // 
             this.grpInvoice.Controls.Add(this.cmbCustName);
@@ -159,10 +193,10 @@
             this.grpInvoice.Controls.Add(this.label2);
             this.grpInvoice.Controls.Add(this.txtInvNumber);
             this.grpInvoice.Controls.Add(this.label7);
-            this.grpInvoice.Location = new System.Drawing.Point(12, 12);
+            this.grpInvoice.Location = new System.Drawing.Point(12, 13);
             this.grpInvoice.Name = "grpInvoice";
             this.grpInvoice.Size = new System.Drawing.Size(388, 511);
-            this.grpInvoice.TabIndex = 10;
+            this.grpInvoice.TabIndex = 5;
             this.grpInvoice.TabStop = false;
             this.grpInvoice.Text = "Invoice";
             // 
@@ -240,10 +274,10 @@
             this.clmQuantity});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
             this.listView1.Location = new System.Drawing.Point(10, 293);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(372, 156);
@@ -305,18 +339,39 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Invoice Number: ";
             // 
-            // ViewInvoiceForm
+            // btnServiceAdd
+            // 
+            this.btnServiceAdd.Location = new System.Drawing.Point(12, 529);
+            this.btnServiceAdd.Name = "btnServiceAdd";
+            this.btnServiceAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnServiceAdd.TabIndex = 6;
+            this.btnServiceAdd.Text = "Add Service";
+            this.btnServiceAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnServiceRemove
+            // 
+            this.btnServiceRemove.Location = new System.Drawing.Point(94, 529);
+            this.btnServiceRemove.Name = "btnServiceRemove";
+            this.btnServiceRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnServiceRemove.TabIndex = 7;
+            this.btnServiceRemove.Text = "Remove Service";
+            this.btnServiceRemove.UseVisualStyleBackColor = true;
+            // 
+            // UpdateInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 533);
+            this.ClientSize = new System.Drawing.Size(802, 564);
+            this.Controls.Add(this.btnServiceRemove);
+            this.Controls.Add(this.btnServiceAdd);
             this.Controls.Add(this.grpInvoice);
+            this.Controls.Add(this.btnInvUpdate);
             this.Controls.Add(this.grpNotes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ViewInvoiceForm";
-            this.Text = "Invoice View";
+            this.Name = "UpdateInvoiceForm";
+            this.Text = "Update Invoice";
             this.grpNotes.ResumeLayout(false);
             this.grpNotes.PerformLayout();
             this.grpInvoice.ResumeLayout(false);
@@ -327,7 +382,10 @@
         }
 
         #endregion
+
         private System.Windows.Forms.GroupBox grpNotes;
+        private System.Windows.Forms.Button btnNoteUpdate;
+        private System.Windows.Forms.Button btnNoteAdd;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.TextBox txtNoteTitle;
@@ -337,6 +395,7 @@
         private System.Windows.Forms.ColumnHeader Created;
         private System.Windows.Forms.ColumnHeader Desc;
         private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.Button btnInvUpdate;
         private System.Windows.Forms.GroupBox grpInvoice;
         private System.Windows.Forms.ComboBox cmbCustName;
         private System.Windows.Forms.TextBox txtCustAddr;
@@ -356,5 +415,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtInvNumber;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnServiceAdd;
+        private System.Windows.Forms.Button btnServiceRemove;
     }
 }
