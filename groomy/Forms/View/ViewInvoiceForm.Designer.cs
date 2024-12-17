@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quantity");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Service Name");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Date");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Quantity");
             this.grpNotes = new System.Windows.Forms.GroupBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
@@ -126,6 +126,7 @@
             this.lstNotes.Size = new System.Drawing.Size(370, 172);
             this.lstNotes.TabIndex = 5;
             this.lstNotes.UseCompatibleStateImageBehavior = false;
+            this.lstNotes.SelectedIndexChanged += new System.EventHandler(this.lstNotes_SelectedIndexChanged_1);
             // 
             // Title
             // 
@@ -168,6 +169,7 @@
             // 
             // cmbCustName
             // 
+            this.cmbCustName.Enabled = false;
             this.cmbCustName.FormattingEnabled = true;
             this.cmbCustName.Location = new System.Drawing.Point(114, 20);
             this.cmbCustName.Name = "cmbCustName";
@@ -216,6 +218,11 @@
             // 
             this.nudTotal.DecimalPlaces = 2;
             this.nudTotal.Location = new System.Drawing.Point(59, 456);
+            this.nudTotal.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.nudTotal.Name = "nudTotal";
             this.nudTotal.ReadOnly = true;
             this.nudTotal.Size = new System.Drawing.Size(120, 20);
@@ -240,10 +247,10 @@
             this.clmQuantity});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listView1.Location = new System.Drawing.Point(10, 293);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(372, 156);
@@ -317,6 +324,7 @@
             this.MinimizeBox = false;
             this.Name = "ViewInvoiceForm";
             this.Text = "Invoice View";
+            this.Load += new System.EventHandler(this.ViewInvoiceForm_Load);
             this.grpNotes.ResumeLayout(false);
             this.grpNotes.PerformLayout();
             this.grpInvoice.ResumeLayout(false);

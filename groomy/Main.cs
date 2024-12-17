@@ -601,15 +601,38 @@ namespace groomy
             }
         }
 
-        private void btnInvView_Click(object sender, EventArgs e)
+        private async void btnInvView_Click(object sender, EventArgs e)
         {
             if (lstInvoices.SelectedItems.Count > 0)
             {
-                // Implement view logic similar to other view methods
-                // You might want to create a ViewInvoiceForm
+                try
+                {
+                    firebaseConfig config = firebaseConfig.Instance;
+                    FirestoreDb db = config.getFirestoreDB();
+                    InvoiceCRUD invoiceCRUD = new InvoiceCRUD(db);
+                    // Get the selected invoice ID from the list view
+                    string invoiceId = lstInvoices.SelectedItems[0].SubItems[0].Text;
+                    // Fetch the complete invoice data
+                    Invoice invoice = await invoiceCRUD.GetInvoice(invoiceId);
+                    if (invoice != null)
+                    {
+                        ViewInvoiceForm viewInvoiceForm = new ViewInvoiceForm(invoice);
+                        viewInvoiceForm.ShowDialog();
+                        // Note: No need to refresh invoices list after viewing since no changes are made
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to find the selected invoice.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading invoice: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
         private void Main_Load(object sender, EventArgs e)
         {
 
@@ -697,7 +720,7 @@ namespace groomy
 
         private void all_Click(object sender, EventArgs e)
         {
-            loadInvoices();
+             loadInvoices();
         }
     }
 }
