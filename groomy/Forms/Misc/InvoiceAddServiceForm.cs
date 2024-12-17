@@ -16,5 +16,15 @@ namespace groomy.Forms.Misc
         {
             InitializeComponent();
         }
+
+        private void lstServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InvoiceAddServiceForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

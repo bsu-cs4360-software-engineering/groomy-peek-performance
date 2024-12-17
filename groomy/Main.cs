@@ -71,6 +71,7 @@ namespace groomy
                 rdoCustomer.Visible = true;
                 rdoAppointments.Visible = true;
                 rdoServices.Visible = true;
+                rdoInvoices.Visible = true;
             }
             else
             {
@@ -490,7 +491,8 @@ namespace groomy
 
         private void btnInvAdd_Click(object sender, EventArgs e)
         {
-
+            CreateInvoiceForm createInvoiceForm = new CreateInvoiceForm();
+            createInvoiceForm.ShowDialog();
         }
 
         private void btnInvDelete_Click(object sender, EventArgs e)
@@ -509,6 +511,11 @@ namespace groomy
         }
 
         private void btnInvView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Main_Load(object sender, EventArgs e)
         {
 
         }

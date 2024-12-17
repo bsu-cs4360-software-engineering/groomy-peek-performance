@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Name");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Description");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Name");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Description");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Price");
             this.button1 = new System.Windows.Forms.Button();
             this.lstServices = new System.Windows.Forms.ListView();
             this.cmhName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,15 +57,16 @@
             this.IdP});
             this.lstServices.HideSelection = false;
             this.lstServices.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.lstServices.Location = new System.Drawing.Point(11, 11);
             this.lstServices.Margin = new System.Windows.Forms.Padding(2);
             this.lstServices.Name = "lstServices";
             this.lstServices.Size = new System.Drawing.Size(349, 381);
             this.lstServices.TabIndex = 9;
             this.lstServices.UseCompatibleStateImageBehavior = false;
+            this.lstServices.SelectedIndexChanged += new System.EventHandler(this.lstServices_SelectedIndexChanged);
             // 
             // cmhName
             // 
@@ -95,6 +96,7 @@
             this.MinimizeBox = false;
             this.Name = "InvoiceAddServiceForm";
             this.Text = "InvoiceAddServiceForm";
+            this.Load += new System.EventHandler(this.InvoiceAddServiceForm_Load);
             this.ResumeLayout(false);
 
         }
