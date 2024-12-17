@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using groomy.Appointments;
+using groomy.Auth;
 using groomy.Customers;
 using groomy.Notes;
 using groomy.services;
@@ -71,24 +72,29 @@ namespace groomy
                 firebaseConfig config = firebaseConfig.Instance;
                 FirestoreDb db = config.getFirestoreDB();
                 customerCRUD customerGetter = new customerCRUD(db);
-
-                // Create a new customer object with updated details
-                customer updatedCustomer = new customer
+                loginCheck verify = new loginCheck(txtEmail.Text, txtFName.Text);
+                bool verifyEmail = await verify.IsValidEmail(txtEmail.Text);
+                if (verifyEmail)
                 {
-                    email = txtEmail.Text,
-                    fName = txtFName.Text,
-                    lName = txtLName.Text,
-                    id = customerId, // Use the stored customer ID
-                    deleted = false,
-                    phoneNumber = txtPhoneNumber.Text,
-                    address = txtAddr1.Text + " " + txtAddr2.Text + " " + txtAddr3.Text, // Concatenate address fields
-                };
+                    // Create a new customer object with updated details
+                    customer updatedCustomer = new customer
+                    {
+                        email = txtEmail.Text,
+                        fName = txtFName.Text,
+                        lName = txtLName.Text,
+                        id = customerId, // Use the stored customer ID
+                        deleted = false,
+                        phoneNumber = txtPhoneNumber.Text,
+                        address = txtAddr1.Text + " " + txtAddr2.Text + " " + txtAddr3.Text, // Concatenate address fields
+                    };
+                
 
                 // Call the update method
                 await customerGetter.updateCustomer(updatedCustomer);
 
                 MessageBox.Show("Customer updated successfully!");
                 this.Close();
+                }
             }
             catch (Exception ex)
             {
