@@ -16,6 +16,7 @@ using groomy.services;
 using groomy.Pricing;
 using groomy.Forms.Create;
 using groomy.Forms.View;
+using groomy.Invoices;
 
 namespace groomy
 {
@@ -29,6 +30,9 @@ namespace groomy
         private Color black = Color.FromArgb(16, 16, 16);
 
         //private customerCRUD custCrud = new customerCRUD();
+        
+        
+        
         public Main()
         {
             InitializeComponent();
@@ -64,17 +68,19 @@ namespace groomy
         {
             loginCheck checkLogin = new loginCheck(txtUsername.Text, txtPassword.Text);
             bool verifyUser = await checkLogin.checkUser();
-            if (verifyUser)
+            bool verifyEmail = checkLogin.IsValidEmail(txtUsername.Text);
+            if (verifyUser && verifyEmail)
             {
                 pnlLogin.Visible = false;
                 pnlWelcome.Visible = true;
                 rdoCustomer.Visible = true;
                 rdoAppointments.Visible = true;
                 rdoServices.Visible = true;
+                rdoInvoices.Visible = true;
             }
             else
             {
-                MessageBox.Show("Email and/or Password are not right");
+                MessageBox.Show("Email and/or Password are not valid!");
                 txtUsername.Text = string.Empty;
                 txtPassword.Text = string.Empty;
 
@@ -127,6 +133,44 @@ namespace groomy
                 item.SubItems.Add(service.Id);
                 lstServices.Items.Add(item);
             }
+        }
+        public async void loadInvoices()
+        {
+            lstInvoices.Items.Clear();
+            lstInvoices.View = View.Details;
+            lstInvoices.FullRowSelect = true;
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            InvoiceCRUD invoiceGetter = new InvoiceCRUD(db);
+
+            var invoices = await invoiceGetter.GetAllInvoices();
+
+            if (invoices == null || invoices.Count == 0)
+            {
+                MessageBox.Show("No invoices found.");
+                return;
+            }
+
+            foreach (Invoice inv in invoices)
+            {
+                if (!inv.Deleted)
+                {
+                    customer customerInfo = await customerCRUD.getCustomerById(inv.ClientId);
+                    ListViewItem item = new ListViewItem(inv.Id);
+                    item.SubItems.Add(inv.CreatedDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.DueDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.Total.ToString("C"));
+                    item.SubItems.Add(inv.IsPaid ? "Paid" : "Unpaid");
+                    lstInvoices.Items.Add(item);
+                }
+            }
+        }
+
+
+        private void pnlInvoices_VisibleChanged(object sender, EventArgs e)
+        {
+            loadInvoices();
         }
         //This is where the radio buttons logic is handled.  It runs based on the text in the button. 
         public async void loadCustomers()
@@ -260,7 +304,16 @@ namespace groomy
                         pnlServices.Visible = rdoServices.Checked;
                         pnlCustomer.Visible = !rdoServices.Checked;
                         pnlServices.BringToFront();
-                        lstServices.FullRowSelect= true;
+                        break;
+
+                    case "Invoices":
+                        pnlInvoices.Visible = rdoInvoices.Checked;
+                        pnlInvoices.BringToFront();
+                        pnlAppointments.Visible= rdoAppointments.Checked;
+                        pnlServices.Visible= rdoServices.Checked;
+                        lstInvoices.View = View.Details;
+                        lstInvoices.FullRowSelect = true;
+                        loadInvoices();
                         break;
 
                     default:
@@ -478,6 +531,196 @@ namespace groomy
         private async void pnlServices_VisibleChanged(object sender, EventArgs e)
         {
             await loadServices();
+        }
+
+        private void btnInvAdd_Click(object sender, EventArgs e)
+        {
+            CreateInvoiceForm createInvoiceForm = new CreateInvoiceForm();
+            createInvoiceForm.ShowDialog();
+        }
+
+        private async void btnInvDelete_Click(object sender, EventArgs e)
+        {
+            if (lstInvoices.SelectedItems.Count > 0)
+            {
+                firebaseConfig config = firebaseConfig.Instance;
+                FirestoreDb db = config.getFirestoreDB();
+                InvoiceCRUD invoiceCRUD = new InvoiceCRUD(db);
+
+                DialogResult deleteResult = MessageBox.Show("Are you sure you want to delete this invoice?", "Are you sure?", MessageBoxButtons.YesNo);
+
+                if (deleteResult == DialogResult.Yes)
+                {
+                    string invoiceId = lstInvoices.SelectedItems[0].SubItems[0].Text;
+                    await invoiceCRUD.SoftDeleteInvoice(invoiceId);
+                    loadInvoices();
+                }
+            }
+        }
+
+        private void btnInvRefresh_Click(object sender, EventArgs e)
+        {
+            loadInvoices();
+        }
+
+        private async void btnInvUpdate_Click(object sender, EventArgs e)
+        {
+            if (lstInvoices.SelectedItems.Count > 0)
+            {
+                try
+                {
+                    firebaseConfig config = firebaseConfig.Instance;
+                    FirestoreDb db = config.getFirestoreDB();
+                    InvoiceCRUD invoiceCRUD = new InvoiceCRUD(db);
+
+                    // Get the selected invoice ID from the list view
+                    string invoiceId = lstInvoices.SelectedItems[0].SubItems[0].Text;
+
+                    // Fetch the complete invoice data
+                    Invoice invoice = await invoiceCRUD.GetInvoice(invoiceId);
+
+                    if (invoice != null)
+                    {
+                        UpdateInvoiceForm updateInvoiceForm = new UpdateInvoiceForm(invoice);
+                        updateInvoiceForm.ShowDialog();
+
+                        // Refresh the invoice list after the form is closed
+                        loadInvoices();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to find the selected invoice.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading invoice: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private async void btnInvView_Click(object sender, EventArgs e)
+        {
+            if (lstInvoices.SelectedItems.Count > 0)
+            {
+                try
+                {
+                    firebaseConfig config = firebaseConfig.Instance;
+                    FirestoreDb db = config.getFirestoreDB();
+                    InvoiceCRUD invoiceCRUD = new InvoiceCRUD(db);
+                    // Get the selected invoice ID from the list view
+                    string invoiceId = lstInvoices.SelectedItems[0].SubItems[0].Text;
+                    // Fetch the complete invoice data
+                    Invoice invoice = await invoiceCRUD.GetInvoice(invoiceId);
+                    if (invoice != null)
+                    {
+                        ViewInvoiceForm viewInvoiceForm = new ViewInvoiceForm(invoice);
+                        viewInvoiceForm.ShowDialog();
+                        // Note: No need to refresh invoices list after viewing since no changes are made
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to find the selected invoice.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading invoice: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoInvoices_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstInvoices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void invPaid_Click(object sender, EventArgs e)
+        {
+            lstInvoices.Items.Clear();
+            lstInvoices.Items.Clear();
+            lstInvoices.View = View.Details;
+            lstInvoices.FullRowSelect = true;
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            InvoiceCRUD invoiceGetter = new InvoiceCRUD(db);
+
+            var invoices = await invoiceGetter.GetPaidInvoices();
+
+            if (invoices == null || invoices.Count == 0)
+            {
+                MessageBox.Show("No invoices found.");
+                return;
+            }
+
+            foreach (Invoice inv in invoices)
+            {
+                if (!inv.Deleted)
+                {
+                    customer customerInfo = await customerCRUD.getCustomerById(inv.ClientId);
+                    ListViewItem item = new ListViewItem(inv.Id);
+                    item.SubItems.Add(inv.CreatedDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.DueDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.Total.ToString("C"));
+                    item.SubItems.Add(inv.IsPaid ? "Paid" : "Unpaid");
+                    lstInvoices.Items.Add(item);
+                }
+            }
+        
+        }
+
+        private async void unPaid_Click(object sender, EventArgs e)
+        {
+            lstInvoices.Items.Clear();
+            lstInvoices.Items.Clear();
+            lstInvoices.View = View.Details;
+            lstInvoices.FullRowSelect = true;
+            firebaseConfig config = firebaseConfig.Instance;
+            FirestoreDb db = config.getFirestoreDB();
+            customerCRUD customerCRUD = new customerCRUD(db);
+            InvoiceCRUD invoiceGetter = new InvoiceCRUD(db);
+
+            var invoices = await invoiceGetter.GetUnPaidInvoices();
+
+            if (invoices == null || invoices.Count == 0)
+            {
+                MessageBox.Show("No invoices found.");
+                return;
+            }
+
+            foreach (Invoice inv in invoices)
+            {
+                if (!inv.Deleted)
+                {
+                    customer customerInfo = await customerCRUD.getCustomerById(inv.ClientId);
+                    ListViewItem item = new ListViewItem(inv.Id);
+                    item.SubItems.Add(inv.CreatedDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.DueDate.ToDateTime().ToLocalTime().ToString("g"));
+                    item.SubItems.Add(inv.Total.ToString("C"));
+                    item.SubItems.Add(inv.IsPaid ? "Paid" : "Unpaid");
+                    lstInvoices.Items.Add(item);
+                }
+            }
+
+        }
+
+        private void all_Click(object sender, EventArgs e)
+        {
+             loadInvoices();
         }
     }
 }

@@ -34,15 +34,24 @@ namespace groomy
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            adminUser user = new adminUser();
-            user.email = txtEmail.Text;
-            user.fName = txtFirst.Text;
-            user.lName = txtLast.Text;
-            user.password = txtPass.Text;
-            createAdminUser creating = new createAdminUser(db);
-            await creating.addadminUserAsync(user);
-            MessageBox.Show("New User Created");
-            this.Close();
+            loginCheck verify = new loginCheck(txtEmail.Text,txtPass.Text);
+            bool verifyEmail =  verify.IsValidEmail(txtEmail.Text);
+            if (verifyEmail)
+            {
+                adminUser user = new adminUser();
+                user.email = txtEmail.Text;
+                user.fName = txtFirst.Text;
+                user.lName = txtLast.Text;
+                user.password = txtPass.Text;
+                createAdminUser creating = new createAdminUser(db);
+                await creating.addadminUserAsync(user);
+                MessageBox.Show("New User Created");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Email not valid");
+            }
         }
 
         private void AccountCreateForm_Load(object sender, EventArgs e)
