@@ -63,5 +63,20 @@ namespace groomy.Auth
             bool passExists = await checkPass();
             return emailExists && passExists;
         }
+
+        public async Task<bool> IsValidEmail(string email)
+        {
+            bool Result = false;
+            try
+            {
+                var emailValidator = new System.Net.Mail.MailAddress(email);
+                Result = (email.LastIndexOf(".") > email.LastIndexOf("@"));
+            }
+            catch
+            {
+                Result = false;
+            }
+            return Result;
+        }
     }
 }

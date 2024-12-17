@@ -29,6 +29,9 @@ namespace groomy
         private Color black = Color.FromArgb(16, 16, 16);
 
         //private customerCRUD custCrud = new customerCRUD();
+        
+        
+        
         public Main()
         {
             InitializeComponent();
@@ -64,7 +67,8 @@ namespace groomy
         {
             loginCheck checkLogin = new loginCheck(txtUsername.Text, txtPassword.Text);
             bool verifyUser = await checkLogin.checkUser();
-            if (verifyUser)
+            bool verifyEmail = await checkLogin.IsValidEmail(txtUsername.Text);
+            if (verifyUser && verifyEmail)
             {
                 pnlLogin.Visible = false;
                 pnlWelcome.Visible = true;
@@ -75,7 +79,7 @@ namespace groomy
             }
             else
             {
-                MessageBox.Show("Email and/or Password are not right");
+                MessageBox.Show("Email and/or Password are not valid!");
                 txtUsername.Text = string.Empty;
                 txtPassword.Text = string.Empty;
 
