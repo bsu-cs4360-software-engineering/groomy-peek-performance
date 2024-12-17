@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ColumnHeader clmID;
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Service Name");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Date");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Price");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Quantity");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Service Name");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Date");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Price");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Quantity");
+            this.clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpInvoice = new System.Windows.Forms.GroupBox();
             this.cmbCustName = new System.Windows.Forms.ComboBox();
             this.txtCustAddr = new System.Windows.Forms.TextBox();
@@ -55,13 +55,16 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.btnServiceRemove = new System.Windows.Forms.Button();
-            clmID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label7 = new System.Windows.Forms.Label();
+            this.cstText = new System.Windows.Forms.TextBox();
             this.grpInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // grpInvoice
             // 
+            this.grpInvoice.Controls.Add(this.cstText);
+            this.grpInvoice.Controls.Add(this.label7);
             this.grpInvoice.Controls.Add(this.cmbCustName);
             this.grpInvoice.Controls.Add(this.txtCustAddr);
             this.grpInvoice.Controls.Add(this.label6);
@@ -94,17 +97,17 @@
             // 
             // txtCustAddr
             // 
-            this.txtCustAddr.Location = new System.Drawing.Point(114, 44);
+            this.txtCustAddr.Location = new System.Drawing.Point(114, 83);
             this.txtCustAddr.Multiline = true;
             this.txtCustAddr.Name = "txtCustAddr";
             this.txtCustAddr.ReadOnly = true;
-            this.txtCustAddr.Size = new System.Drawing.Size(268, 141);
+            this.txtCustAddr.Size = new System.Drawing.Size(268, 102);
             this.txtCustAddr.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 47);
+            this.label6.Location = new System.Drawing.Point(10, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 12;
@@ -115,9 +118,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(10, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Customer Name: ";
+            this.label5.Text = "Customer Email: ";
             // 
             // chkPaid
             // 
@@ -156,13 +159,13 @@
             this.clmDate,
             this.clmPrice,
             this.clmQuantity,
-            clmID});
+            this.clmID});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(10, 293);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(372, 156);
@@ -172,7 +175,7 @@
             // clmService
             // 
             this.clmService.Text = "Service Name";
-            this.clmService.Width = 120;
+            this.clmService.Width = 180;
             // 
             // label3
             // 
@@ -254,6 +257,23 @@
             this.btnServiceRemove.UseVisualStyleBackColor = true;
             this.btnServiceRemove.Click += new System.EventHandler(this.btnServiceRemove_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 51);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Customer Name: ";
+            // 
+            // cstText
+            // 
+            this.cstText.Location = new System.Drawing.Point(114, 48);
+            this.cstText.Name = "cstText";
+            this.cstText.ReadOnly = true;
+            this.cstText.Size = new System.Drawing.Size(268, 20);
+            this.cstText.TabIndex = 16;
+            // 
             // CreateInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,5 +320,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbCustName;
         private System.Windows.Forms.Button btnServiceRemove;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox cstText;
+        private System.Windows.Forms.ColumnHeader clmID;
     }
 }

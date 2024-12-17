@@ -215,7 +215,6 @@
             this.MinimizeBox = false;
             this.Name = "CreateAppointmentForm";
             this.Text = "Create Appointment";
-            this.Load += new System.EventHandler(this.CreateAppointmentForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

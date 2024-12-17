@@ -88,10 +88,5 @@ namespace groomy
             }
         
     }
-
-        private void CreateAppointmentForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -34,15 +34,13 @@ namespace groomy.Forms.Create
             }
             foreach (customer cust in potato)
             {
-                cmbCustName.Items.Add(cust.fName + " " + cust.lName);
+                cmbCustName.Items.Add(cust.email);
             }
         }
         public CreateInvoiceForm()
         {
             InitializeComponent();
-            FirestoreDb _db = firebaseConfig.Instance.getFirestoreDB();
-            InvoiceCRUD invCRUD = new InvoiceCRUD(_db);
-            customerCRUD custCrud = new customerCRUD(_db);
+
             loadCustomers();
         }
         //Here's the create button function!  Add the fun stuff with the database to this. 
@@ -63,9 +61,13 @@ namespace groomy.Forms.Create
 
         }
 
-        private void cmbCustName_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmbCustName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            FirestoreDb _db = firebaseConfig.Instance.getFirestoreDB();
+            customerCRUD custCrud = new customerCRUD(_db);
+            customer cust = await custCrud.getCustomerByEmail(cmbCustName.Text);
+            cstText.Text = cust.fName + " " + cust.lName;
+            txtCustAddr.Text = cust.address;
         }
 
         private void CreateInvoiceForm_Load(object sender, EventArgs e)
